@@ -73,7 +73,9 @@ Every later release is `git push` from the PC, then on the server:
 bash /var/www/bereal/deploy/vps/deploy.sh
 ```
 
-The API runs with `NODE_ENV=staging` until the Resend and Stripe keys exist (emails go to `pm2 logs bereal-api`, donations use the simulated checkout). Switching to the real domain: change the `server_name` lines, re-run certbot, update the URLs in the three env files and run `deploy.sh` again.
+The API runs with `NODE_ENV=staging` until the Resend and Stripe keys exist (emails go to `pm2 logs bereal-api`, donations use the simulated checkout).
+
+Real domain: `nginx-berealhumanitarian.org.conf` holds the hosts for `berealhumanitarian.org` (website, `www` redirects to it), `portal.berealhumanitarian.org` (backoffice) and `api.berealhumanitarian.org` (API). DNS at the registrar: A records for `@`, `portal` and `api` pointing at the server, `www` as a CNAME to the apex. Once they resolve, `switch-domain.sh` issues the certificate, rewrites the env URLs and stored media URLs, rebuilds, and turns the temporary nip.io names into redirects.
 
 ## Not in this repository
 
