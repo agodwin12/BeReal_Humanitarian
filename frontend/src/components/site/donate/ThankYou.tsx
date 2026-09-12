@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { ArrowRight, CheckCircle2, Printer } from "lucide-react";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
+import { ArrowRight, CalendarHeart, CheckCircle2, Printer } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { FormAlert } from "@/components/forms/FormPrimitives";
@@ -12,18 +12,17 @@ import { getDonationStatus, type DonationStatus } from "@/lib/api";
 const LOCALE_TAG: Record<string, string> = { en: "en-US", fr: "fr-FR", es: "es-ES" };
 
 // Polls until the webhook (or the simulator) has confirmed the payment, then
-// shows the receipt line — the printable thank-you page from the brief.
+// shows the receipt line — the printable thank-you page from the brief. A
+// monthly gift also shows the next charge date and the "manage" link.
 export function ThankYou({ session, message }: { session: string | null; message: string }) {
   const t = useTranslations("DonatePage.thankYou");
   const locale = useLocale();
+  const format = useFormatter();
   const [status, setStatus] = useState<DonationStatus | null>(null);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(!session);
 
   useEffect(() => {
-    if (!session) {
-      setError(true);
-      return;
-    }
+    if (!session) return;
     let attempts = 0;
     let cancelled = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -49,7 +48,10 @@ export function ThankYou({ session, message }: { session: string | null; message
 
   const paid = status && ["paid", "partially_refunded", "refunded"].includes(status.status);
   const failed = error || (status && ["failed", "expired"].includes(status.status));
-  const amount = status ? new Intl.NumberFormat(LOCALE_TAG[locale] ?? "en-US", { style: "currency", currency: status.currency.toUpperCase() }).format(status.amountCents / 100) : "";
+  const money = (cents: number) => (status ? new Intl.NumberFormat(LOCALE_TAG[locale] ?? "en-US", { style: "currency", currency: status.currency.toUpperCase() }).format(cents / 100) : "");
+  const amount = status ? money(status.amountCents) : "";
+  const monthly = status?.frequency === "monthly" && status.subscription;
+  const nextCharge = monthly && status.subscription?.currentPeriodEnd ? format.dateTime(new Date(status.subscription.currentPeriodEnd), { dateStyle: "long" }) : null;
 
   return (
     <div className="thankyou-card">
@@ -84,6 +86,30 @@ export function ThankYou({ session, message }: { session: string | null; message
               <dt>{t("receipt", { number: status!.receiptNumber ?? "—", amount })}</dt>
               <dd>{t("emailed", { email: status!.donorEmail })}</dd>
             </div>
+            {status!.feeCoverCents > 0 ? (
+              <div>
+                <dd>{t("feeCoverLine", { fee: money(status!.feeCoverCents) })}</dd>
+              </div>
+            ) : null}
+            {monthly ? (
+              <div>
+                <dt className="flex items-center gap-2">
+                  <CalendarHeart className="size-4 text-brand-purple-600" aria-hidden="true" />
+                  {t("monthlySetUp", { amount })}
+                </dt>
+                <dd>
+                  {nextCharge ? t("nextCharge", { date: nextCharge }) : null}
+                  {status!.subscription?.manageToken ? (
+                    <>
+                      {" "}
+                      <Link href={`/donate/manage?token=${encodeURIComponent(status!.subscription.manageToken)}`} className="font-bold text-brand-purple-700 hover:underline">
+                        {t("manage")}
+                      </Link>
+                    </>
+                  ) : null}
+                </dd>
+              </div>
+            ) : null}
           </dl>
           {status!.mode !== "live" ? <p className="note-muted">Test mode — no real payment was taken.</p> : null}
           <div className="form-actions no-print">

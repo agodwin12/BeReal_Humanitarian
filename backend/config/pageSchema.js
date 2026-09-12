@@ -110,6 +110,7 @@ const PAGES = [
       { key: "form", title: "Donation form", description: "Suggested amounts, minimum, the thank-you message and receipt wording are in Donation settings.", messageKeys: ["DonatePage.form.", "DonatePage.paused.", "DonatePage.cancelled."] },
       { key: "why", title: "Why give", messageKeys: ["DonatePage.why."] },
       { key: "thankYou", title: "Thank-you page", messageKeys: ["DonatePage.thankYou."] },
+      { key: "manage", title: "Manage a monthly gift", description: "The page donors reach from the link in their monthly receipt.", messageKeys: ["DonatePage.manage."] },
       { key: "seo", title: "Search & social preview", messageKeys: ["Meta.donateTitle", "Meta.donateDescription"], seo: true },
     ],
   },
@@ -120,7 +121,7 @@ const PAGES = [
     sections: [
       { key: "brand", title: "Brand lockup", description: "Legal name, tagline and status line are in Site settings.", messageKeys: ["Brand.name", "Brand.sub"] },
       { key: "nav", title: "Navigation labels", messageKeys: ["Nav."] },
-      { key: "footer", title: "Footer", description: "The political-neutrality statement is in Site settings.", messageKeys: ["Footer.quickLinks", "Footer.getInvolved", "Footer.connect", "Footer.together", "Footer.rights"] },
+      { key: "footer", title: "Footer", description: "The political-neutrality statement is in Site settings.", messageKeys: ["Footer.quickLinks", "Footer.getInvolved", "Footer.connect", "Footer.together", "Footer.rights", "Footer.location"] },
       { key: "cta", title: "Call to action band", messageKeys: ["GetInvolved."], images: [{ slot: "cta", label: "Background photo", default: "/images/cta-community.png" }] },
       { key: "forms", title: "Form labels & messages", messageKeys: ["Forms."] },
       { key: "unsubscribe", title: "Unsubscribe page", messageKeys: ["Unsubscribe."] },

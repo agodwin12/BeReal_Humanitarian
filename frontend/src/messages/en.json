@@ -132,7 +132,8 @@
     "connect": "Connect With Us",
     "together": "Together we can do more.",
     "rights": "All rights reserved.",
-    "political": "Be Real Humanitarian Works Inc. does not participate or intervene in political campaigns for or against candidates for public office."
+    "political": "Be Real Humanitarian Works Inc. does not participate or intervene in political campaigns for or against candidates for public office.",
+    "location": "Greater Houston Area, Texas"
   },
   "ProgramsPage": {
     "eyebrow": "Our Programs",
@@ -573,7 +574,7 @@
     "form": {
       "eyebrow": "Make a gift",
       "title": "Choose an amount",
-      "intro": "One-time gift in US dollars. You'll complete your payment on Stripe's secure page — we never see or store your card details.",
+      "intro": "Give once or monthly, in US dollars. You'll complete your payment on Stripe's secure page — we never see or store your card details.",
       "amountLabel": "Amount",
       "otherAmount": "Other amount",
       "customPlaceholder": "Enter an amount",
@@ -595,7 +596,19 @@
         "minimum": "The minimum gift is {amount}.",
         "maximum": "For gifts above {amount}, please contact us.",
         "start": "We couldn't start your donation. Please try again in a moment."
-      }
+      },
+      "frequencyLabel": "How would you like to give?",
+      "oneTime": "One-time gift",
+      "monthly": "Monthly gift",
+      "monthlyHint": "Your card is charged automatically each month. Cancel anytime from the link in your receipt.",
+      "monthlyAmountLabel": "Monthly amount",
+      "perMonth": "/ month",
+      "submitMonthly": "Give {amount} monthly",
+      "feeCoverLabel": "Add {fee} to cover the processing fee, so the full {amount} reaches our programs",
+      "feeCoverLabelPlain": "Add the processing fee so my full gift reaches the programs",
+      "feesOptional": "Card processing fees apply to online gifts. You can add them to your gift; otherwise the organization covers them.",
+      "totalWithFees": "{amount} gift + {fee} processing fee = {total} charged today.",
+      "monthlyCancel": "You can change or cancel your monthly gift at any time — the link is in every receipt email."
     },
     "paused": {
       "title": "Donations are paused for the moment",
@@ -637,7 +650,11 @@
       },
       "print": "Print this page",
       "backHome": "Back to the homepage",
-      "again": "Back to the Donate page"
+      "again": "Back to the Donate page",
+      "feeCoverLine": "Includes {fee} you added to cover the processing fee — thank you.",
+      "monthlySetUp": "Your monthly gift of {amount} is set up.",
+      "nextCharge": "The next payment is on {date}.",
+      "manage": "Change or cancel my monthly gift"
     },
     "simulate": {
       "eyebrow": "Test payment",
@@ -647,7 +664,46 @@
       "donor": "Donor",
       "pay": "Pay {amount} (test)",
       "cancel": "Cancel and go back",
-      "processing": "Processing…"
+      "processing": "Processing…",
+      "monthly": "/ month (monthly gift)"
+    },
+    "manage": {
+      "eyebrow": "Monthly gift",
+      "title": "Manage your monthly gift",
+      "lead": "Thank you for giving every month. Here you can see your gift, update your card or cancel at any time.",
+      "loading": "Loading your monthly gift…",
+      "invalid": {
+        "title": "This link is not valid",
+        "body": "Use the link from your most recent receipt email, or contact us and we'll help."
+      },
+      "contact": "Contact us",
+      "status": {
+        "active": "Your monthly gift of {amount} is active.",
+        "past_due": "The last payment for your monthly gift of {amount} did not go through. Please update your card.",
+        "pending": "Your monthly gift of {amount} is not confirmed yet.",
+        "incomplete": "Your monthly gift of {amount} was not completed.",
+        "canceled": "Your monthly gift of {amount} has been canceled."
+      },
+      "amount": "Amount",
+      "perMonth": "per month",
+      "donor": "Donor",
+      "since": "Giving since",
+      "payments": "{count, plural, one {# payment} other {# payments}}",
+      "nextCharge": "Next payment",
+      "canceledOn": "Canceled on",
+      "portal": "Update my card",
+      "opening": "Opening the secure page…",
+      "cancelButton": "Cancel my monthly gift",
+      "cancelConfirm": "Cancel your monthly gift of {amount}? No further payments will be taken.",
+      "cancelYes": "Yes, cancel my monthly gift",
+      "cancelNo": "Keep giving",
+      "cancelling": "Cancelling…",
+      "canceled": {
+        "body": "No further payments will be taken. Thank you for everything you have given."
+      },
+      "notActive": "This monthly gift is not active.",
+      "giveAgain": "Make a new gift",
+      "error": "Something went wrong. Please try again."
     }
   }
 }

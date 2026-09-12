@@ -2426,3 +2426,51 @@
     padding: 0;
   }
 }
+
+/* Donate — one-time / monthly toggle and chip suffix */
+.frequency-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  padding: 0.3rem;
+  border-radius: 12px;
+  background: var(--brand-purple-50);
+  border: 1px solid var(--line);
+}
+
+.frequency-toggle__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.5rem 0.8rem;
+  border-radius: 9px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  color: var(--brand-purple-950);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-brand),
+    color var(--duration-fast) var(--ease-brand);
+}
+
+.frequency-toggle__option:hover {
+  background: #fff;
+}
+
+.frequency-toggle__option.is-active {
+  background: var(--brand-purple-600);
+  border-color: var(--brand-purple-600);
+  color: #fff;
+}
+
+.amount-chip__suffix {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  opacity: 0.75;
+}

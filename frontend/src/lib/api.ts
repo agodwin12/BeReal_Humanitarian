@@ -61,40 +61,64 @@ export async function unsubscribeNewsletter(token: string): Promise<UnsubscribeR
 
 // ---- Donations (Phase E) ------------------------------------------------------
 
+export type DonationFrequency = "one_time" | "monthly";
+
+export type PublicSubscription = {
+  id: number;
+  status: "pending" | "active" | "past_due" | "canceled" | "incomplete";
+  amountCents: number;
+  feeCoverCents: number;
+  currency: string;
+  interval: string;
+  donorName: string;
+  donorEmail: string;
+  locale: string;
+  startedAt: string | null;
+  currentPeriodEnd: string | null;
+  cancelAtPeriodEnd: boolean;
+  canceledAt: string | null;
+  lastPaymentAt: string | null;
+  paymentsCount: number;
+  mode: "live" | "test" | "simulated";
+  portalAvailable?: boolean;
+  manageToken?: string;
+};
+
 export type DonationStatus = {
   status: "pending" | "paid" | "failed" | "expired" | "refunded" | "partially_refunded";
   receiptNumber: string | null;
   amountCents: number;
+  feeCoverCents: number;
   currency: string;
+  frequency: DonationFrequency;
   donorName: string;
   donorEmail: string;
   locale: string;
   paidAt: string | null;
   receiptSentAt: string | null;
   mode: "live" | "test" | "simulated";
+  subscription: PublicSubscription | null;
 };
 
 async function readJson<T>(response: Response): Promise<T> {
-  const body = (await response.json().catch(() => ({}))) as { data?: T; message?: string; errors?: { field: string; message: string }[] };
-  if (!response.ok) {
-    const error = new Error(body.message || `Request failed with status ${response.status}`) as Error & { status?: number; errors?: { field: string; message: string }[] };
-    error.status = response.status;
-    error.errors = body.errors;
-    throw error;
-  }
+  const body = (await response.json().catch(() => null)) as { success?: boolean; data?: T; message?: string } | null;
+  if (!response.ok || !body?.success) throw new Error(body?.message || `Request failed with status ${response.status}`);
   return body.data as T;
 }
 
-// Creates the donation and returns the hosted checkout URL to send the donor to.
+// Creates the donation (and the monthly gift when frequency is "monthly") and
+// returns the hosted checkout URL to send the donor to.
 export async function startDonation(payload: {
   amountCents: number;
+  frequency: DonationFrequency;
+  coverFees: boolean;
   name: string;
   email: string;
   locale: string;
   anonymous: boolean;
   message?: string;
   website?: string;
-}): Promise<{ url: string; donationId: number; mode: string }> {
+}): Promise<{ url: string; donationId: number; subscriptionId: number | null; frequency: DonationFrequency; amountCents: number; feeCoverCents: number; mode: string }> {
   if (!API_URL) throw new Error("API not configured");
   const response = await fetch(`${API_URL}/api/public/donations/checkout`, {
     method: "POST",
@@ -107,6 +131,33 @@ export async function startDonation(payload: {
 export async function getDonationStatus(session: string): Promise<DonationStatus> {
   if (!API_URL) throw new Error("API not configured");
   const response = await fetch(`${API_URL}/api/public/donations/status?session=${encodeURIComponent(session)}`, { cache: "no-store" });
+  return readJson(response);
+}
+
+// Donor self-service for a monthly gift (private token from the receipt email).
+export async function getSubscription(token: string): Promise<PublicSubscription> {
+  if (!API_URL) throw new Error("API not configured");
+  const response = await fetch(`${API_URL}/api/public/donations/subscription?token=${encodeURIComponent(token)}`, { cache: "no-store" });
+  return readJson(response);
+}
+
+export async function cancelSubscription(token: string): Promise<PublicSubscription> {
+  if (!API_URL) throw new Error("API not configured");
+  const response = await fetch(`${API_URL}/api/public/donations/subscription/cancel`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token }),
+  });
+  return readJson(response);
+}
+
+export async function subscriptionPortal(token: string): Promise<{ url: string }> {
+  if (!API_URL) throw new Error("API not configured");
+  const response = await fetch(`${API_URL}/api/public/donations/subscription/portal`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token }),
+  });
   return readJson(response);
 }
 

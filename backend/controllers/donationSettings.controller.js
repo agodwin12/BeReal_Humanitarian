@@ -41,6 +41,16 @@ exports.update = asyncHandler(async (req, res) => {
     if (amounts.length === 0 || amounts.length > 6) throw ApiError.badRequest("Choose between 1 and 6 suggested amounts");
     row.suggestedAmounts = amounts;
   }
+  if (req.body.monthlySuggestedAmounts !== undefined) {
+    const amounts = [...new Set(req.body.monthlySuggestedAmounts.map((a) => Math.round(Number(a))).filter((a) => Number.isFinite(a) && a > 0))].sort((a, b) => a - b);
+    if (amounts.length === 0 || amounts.length > 6) throw ApiError.badRequest("Choose between 1 and 6 suggested monthly amounts");
+    row.monthlySuggestedAmounts = amounts;
+  }
+  for (const flag of ["monthlyEnabled", "feeCoverEnabled", "feeCoverDefaultChecked"]) {
+    if (req.body[flag] !== undefined) row[flag] = Boolean(req.body[flag]);
+  }
+  if (req.body.feeCoverPercentBp !== undefined) row.feeCoverPercentBp = Number(req.body.feeCoverPercentBp);
+  if (req.body.feeCoverFixedCents !== undefined) row.feeCoverFixedCents = Number(req.body.feeCoverFixedCents);
   if (req.body.minimumAmountCents !== undefined) row.minimumAmountCents = Number(req.body.minimumAmountCents);
   if (req.body.maximumAmountCents !== undefined) row.maximumAmountCents = Number(req.body.maximumAmountCents);
   if (row.maximumAmountCents <= row.minimumAmountCents) throw ApiError.badRequest("The maximum must be above the minimum");
@@ -74,9 +84,12 @@ exports.update = asyncHandler(async (req, res) => {
 exports.testReceipt = asyncHandler(async (req, res) => {
   const locale = ["en", "fr", "es"].includes(req.body.locale) ? req.body.locale : "en";
   const settings = await donations.getSettings();
+  const monthly = req.body.frequency === "monthly";
   const sample = {
     id: 0,
     receiptNumber: `BRHW-${new Date().getFullYear()}-SAMPLE`,
+    frequency: monthly ? "monthly" : "one_time",
+    feeCoverCents: 0,
     amountCents: 5000,
     currency: settings.currency,
     donorName: req.user.name,
@@ -87,19 +100,20 @@ exports.testReceipt = asyncHandler(async (req, res) => {
     providerPaymentIntentId: "pi_sample",
     providerSessionId: null,
   };
-  const { ctx, pdf, filename } = await receipts.renderReceipt(sample, settings);
+  const { ctx, pdf, filename } = await receipts.renderReceipt(sample, settings, { paymentNumber: 1 });
   const mail = receipts.receiptEmail(sample, ctx);
   const { sendEmail } = require("../services/email.service");
   await sendEmail({ to: req.user.email, kind: "donation_receipt_test", replyTo: ctx.replyTo || undefined, attachments: [{ filename, content: pdf.toString("base64") }], ...mail });
-  await audit.record(req, { action: "donation_settings.test_receipt_sent", entity: "donation_settings", entityId: 1, meta: { locale } });
-  return ok(res, { sent: true, to: req.user.email, locale });
+  await audit.record(req, { action: "donation_settings.test_receipt_sent", entity: "donation_settings", entityId: 1, meta: { locale, frequency: sample.frequency } });
+  return ok(res, { sent: true, to: req.user.email, locale, frequency: sample.frequency });
 });
 
 exports.previewReceipt = asyncHandler(async (req, res) => {
   const locale = ["en", "fr", "es"].includes(req.query.locale) ? req.query.locale : "en";
   const settings = await donations.getSettings();
-  const sample = { id: 0, receiptNumber: `BRHW-${new Date().getFullYear()}-SAMPLE`, amountCents: 5000, currency: settings.currency, donorName: "Sample Donor", donorEmail: "donor@example.org", locale, paidAt: new Date(), createdAt: new Date(), providerPaymentIntentId: "pi_sample", providerSessionId: null };
-  const { pdf, filename } = await receipts.renderReceipt(sample, settings);
+  const monthly = req.query.frequency === "monthly";
+  const sample = { id: 0, receiptNumber: `BRHW-${new Date().getFullYear()}-SAMPLE`, frequency: monthly ? "monthly" : "one_time", feeCoverCents: 0, amountCents: 5000, currency: settings.currency, donorName: "Sample Donor", donorEmail: "donor@example.org", locale, paidAt: new Date(), createdAt: new Date(), providerPaymentIntentId: "pi_sample", providerSessionId: null };
+  const { pdf, filename } = await receipts.renderReceipt(sample, settings, { paymentNumber: 1 });
   res.setHeader("Content-Type", "application/pdf");
   res.setHeader("Content-Disposition", `inline; filename="${filename}"`);
   return res.send(pdf);

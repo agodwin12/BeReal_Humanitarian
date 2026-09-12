@@ -5,14 +5,14 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
 import { z } from "zod";
-import { ArrowRight, Lock, ShieldCheck } from "lucide-react";
+import { ArrowRight, CalendarHeart, Lock, ShieldCheck } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckField, Field, FormAlert, Honeypot } from "@/components/forms/FormPrimitives";
-import { startDonation } from "@/lib/api";
+import { startDonation, type DonationFrequency } from "@/lib/api";
 import type { DonationConfig } from "@/lib/cms";
 import { cn } from "@/lib/utils";
 
@@ -22,8 +22,17 @@ function money(cents: number, currency: string, locale: string) {
   return new Intl.NumberFormat(LOCALE_TAG[locale] ?? "en-US", { style: "currency", currency: currency.toUpperCase(), maximumFractionDigits: cents % 100 === 0 ? 0 : 2 }).format(cents / 100);
 }
 
-// One-time gift: amount chips + custom amount, name, email, then straight to
-// Stripe's hosted page. No card field ever renders here (SAQ-A).
+// Same gross-up as the API: after Stripe takes percent + fixed, the organization
+// keeps the gift the donor chose. Only shown when the option is switched on.
+function feeCoverFor(baseCents: number, config: DonationConfig["feeCover"]) {
+  const pct = Math.max(0, config.percentBp) / 10000;
+  if (pct >= 1) return 0;
+  return Math.max(0, Math.ceil((baseCents + Math.max(0, config.fixedCents)) / (1 - pct)) - baseCents);
+}
+
+// One-time or monthly gift: frequency, amount chips + custom amount, optional
+// fee cover, name, email, then straight to Stripe's hosted page. No card field
+// ever renders here (SAQ-A).
 export function DonateForm({ config, cancelled = false }: { config: DonationConfig; cancelled?: boolean }) {
   const t = useTranslations("DonatePage");
   const tf = useTranslations("Forms");
@@ -31,7 +40,11 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
   const id = useId();
   const [error, setError] = useState<string | null>(null);
   const [redirecting, setRedirecting] = useState(false);
+  const [frequency, setFrequency] = useState<DonationFrequency>("one_time");
+  const [custom, setCustom] = useState(false);
 
+  const monthlyAvailable = config.monthly.enabled && config.monthly.suggestedAmounts.length > 0;
+  const chips = frequency === "monthly" && monthlyAvailable ? config.monthly.suggestedAmounts : config.suggestedAmounts;
   const min = config.minimumAmountCents;
   const max = config.maximumAmountCents;
   const fmt = (cents: number) => money(cents, config.currency, locale);
@@ -48,6 +61,7 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
         name: z.string().trim().min(2, "required"),
         email: z.email("email"),
         anonymous: z.boolean(),
+        coverFees: z.boolean(),
         message: z.string().trim().max(1000).optional(),
         website: z.string().optional(),
       }),
@@ -64,15 +78,32 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
     formState: { errors, isSubmitting },
   } = useForm<Values>({
     resolver: zodResolver(schema),
-    defaultValues: { amount: String(config.suggestedAmounts[1] ?? config.suggestedAmounts[0] ?? 50), name: "", email: "", anonymous: false, message: "", website: "" },
+    defaultValues: {
+      amount: String(config.suggestedAmounts[1] ?? config.suggestedAmounts[0] ?? 50),
+      name: "",
+      email: "",
+      anonymous: false,
+      coverFees: config.feeCover.enabled && config.feeCover.defaultChecked,
+      message: "",
+      website: "",
+    },
   });
 
   const amountValue = watch("amount");
+  const coverFees = watch("coverFees");
   const amountCents = /^\d+([.,]\d{1,2})?$/.test(amountValue?.trim() ?? "") ? Math.round(Number(amountValue.replace(",", ".")) * 100) : null;
-  const activeChip = config.suggestedAmounts.find((a) => a * 100 === amountCents) ?? null;
-  const [custom, setCustom] = useState(false);
+  const activeChip = chips.find((a) => a * 100 === amountCents) ?? null;
+  const feeCoverCents = config.feeCover.enabled && amountCents ? feeCoverFor(amountCents, config.feeCover) : 0;
+  const totalCents = amountCents ? amountCents + (coverFees ? feeCoverCents : 0) : null;
 
   const amountError = errors.amount?.message === "minimum" ? t("form.errors.minimum", { amount: fmt(min) }) : errors.amount?.message === "maximum" ? t("form.errors.maximum", { amount: fmt(max) }) : errors.amount ? t("form.errors.amount") : null;
+
+  const chooseFrequency = (next: DonationFrequency) => {
+    setFrequency(next);
+    setCustom(false);
+    const list = next === "monthly" ? config.monthly.suggestedAmounts : config.suggestedAmounts;
+    setValue("amount", String(list[1] ?? list[0] ?? 25), { shouldValidate: true });
+  };
 
   const onSubmit = handleSubmit(async (values) => {
     setError(null);
@@ -81,6 +112,8 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
     try {
       const { url } = await startDonation({
         amountCents: Math.round(Number(values.amount.replace(",", ".")) * 100),
+        frequency: monthlyAvailable ? frequency : "one_time",
+        coverFees: config.feeCover.enabled && values.coverFees,
         name: values.name,
         email: values.email,
         locale,
@@ -94,6 +127,12 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
     }
   });
 
+  const submitLabel = () => {
+    if (redirecting) return t("form.redirecting");
+    if (!totalCents || !amountCents || amountCents < min) return t("form.submitPlain");
+    return frequency === "monthly" && monthlyAvailable ? t("form.submitMonthly", { amount: fmt(totalCents) }) : t("form.submit", { amount: fmt(totalCents) });
+  };
+
   return (
     <form onSubmit={onSubmit} noValidate className="form-grid">
       {cancelled ? (
@@ -102,12 +141,28 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
         </div>
       ) : null}
 
+      {monthlyAvailable ? (
+        <div className="field field--full">
+          <span className="field__label">{t("form.frequencyLabel")}</span>
+          <div className="frequency-toggle" role="group" aria-label={t("form.frequencyLabel")}>
+            <button type="button" className={cn("frequency-toggle__option", frequency === "one_time" && "is-active")} onClick={() => chooseFrequency("one_time")} aria-pressed={frequency === "one_time"}>
+              {t("form.oneTime")}
+            </button>
+            <button type="button" className={cn("frequency-toggle__option", frequency === "monthly" && "is-active")} onClick={() => chooseFrequency("monthly")} aria-pressed={frequency === "monthly"}>
+              <CalendarHeart className="size-4" aria-hidden="true" />
+              {t("form.monthly")}
+            </button>
+          </div>
+          {frequency === "monthly" ? <p className="field__hint">{t("form.monthlyHint")}</p> : null}
+        </div>
+      ) : null}
+
       <div className="field field--full">
-        <span className="field__label">{t("form.amountLabel")}</span>
+        <span className="field__label">{frequency === "monthly" && monthlyAvailable ? t("form.monthlyAmountLabel") : t("form.amountLabel")}</span>
         <div className="amount-grid" role="group" aria-label={t("form.amountLabel")}>
-          {config.suggestedAmounts.map((amount) => (
+          {chips.map((amount) => (
             <button
-              key={amount}
+              key={`${frequency}-${amount}`}
               type="button"
               className={cn("amount-chip", activeChip === amount && !custom && "is-active")}
               onClick={() => {
@@ -117,6 +172,7 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
               aria-pressed={activeChip === amount && !custom}
             >
               {fmt(amount * 100)}
+              {frequency === "monthly" && monthlyAvailable ? <span className="amount-chip__suffix">{t("form.perMonth")}</span> : null}
             </button>
           ))}
           <button
@@ -153,6 +209,12 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
         ) : null}
       </div>
 
+      {config.feeCover.enabled ? (
+        <CheckField id={`${id}-fees`} label={amountCents && amountCents >= min ? t("form.feeCoverLabel", { fee: fmt(feeCoverCents), amount: fmt(amountCents) }) : t("form.feeCoverLabelPlain")}>
+          <Controller control={control} name="coverFees" render={({ field }) => <Checkbox id={`${id}-fees`} checked={field.value} onCheckedChange={(c) => field.onChange(c === true)} />} />
+        </CheckField>
+      ) : null}
+
       <Field id={`${id}-name`} label={t("form.nameLabel")} error={errors.name?.message}>
         <Input id={`${id}-name`} autoComplete="name" aria-invalid={!!errors.name} {...register("name")} />
       </Field>
@@ -178,17 +240,19 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
 
       <div className="form-actions">
         <Button type="submit" variant="coral" size="lg" disabled={isSubmitting || redirecting}>
-          {redirecting ? t("form.redirecting") : amountCents && amountCents >= min ? t("form.submit", { amount: fmt(amountCents) }) : t("form.submitPlain")}
+          {submitLabel()}
           {!redirecting ? <ArrowRight className="size-4" /> : null}
         </Button>
+        {coverFees && config.feeCover.enabled && amountCents && amountCents >= min ? <p className="form-footnote">{t("form.totalWithFees", { amount: fmt(amountCents), fee: fmt(feeCoverCents), total: fmt(totalCents ?? amountCents) })}</p> : null}
         <p className="form-footnote flex items-start gap-2">
           <Lock className="mt-0.5 size-3.5 shrink-0" />
           <span>{t("form.secure")}</span>
         </p>
         <p className="form-footnote flex items-start gap-2">
           <ShieldCheck className="mt-0.5 size-3.5 shrink-0" />
-          <span>{t("form.fees")}</span>
+          <span>{config.feeCover.enabled ? t("form.feesOptional") : t("form.fees")}</span>
         </p>
+        {frequency === "monthly" && monthlyAvailable ? <p className="form-footnote">{t("form.monthlyCancel")}</p> : null}
         {config.mode !== "live" ? <p className="form-footnote font-bold text-amber-700">{t("form.testMode")}</p> : null}
       </div>
     </form>

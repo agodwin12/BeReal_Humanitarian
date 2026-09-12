@@ -132,7 +132,8 @@
     "connect": "Síguenos",
     "together": "Juntos podemos hacer más.",
     "rights": "Todos los derechos reservados.",
-    "political": "Be Real Humanitarian Works Inc. no participa ni interviene en campañas políticas a favor o en contra de candidatos a cargos públicos."
+    "political": "Be Real Humanitarian Works Inc. no participa ni interviene en campañas políticas a favor o en contra de candidatos a cargos públicos.",
+    "location": "Área metropolitana de Houston, Texas"
   },
   "ProgramsPage": {
     "eyebrow": "Nuestros programas",
@@ -573,7 +574,7 @@
     "form": {
       "eyebrow": "Haz una donación",
       "title": "Elige un importe",
-      "intro": "Donación única en dólares estadounidenses. Completarás el pago en la página segura de Stripe: nunca vemos ni guardamos los datos de tu tarjeta.",
+      "intro": "Dona una vez o cada mes, en dólares estadounidenses. Completarás el pago en la página segura de Stripe — nunca vemos ni guardamos los datos de tu tarjeta.",
       "amountLabel": "Importe",
       "otherAmount": "Otro importe",
       "customPlaceholder": "Introduce un importe",
@@ -595,7 +596,19 @@
         "minimum": "La donación mínima es {amount}.",
         "maximum": "Para donaciones superiores a {amount}, contáctanos.",
         "start": "No pudimos iniciar tu donación. Inténtalo de nuevo en un momento."
-      }
+      },
+      "frequencyLabel": "¿Cómo quieres donar?",
+      "oneTime": "Donación única",
+      "monthly": "Donación mensual",
+      "monthlyHint": "Tu tarjeta se cobra automáticamente cada mes. Cancela cuando quieras desde el enlace de tu recibo.",
+      "monthlyAmountLabel": "Importe mensual",
+      "perMonth": "/ mes",
+      "submitMonthly": "Donar {amount} al mes",
+      "feeCoverLabel": "Añadir {fee} para cubrir la comisión de procesamiento, de modo que los {amount} lleguen íntegros a nuestros programas",
+      "feeCoverLabelPlain": "Añadir la comisión de procesamiento para que mi donación llegue íntegra a los programas",
+      "feesOptional": "Las donaciones en línea tienen una comisión de procesamiento de tarjeta. Puedes añadirla a tu donación; si no, la organización la asume.",
+      "totalWithFees": "Donación de {amount} + {fee} de comisión = {total} cobrados hoy.",
+      "monthlyCancel": "Puedes modificar o cancelar tu donación mensual en cualquier momento — el enlace está en cada recibo."
     },
     "paused": {
       "title": "Las donaciones están pausadas por el momento",
@@ -637,7 +650,11 @@
       },
       "print": "Imprimir esta página",
       "backHome": "Volver al inicio",
-      "again": "Volver a la página Donar"
+      "again": "Volver a la página Donar",
+      "feeCoverLine": "Incluye {fee} que añadiste para cubrir la comisión de procesamiento — gracias.",
+      "monthlySetUp": "Tu donación mensual de {amount} está activada.",
+      "nextCharge": "El próximo pago será el {date}.",
+      "manage": "Modificar o cancelar mi donación mensual"
     },
     "simulate": {
       "eyebrow": "Pago de prueba",
@@ -647,7 +664,46 @@
       "donor": "Donante",
       "pay": "Pagar {amount} (prueba)",
       "cancel": "Cancelar y volver",
-      "processing": "Procesando…"
+      "processing": "Procesando…",
+      "monthly": "/ mes (donación mensual)"
+    },
+    "manage": {
+      "eyebrow": "Donación mensual",
+      "title": "Gestiona tu donación mensual",
+      "lead": "Gracias por donar cada mes. Aquí puedes ver tu donación, actualizar tu tarjeta o cancelar en cualquier momento.",
+      "loading": "Cargando tu donación mensual…",
+      "invalid": {
+        "title": "Este enlace no es válido",
+        "body": "Usa el enlace de tu último recibo por correo, o contáctanos y te ayudaremos."
+      },
+      "contact": "Contáctanos",
+      "status": {
+        "active": "Tu donación mensual de {amount} está activa.",
+        "past_due": "El último pago de tu donación mensual de {amount} no se completó. Por favor, actualiza tu tarjeta.",
+        "pending": "Tu donación mensual de {amount} aún no está confirmada.",
+        "incomplete": "Tu donación mensual de {amount} no se completó.",
+        "canceled": "Tu donación mensual de {amount} ha sido cancelada."
+      },
+      "amount": "Importe",
+      "perMonth": "al mes",
+      "donor": "Donante",
+      "since": "Donante desde",
+      "payments": "{count, plural, one {# pago} other {# pagos}}",
+      "nextCharge": "Próximo pago",
+      "canceledOn": "Cancelada el",
+      "portal": "Actualizar mi tarjeta",
+      "opening": "Abriendo la página segura…",
+      "cancelButton": "Cancelar mi donación mensual",
+      "cancelConfirm": "¿Cancelar tu donación mensual de {amount}? No se realizarán más cobros.",
+      "cancelYes": "Sí, cancelar mi donación mensual",
+      "cancelNo": "Seguir donando",
+      "cancelling": "Cancelando…",
+      "canceled": {
+        "body": "No se realizarán más cobros. Gracias por todo lo que has dado."
+      },
+      "notActive": "Esta donación mensual no está activa.",
+      "giveAgain": "Hacer una nueva donación",
+      "error": "Algo salió mal. Inténtalo de nuevo."
     }
   }
 }

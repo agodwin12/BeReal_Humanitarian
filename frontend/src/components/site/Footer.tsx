@@ -38,7 +38,6 @@ export function Footer({ settings, legalHrefs }: { settings: SiteSettings | null
   const year = new Date().getFullYear();
 
   const legalName = settings?.legalName ?? siteConfig.orgLegalName;
-  const address = settings?.addressLine ?? siteConfig.registeredAddress;
   const tagline = pickText(settings?.tagline, locale) || brand("tagline");
   const statusLine = pickText(settings?.statusLine, locale) || brand("statusLine");
   const political = pickText(settings?.neutralityStatement, locale) || t("political");
@@ -122,12 +121,8 @@ export function Footer({ settings, legalHrefs }: { settings: SiteSettings | null
       <div className="site-container site-footer__bottom">
         <p className="m-0">
           © {year} {legalName} {t("rights")}
-          {address ? (
-            <>
-              <span className="mx-2 opacity-50">·</span>
-              {address}
-            </>
-          ) : null}
+          <span className="mx-2 opacity-50">·</span>
+          {t("location")}
         </p>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           {legalLinks.map((link) => (

@@ -95,6 +95,8 @@ export type DonationConfig = {
   minimumAmountCents: number;
   maximumAmountCents: number;
   thankYouMessage: Localized;
+  monthly: { enabled: boolean; suggestedAmounts: number[] };
+  feeCover: { enabled: boolean; percentBp: number; fixedCents: number; defaultChecked: boolean };
   mode: "live" | "test" | "simulated";
 };
 

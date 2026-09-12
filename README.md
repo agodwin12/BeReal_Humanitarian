@@ -13,7 +13,7 @@ Public website, staff backoffice and REST API for Be Real Humanitarian Works Inc
 - **Inbox** — volunteer, partnership, assistance and contact form submissions (status workflow, notes, assignment, CSV, spam quarantine), newsletter subscribers, per-form notification recipients.
 - **Content** — every text and photo on the site in EN / FR / ES with drafts, preview, publish and version history; programs, team (with photo approval), impact metrics / stories / stewardship updates, media library (Cloudflare R2 or local storage), legal pages.
 - **Translations** — status per field, native-speaker review marks, translator worksheet export / import.
-- **Donations** — Stripe Checkout (one-time gifts, organization absorbs fees), receipt numbering, localized receipt email + PDF, ledger with refunds and payouts, donor lookup.
+- **Donations** — Stripe Checkout, one-time and monthly gifts (subscriptions with a donor self-service link), optional "cover the processing fee" add-on (off by default), receipt numbering, localized receipt email + PDF per payment, ledger with refunds and payouts, donor lookup.
 - **Administration** — users and roles (Super Admin / Editor / Read-only), two-factor authentication, audit log, system health and email delivery log.
 
 ## Run it locally

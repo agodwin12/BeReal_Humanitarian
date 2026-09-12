@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { Download, ExternalLink, FileText, Mail, RefreshCw, Search, UserSearch } from "lucide-react";
+import { CalendarHeart, Download, ExternalLink, FileText, Mail, RefreshCw, Search, UserSearch } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -35,7 +35,8 @@ const STATUS_CLASS: Record<DonationStatus, string> = {
 };
 const STATUS_ITEMS = { paid_any: "Paid (incl. refunds)", all: "All", paid: "Paid", pending: "Pending", refunded: "Refunded", partially_refunded: "Partly refunded", expired: "Expired", failed: "Failed" };
 const LOCALE_ITEMS = { all: "All languages", en: "English", fr: "French", es: "Spanish" };
-const EVENT_LABEL: Record<string, string> = { checkout_created: "Checkout started", paid: "Payment received", receipt_sent: "Receipt emailed", receipt_resent: "Receipt resent", receipt_failed: "Receipt email failed", refunded: "Refund recorded", expired: "Checkout expired", failed: "Payment failed", dispute_opened: "Dispute opened", note_updated: "Note updated" };
+const FREQUENCY_ITEMS = { all: "One-time + monthly", one_time: "One-time gifts", monthly: "Monthly payments" };
+const EVENT_LABEL: Record<string, string> = { checkout_created: "Checkout started", recurring_charge: "Monthly charge", paid: "Payment received", receipt_sent: "Receipt emailed", receipt_resent: "Receipt resent", receipt_failed: "Receipt email failed", refunded: "Refund recorded", expired: "Checkout expired", failed: "Payment failed", dispute_opened: "Dispute opened", note_updated: "Note updated" };
 
 function errorMessage(err: unknown) {
   return err instanceof ApiError || err instanceof Error ? err.message : "Something went wrong.";
@@ -61,7 +62,7 @@ function Stat({ label, totals, currency }: { label: string; totals: { count: num
   );
 }
 
-export function DonationsView() {
+export function DonationsView({ initialId = null }: { initialId?: number | null }) {
   const me = useSessionUser();
   const canAct = me?.role === "super_admin";
   const [summary, setSummary] = useState<DonationSummary | null>(null);
@@ -72,10 +73,11 @@ export function DonationsView() {
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("paid_any");
   const [locale, setLocale] = useState("all");
+  const [frequency, setFrequency] = useState("all");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [page, setPage] = useState(1);
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [selectedId, setSelectedId] = useState<number | null>(initialId);
   const [donorEmail, setDonorEmail] = useState("");
   const [donor, setDonor] = useState<DonorLookup | null>(null);
   const [exportYear, setExportYear] = useState(String(new Date().getFullYear()));
@@ -91,7 +93,7 @@ export function DonationsView() {
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const { data, meta } = await api.get<Donation[]>(`/api/donations${toQuery({ q, status, locale: locale === "all" ? "" : locale, from, to, page, pageSize: 25 })}`);
+      const { data, meta } = await api.get<Donation[]>(`/api/donations${toQuery({ q, status, locale: locale === "all" ? "" : locale, frequency: frequency === "all" ? "" : frequency, from, to, page, pageSize: 25 })}`);
       setRows(data);
       setMeta(meta ?? null);
     } catch (err) {
@@ -99,7 +101,7 @@ export function DonationsView() {
     } finally {
       setLoading(false);
     }
-  }, [q, status, locale, from, to, page]);
+  }, [q, status, locale, frequency, from, to, page]);
 
   useEffect(() => {
     if (isDemoMode) return;
@@ -291,6 +293,18 @@ export function DonationsView() {
               ))}
             </SelectContent>
           </Select>
+          <Select value={frequency} onValueChange={(v) => { setFrequency(v ?? "all"); setPage(1); }} items={FREQUENCY_ITEMS}>
+            <SelectTrigger className="min-h-10 w-[190px] rounded-[10px] bg-white">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.entries(FREQUENCY_ITEMS).map(([v, l]) => (
+                <SelectItem key={v} value={v}>
+                  {l}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <div className="grid gap-1">
             <Label className="text-[0.7rem] font-bold text-muted-foreground">From</Label>
             <Input type="date" value={from} onChange={(e) => { setFrom(e.target.value); setPage(1); }} className="min-h-10 rounded-[10px] bg-white" />
@@ -343,7 +357,11 @@ export function DonationsView() {
                     </div>
                     <div className="text-[0.76rem] text-muted-foreground">{row.donorEmail}</div>
                   </TableCell>
-                  <TableCell className="text-right font-bold tabular-nums">{formatMoney(row.amountCents, row.currency)}</TableCell>
+                  <TableCell className="text-right font-bold tabular-nums">
+                    {formatMoney(row.amountCents, row.currency)}
+                    {row.frequency === "monthly" ? <span className="ml-1.5 rounded-[5px] bg-brand-purple-100 px-1.5 py-0.5 text-[0.62rem] font-extrabold text-brand-purple-700 uppercase">Monthly</span> : null}
+                    {row.feeCoverCents > 0 ? <span className="ml-1.5 text-[0.66rem] font-semibold text-muted-foreground">+fees</span> : null}
+                  </TableCell>
                   <TableCell className="text-right text-[0.82rem] tabular-nums text-muted-foreground">{formatMoney(row.netCents, row.currency)}</TableCell>
                   <TableCell>
                     <StatusBadge status={row.status} />
@@ -381,7 +399,7 @@ export function DonationsView() {
         ) : null}
       </Card>
 
-      <DonationSheet id={selectedId} canAct={canAct} onClose={() => setSelectedId(null)} onChange={(d) => { replace(d); loadSummary(); }} />
+      <DonationSheet key={selectedId ?? "none"} id={selectedId} canAct={canAct} onClose={() => setSelectedId(null)} onChange={(d) => { replace(d); loadSummary(); }} />
 
       <Sheet open={donor !== null} onOpenChange={(o) => !o && setDonor(null)}>
         <SheetContent className="w-full overflow-y-auto sm:max-w-lg">
@@ -424,10 +442,7 @@ function DonationSheet({ id, canAct, onClose, onChange }: { id: number | null; c
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    if (id === null) {
-      setDonation(null);
-      return;
-    }
+    if (id === null) return;
     api
       .get<Donation>(`/api/donations/${id}`)
       .then(({ data }) => {
@@ -499,11 +514,21 @@ function DonationSheet({ id, canAct, onClose, onChange }: { id: number | null; c
                     </a>
                   </Button>
                 ) : null}
+                {donation.subscription ? (
+                  <Button variant="outline" size="sm" asChild>
+                    <a href={`/donations/monthly?id=${donation.subscription.id}`}>
+                      <CalendarHeart className="size-3.5" />
+                      Monthly gift #{donation.subscription.id} · {donation.subscription.status}
+                    </a>
+                  </Button>
+                ) : null}
               </div>
 
               <dl className="grid grid-cols-2 gap-2 text-[0.82rem]">
                 {[
                   ["Gross", formatMoney(donation.amountCents, donation.currency)],
+                  ["Gift", donation.frequency === "monthly" ? `Monthly gift #${donation.subscriptionId ?? "—"}` : "One-time"],
+                  ["Fee cover added by donor", donation.feeCoverCents > 0 ? formatMoney(donation.feeCoverCents, donation.currency) : "—"],
                   ["Processing fee", donation.feeCents === null ? "—" : formatMoney(donation.feeCents, donation.currency)],
                   ["Refunded", formatMoney(donation.refundedCents, donation.currency)],
                   ["Net", formatMoney(donation.netCents, donation.currency)],

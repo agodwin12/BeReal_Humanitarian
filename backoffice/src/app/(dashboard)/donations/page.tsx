@@ -5,7 +5,10 @@ import { DonationsView } from "@/components/donations/DonationsView";
 
 export const metadata: Metadata = { title: "Donations — Be Real Backoffice" };
 
-export default function DonationsPage() {
+// ?id=<donation id> opens that donation's detail (links from Monthly gifts).
+export default async function DonationsPage({ searchParams }: PageProps<"/donations">) {
+  const { id } = await searchParams;
+  const initialId = Number(id);
   return (
     <>
       <PageHeader
@@ -13,7 +16,7 @@ export default function DonationsPage() {
         title="Donations"
         description="Every gift received through Stripe, with receipts, refunds and payouts. Super Admin and Read-only."
       />
-      <DonationsView />
+      <DonationsView initialId={Number.isInteger(initialId) && initialId > 0 ? initialId : null} />
     </>
   );
 }

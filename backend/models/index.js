@@ -16,9 +16,13 @@ const { Media, SiteSetting, Program, TeamMember, ImpactMetric, ImpactStory, Stew
 const { TranslationReview, EmailLog } = require("./phaseD.models")(sequelize, DataTypes);
 TranslationReview.belongsTo(User, { as: "reviewer", foreignKey: "reviewedById" });
 // Phase E
-const { DonationSetting, Donation, DonationEvent, StripeEvent, ReceiptSequence } = require("./donations.models")(sequelize, DataTypes);
+const { DonationSetting, DonationSubscription, Donation, DonationEvent, StripeEvent, ReceiptSequence } = require("./donations.models")(sequelize, DataTypes);
 Donation.hasMany(DonationEvent, { as: "events", foreignKey: "donationId", onDelete: "CASCADE" });
 DonationEvent.belongsTo(Donation, { as: "donation", foreignKey: "donationId" });
+DonationSubscription.hasMany(Donation, { as: "donations", foreignKey: "subscriptionId" });
+Donation.belongsTo(DonationSubscription, { as: "subscription", foreignKey: "subscriptionId" });
+DonationSubscription.hasMany(DonationEvent, { as: "events", foreignKey: "subscriptionId", onDelete: "CASCADE" });
+DonationEvent.belongsTo(DonationSubscription, { as: "subscription", foreignKey: "subscriptionId" });
 
 AuditLog.belongsTo(User, { as: "actor", foreignKey: "userId" });
 User.hasMany(AuditLog, { as: "auditLogs", foreignKey: "userId" });
@@ -64,6 +68,7 @@ module.exports = {
   TranslationReview,
   EmailLog,
   DonationSetting,
+  DonationSubscription,
   Donation,
   DonationEvent,
   StripeEvent,

@@ -132,7 +132,8 @@
     "connect": "Suivez-nous",
     "together": "Ensemble, nous pouvons faire plus.",
     "rights": "Tous droits réservés.",
-    "political": "Be Real Humanitarian Works Inc. ne participe ni n'intervient dans les campagnes politiques en faveur ou à l'encontre de candidats à une fonction publique."
+    "political": "Be Real Humanitarian Works Inc. ne participe ni n'intervient dans les campagnes politiques en faveur ou à l'encontre de candidats à une fonction publique.",
+    "location": "Région du Grand Houston, Texas"
   },
   "ProgramsPage": {
     "eyebrow": "Nos programmes",
@@ -573,7 +574,7 @@
     "form": {
       "eyebrow": "Faire un don",
       "title": "Choisissez un montant",
-      "intro": "Don ponctuel en dollars américains. Vous finalisez le paiement sur la page sécurisée de Stripe — nous ne voyons ni ne conservons jamais vos données de carte.",
+      "intro": "Donnez une fois ou chaque mois, en dollars américains. Vous réglez sur la page sécurisée de Stripe — nous ne voyons ni ne conservons jamais vos données de carte.",
       "amountLabel": "Montant",
       "otherAmount": "Autre montant",
       "customPlaceholder": "Saisissez un montant",
@@ -595,7 +596,19 @@
         "minimum": "Le don minimum est de {amount}.",
         "maximum": "Pour un don supérieur à {amount}, merci de nous contacter.",
         "start": "Impossible de démarrer votre don. Veuillez réessayer dans un instant."
-      }
+      },
+      "frequencyLabel": "Comment souhaitez-vous donner ?",
+      "oneTime": "Don ponctuel",
+      "monthly": "Don mensuel",
+      "monthlyHint": "Votre carte est débitée automatiquement chaque mois. Annulez à tout moment depuis le lien de votre reçu.",
+      "monthlyAmountLabel": "Montant mensuel",
+      "perMonth": "/ mois",
+      "submitMonthly": "Donner {amount} par mois",
+      "feeCoverLabel": "Ajouter {fee} pour couvrir les frais de traitement, afin que les {amount} parviennent intégralement à nos programmes",
+      "feeCoverLabelPlain": "Ajouter les frais de traitement pour que mon don parvienne intégralement aux programmes",
+      "feesOptional": "Des frais de traitement par carte s'appliquent aux dons en ligne. Vous pouvez les ajouter à votre don ; sinon, l'organisation les prend en charge.",
+      "totalWithFees": "Don de {amount} + {fee} de frais de traitement = {total} débités aujourd'hui.",
+      "monthlyCancel": "Vous pouvez modifier ou annuler votre don mensuel à tout moment — le lien figure dans chaque reçu."
     },
     "paused": {
       "title": "Les dons sont suspendus pour le moment",
@@ -637,7 +650,11 @@
       },
       "print": "Imprimer cette page",
       "backHome": "Retour à l'accueil",
-      "again": "Retour à la page Faire un don"
+      "again": "Retour à la page Faire un don",
+      "feeCoverLine": "Inclut {fee} que vous avez ajoutés pour couvrir les frais de traitement — merci.",
+      "monthlySetUp": "Votre don mensuel de {amount} est en place.",
+      "nextCharge": "Le prochain paiement aura lieu le {date}.",
+      "manage": "Modifier ou annuler mon don mensuel"
     },
     "simulate": {
       "eyebrow": "Paiement test",
@@ -647,7 +664,46 @@
       "donor": "Donateur",
       "pay": "Payer {amount} (test)",
       "cancel": "Annuler et revenir",
-      "processing": "Traitement…"
+      "processing": "Traitement…",
+      "monthly": "/ mois (don mensuel)"
+    },
+    "manage": {
+      "eyebrow": "Don mensuel",
+      "title": "Gérer votre don mensuel",
+      "lead": "Merci de donner chaque mois. Vous pouvez ici consulter votre don, mettre à jour votre carte ou annuler à tout moment.",
+      "loading": "Chargement de votre don mensuel…",
+      "invalid": {
+        "title": "Ce lien n'est pas valide",
+        "body": "Utilisez le lien de votre dernier reçu par e-mail, ou contactez-nous et nous vous aiderons."
+      },
+      "contact": "Nous contacter",
+      "status": {
+        "active": "Votre don mensuel de {amount} est actif.",
+        "past_due": "Le dernier paiement de votre don mensuel de {amount} n'a pas abouti. Merci de mettre à jour votre carte.",
+        "pending": "Votre don mensuel de {amount} n'est pas encore confirmé.",
+        "incomplete": "Votre don mensuel de {amount} n'a pas été finalisé.",
+        "canceled": "Votre don mensuel de {amount} a été annulé."
+      },
+      "amount": "Montant",
+      "perMonth": "par mois",
+      "donor": "Donateur",
+      "since": "Donateur depuis",
+      "payments": "{count, plural, one {# paiement} other {# paiements}}",
+      "nextCharge": "Prochain paiement",
+      "canceledOn": "Annulé le",
+      "portal": "Mettre à jour ma carte",
+      "opening": "Ouverture de la page sécurisée…",
+      "cancelButton": "Annuler mon don mensuel",
+      "cancelConfirm": "Annuler votre don mensuel de {amount} ? Aucun autre paiement ne sera prélevé.",
+      "cancelYes": "Oui, annuler mon don mensuel",
+      "cancelNo": "Continuer à donner",
+      "cancelling": "Annulation…",
+      "canceled": {
+        "body": "Aucun autre paiement ne sera prélevé. Merci pour tout ce que vous avez donné."
+      },
+      "notActive": "Ce don mensuel n'est pas actif.",
+      "giveAgain": "Faire un nouveau don",
+      "error": "Une erreur est survenue. Veuillez réessayer."
     }
   }
 }

@@ -385,6 +385,43 @@ export type DonationStatus = "pending" | "paid" | "failed" | "expired" | "refund
 
 export type DonationEvent = { id: number; type: string; data: Record<string, unknown> | null; actorName: string | null; createdAt: string };
 
+export type DonationFrequency = "one_time" | "monthly";
+export type SubscriptionStatus = "pending" | "active" | "past_due" | "canceled" | "incomplete";
+
+export type DonationSubscriptionSummary = {
+  id: number;
+  status: SubscriptionStatus;
+  amountCents: number;
+  currency: string;
+  paymentsCount: number;
+  startedAt: string | null;
+  currentPeriodEnd: string | null;
+  canceledAt: string | null;
+  provider: "stripe" | "simulated";
+  providerSubscriptionId: string | null;
+  stripeUrl: string | null;
+};
+
+export type DonationSubscription = DonationSubscriptionSummary & {
+  feeCoverCents: number;
+  interval: string;
+  donorName: string;
+  donorEmail: string;
+  locale: Locale;
+  anonymous: boolean;
+  message: string | null;
+  note: string | null;
+  cancelAtPeriodEnd: boolean;
+  cancelReason: string | null;
+  canceledBy: string | null;
+  lastPaymentAt: string | null;
+  providerCustomerId: string | null;
+  events: DonationEvent[];
+  donations: { id: number; receiptNumber: string | null; status: DonationStatus; amountCents: number; currency: string; feeCents: number | null; refundedCents: number; netCents: number; paidAt: string | null; createdAt: string }[];
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type Donation = {
   id: number;
   receiptNumber: string | null;
@@ -393,7 +430,13 @@ export type Donation = {
   providerSessionId: string | null;
   providerPaymentIntentId: string | null;
   providerChargeId: string | null;
+  providerInvoiceId: string | null;
+  frequency: DonationFrequency;
+  subscriptionId: number | null;
+  subscription: DonationSubscriptionSummary | null;
   amountCents: number;
+  coverFees: boolean;
+  feeCoverCents: number;
   currency: string;
   feeCents: number | null;
   refundedCents: number;
@@ -415,17 +458,21 @@ export type Donation = {
   updatedAt: string;
 };
 
-export type DonationTotals = { count: number; grossCents: number; feeCents: number; refundedCents: number; netCents: number };
+export type DonationTotals = { count: number; grossCents: number; feeCents: number; refundedCents: number; feeCoverCents: number; netCents: number };
+
+export type RecurringSummary = { active: number; pastDue: number; canceled: number; monthlyCommittedCents: number; newThisMonth: number };
 
 export type DonationSummary = {
   year: number;
   currency: string;
   mode: "live" | "test" | "simulated";
   periods: { today: DonationTotals; month: DonationTotals; year: DonationTotals; allTime: DonationTotals };
-  months: { month: string; count: number; grossCents: number; netCents: number }[];
+  months: { month: string; count: number; grossCents: number; netCents: number; monthlyCents: number }[];
   byLocale: Record<string, { count: number; grossCents: number }>;
   byBand: Record<string, { label: string; count: number; grossCents: number }>;
+  byFrequency: Record<DonationFrequency, { count: number; grossCents: number }>;
   byPage: Record<string, { count: number; grossCents: number }>;
+  recurring: RecurringSummary;
   payouts: { availableCents: number; pendingCents: number; recent: { id: string; amountCents: number; status: string; arrivalDate: string; currency: string }[] } | { error: string } | null;
 };
 
@@ -437,6 +484,7 @@ export type DonorLookup = {
   netCents: number;
   firstGiftAt: string | null;
   lastGiftAt: string | null;
+  monthlyGifts: { id: number; status: SubscriptionStatus; amountCents: number; currency: string; paymentsCount: number; startedAt: string | null; canceledAt: string | null }[];
   donations: Donation[];
 };
 
@@ -446,6 +494,12 @@ export type DonationSettings = {
   suggestedAmounts: number[];
   minimumAmountCents: number;
   maximumAmountCents: number;
+  monthlyEnabled: boolean;
+  monthlySuggestedAmounts: number[];
+  feeCoverEnabled: boolean;
+  feeCoverPercentBp: number;
+  feeCoverFixedCents: number;
+  feeCoverDefaultChecked: boolean;
   thankYouMessage: Localized;
   receiptIntro: Localized;
   receiptIrsStatement: Localized;

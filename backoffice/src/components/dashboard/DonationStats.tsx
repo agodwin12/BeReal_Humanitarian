@@ -51,6 +51,7 @@ export function DonationStats() {
         <p className="text-[0.72rem] text-muted-foreground">
           {summary.mode === "live" ? "Live Stripe account." : summary.mode === "test" ? "Stripe test mode — test cards only." : "Simulated mode — no Stripe keys yet; figures come from simulated checkouts."}
           {summary.payouts && !("error" in summary.payouts) ? ` Payouts: ${formatMoney(summary.payouts.availableCents, summary.currency)} available, ${formatMoney(summary.payouts.pendingCents, summary.currency)} in transit.` : " Payouts appear once the account keys are set."}
+          {summary.recurring ? ` Monthly gifts: ${summary.recurring.active} active (${formatMoney(summary.recurring.monthlyCommittedCents, summary.currency)} per month)${summary.recurring.pastDue ? `, ${summary.recurring.pastDue} past due` : ""}.` : ""}
         </p>
       ) : null}
     </div>

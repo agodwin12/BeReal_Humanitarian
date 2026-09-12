@@ -48,7 +48,10 @@ export function SimulatedCheckout({ session }: { session: string }) {
       <dl className="receipt-box">
         <div>
           <dt>{t("amount")}</dt>
-          <dd className="text-2xl font-bold text-brand-purple-950">{amount}</dd>
+          <dd className="text-2xl font-bold text-brand-purple-950">
+            {amount}
+            {status?.frequency === "monthly" ? <span className="ml-2 text-base font-semibold text-muted-foreground">{t("monthly")}</span> : null}
+          </dd>
         </div>
         <div>
           <dt>{t("donor")}</dt>

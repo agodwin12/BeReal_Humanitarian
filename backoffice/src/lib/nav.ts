@@ -2,6 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   Activity,
   BellRing,
+  CalendarHeart,
   FileText,
   HandHelping,
   Handshake,
@@ -48,6 +49,7 @@ export const navGroups: NavGroup[] = [
     label: "Donations",
     items: [
       { title: "Donations", href: "/donations", icon: HeartHandshake, roles: ["super_admin", "read_only"] },
+      { title: "Monthly gifts", href: "/donations/monthly", icon: CalendarHeart, roles: ["super_admin", "read_only"] },
       { title: "Donation settings", href: "/donations/settings", icon: Settings2, roles: ["super_admin"] },
     ],
   },
