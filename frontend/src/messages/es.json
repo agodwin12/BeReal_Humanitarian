@@ -196,7 +196,6 @@
       "eyebrow": "Lo que reportaremos",
       "title": "Medido, documentado, compartido",
       "intro": "Estas son las cifras que nos comprometemos a publicar cuando nuestros programas estén en marcha — solo números reales, nunca estimaciones.",
-      "pending": "Los reportes comienzan con nuestro primer ciclo de programas",
       "items": {
         "people": "Personas y familias atendidas",
         "supplies": "Comidas y artículos esenciales distribuidos",
@@ -511,7 +510,6 @@
       "eyebrow": "Liderazgo",
       "title": "Gobernada por una junta, centrada en las personas",
       "intro": "Be Real Humanitarian Works Inc. es gobernada por su junta directiva.",
-      "photoNote": "Las fotos se añadirán cuando cada líder apruebe su publicación.",
       "roles": {
         "founder": "Fundador y presidente",
         "treasurer": "Tesorero / Director",
@@ -560,7 +558,6 @@
   },
   "LegalPage": {
     "eyebrow": "Legal",
-    "pending": "Esta página se está preparando y se publicará pronto.",
     "effective": "Vigente desde el {date}",
     "version": "Versión {version}"
   },

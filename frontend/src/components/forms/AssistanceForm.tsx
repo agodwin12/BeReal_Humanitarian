@@ -24,7 +24,8 @@ import {
 
 type Status = { kind: "idle" } | { kind: "success"; mocked: boolean } | { kind: "error" };
 
-export function AssistanceForm() {
+// privacyPublished: the consent line links to the Privacy Policy only once it exists.
+export function AssistanceForm({ privacyPublished = true }: { privacyPublished?: boolean }) {
   const t = useTranslations("Forms");
   const locale = useLocale();
   const id = useId();
@@ -161,7 +162,7 @@ export function AssistanceForm() {
       <CheckField
         id={`${id}-privacy`}
         label={t.rich("labels.privacyAck", {
-          link: (chunks) => <Link href="/privacy-policy">{chunks}</Link>,
+          link: (chunks) => (privacyPublished ? <Link href="/privacy-policy">{chunks}</Link> : <>{chunks}</>),
         })}
         error={errors.privacyAcknowledged?.message}
       >

@@ -1,6 +1,6 @@
 // Metrics the organization commits to publishing (brief Section 8). `value`
-// stays null until a real, documented figure exists — the page renders the
-// "reporting begins…" state for null. TODO(later): feed from GET /api/impact-stats.
+// stays null until a real, documented figure exists — the page hides metrics
+// without a published value (real ones come from GET /api/public/impact).
 
 export type ImpactMetric = {
   key: "people" | "supplies" | "communities" | "volunteers" | "spending";

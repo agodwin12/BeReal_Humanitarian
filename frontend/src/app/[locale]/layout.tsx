@@ -9,7 +9,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { PreviewBanner } from "@/components/site/PreviewBanner";
 import { routing } from "@/i18n/routing";
-import { getSiteSettings, mediaSrc, pickText } from "@/lib/cms";
+import { getLegalPage, getSiteSettings, mediaSrc, pickText } from "@/lib/cms";
 
 // Type system (per Michel): Caacupe One for h1 (loaded via CSS @import in
 // globals.css — not in next/font/google's list yet), Roboto for h2+,
@@ -66,7 +66,9 @@ export default async function LocaleLayout({
 
   // Site settings (navigation, donate switch, socials, address…) come from the
   // backoffice; the built-in config is the fallback while the API is unset.
-  const settings = await getSiteSettings();
+  const [settings, privacy, terms] = await Promise.all([getSiteSettings(), getLegalPage("privacy-policy"), getLegalPage("terms")]);
+  // Footer links to a legal page only once its first version is published.
+  const legalHrefs = [privacy?.isPublished ? "/privacy-policy" : null, terms?.isPublished ? "/terms" : null].filter((href): href is string => href !== null);
   const nav = settings ? settings.navigation.filter((n) => n.visible).map((n) => ({ key: n.key, href: n.href })) : undefined;
 
   return (
@@ -86,7 +88,7 @@ export default async function LocaleLayout({
               logoSrc={settings?.logo ? mediaSrc(settings.logo, "thumb") : undefined}
             />
             <main className="flex-1">{children}</main>
-            <Footer settings={settings} />
+            <Footer settings={settings} legalHrefs={legalHrefs} />
           </div>
         </NextIntlClientProvider>
       </body>

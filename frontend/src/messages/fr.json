@@ -196,7 +196,6 @@
       "eyebrow": "Ce que nous publierons",
       "title": "Mesuré, documenté, partagé",
       "intro": "Voici les chiffres que nous nous engageons à publier dès que nos programmes seront en cours — uniquement des chiffres réels, jamais des estimations.",
-      "pending": "La publication commencera avec notre premier cycle de programmes",
       "items": {
         "people": "Personnes et familles aidées",
         "supplies": "Repas et articles essentiels distribués",
@@ -511,7 +510,6 @@
       "eyebrow": "Direction",
       "title": "Gouvernée par un conseil, centrée sur les personnes",
       "intro": "Be Real Humanitarian Works Inc. est dirigée par son conseil d'administration.",
-      "photoNote": "Les photos seront ajoutées dès que chaque dirigeant aura approuvé leur publication.",
       "roles": {
         "founder": "Fondateur et président",
         "treasurer": "Trésorier / Administrateur",
@@ -560,7 +558,6 @@
   },
   "LegalPage": {
     "eyebrow": "Mentions légales",
-    "pending": "Cette page est en préparation et sera publiée prochainement.",
     "effective": "En vigueur le {date}",
     "version": "Version {version}"
   },

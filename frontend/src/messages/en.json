@@ -196,7 +196,6 @@
       "eyebrow": "What We Will Report",
       "title": "Measured, documented, shared",
       "intro": "These are the figures we commit to publishing as our programs get under way — real numbers only, never estimates.",
-      "pending": "Reporting begins with our first program cycle",
       "items": {
         "people": "People and families served",
         "supplies": "Meals and essential items distributed",
@@ -511,7 +510,6 @@
       "eyebrow": "Leadership",
       "title": "Board-governed, people-centered",
       "intro": "Be Real Humanitarian Works Inc. is governed by its board of directors.",
-      "photoNote": "Photos will be added as each leader approves publication.",
       "roles": {
         "founder": "Founder & President",
         "treasurer": "Treasurer / Director",
@@ -560,7 +558,6 @@
   },
   "LegalPage": {
     "eyebrow": "Legal",
-    "pending": "This page is being prepared and will be published soon.",
     "effective": "Effective {date}",
     "version": "Version {version}"
   },

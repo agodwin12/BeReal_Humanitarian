@@ -22,7 +22,6 @@ export function LeadershipSection({ members }: { members: CmsTeamMember[] | null
   const people = members
     ? members.map((m) => ({ id: String(m.id), name: m.name, role: pickText(m.role, locale), bio: pickText(m.bio, locale), photo: m.photo }))
     : leadership.map((l) => ({ id: l.name, name: l.name, role: t(`roles.${l.roleKey}`), bio: "", photo: null }));
-  const anyPhotoPending = people.some((p) => !p.photo);
 
   return (
     <section className="section">
@@ -58,7 +57,6 @@ export function LeadershipSection({ members }: { members: CmsTeamMember[] | null
           ))}
         </div>
 
-        {anyPhotoPending ? <p className="note-muted">{t("photoNote")}</p> : null}
       </div>
     </section>
   );

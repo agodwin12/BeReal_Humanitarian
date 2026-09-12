@@ -33,7 +33,7 @@ const PAGES = [
       { key: "mission", title: "Mission & vision", messageKeys: ["About.mission.", "About.vision."] },
       { key: "values", title: "Core values", messageKeys: ["About.values."] },
       { key: "faith", title: "Faith & service", messageKeys: ["About.faith."], images: [{ slot: "faith", label: "Faith & service photo", default: "/images/program-faith-outreach.png" }] },
-      { key: "leadership", title: "Leadership", description: "Names, roles, bios and photos are managed on the Team screen.", messageKeys: ["About.leadership.eyebrow", "About.leadership.title", "About.leadership.intro", "About.leadership.photoNote"] },
+      { key: "leadership", title: "Leadership", description: "Names, roles, bios and photos are managed on the Team screen.", messageKeys: ["About.leadership.eyebrow", "About.leadership.title", "About.leadership.intro"] },
       { key: "facts", title: "Organization facts", description: "Legal name, EIN and registered office come from Site settings.", messageKeys: ["About.facts."] },
       CTA_SECTION,
       { key: "seo", title: "Search & social preview", messageKeys: ["Meta.aboutTitle", "Meta.aboutDescription"], seo: true },
@@ -57,7 +57,7 @@ const PAGES = [
     path: "/impact",
     sections: [
       { key: "hero", title: "Hero", locked: true, messageKeys: ["ImpactPage.eyebrow", "ImpactPage.title", "ImpactPage.lead", "ImpactPage.heroAlt"], images: [{ slot: "hero", label: "Hero photo", default: "/images/impact-hero.png" }] },
-      { key: "metrics", title: "Metrics", description: "Values, dates and publish switches are on the Impact screen.", messageKeys: ["ImpactPage.metrics.eyebrow", "ImpactPage.metrics.title", "ImpactPage.metrics.intro", "ImpactPage.metrics.pending", "ImpactPage.metrics.documentedOn"] },
+      { key: "metrics", title: "Metrics", description: "Values, dates and publish switches are on the Impact screen.", messageKeys: ["ImpactPage.metrics.eyebrow", "ImpactPage.metrics.title", "ImpactPage.metrics.intro", "ImpactPage.metrics.documentedOn"] },
       { key: "stories", title: "Stories", description: "Shown only when at least one story is published (Impact screen).", messageKeys: ["ImpactPage.stories."] },
       { key: "updates", title: "Stewardship updates", description: "Shown only when at least one update is published (Impact screen).", messageKeys: ["ImpactPage.updates."] },
       { key: "principles", title: "How we report", messageKeys: ["ImpactPage.principles."], images: [{ slot: "principles", label: "Side photo", default: "/images/welcome-family.png" }] },

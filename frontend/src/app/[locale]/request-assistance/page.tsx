@@ -10,7 +10,7 @@ import { PageSections } from "@/components/site/PageSections";
 import { ProcessSection } from "@/components/site/request-assistance/ProcessSection";
 import { AssistanceForm } from "@/components/forms/AssistanceForm";
 import { Link } from "@/i18n/navigation";
-import { getPageContent, pageImage, type PageImage } from "@/lib/cms";
+import { getLegalPage, getPageContent, pageImage, type PageImage } from "@/lib/cms";
 
 const SECTIONS = ["hero", "steps", "form", "otherHelp"] as const;
 
@@ -36,7 +36,7 @@ function AssistanceHero({ image }: { image: PageImage }) {
   );
 }
 
-function FormSection() {
+function FormSection({ privacyPublished }: { privacyPublished: boolean }) {
   const t = useTranslations("AssistancePage");
   return (
     <section id="request" className="section scroll-mt-24">
@@ -48,11 +48,13 @@ function FormSection() {
         </FadeIn>
 
         <FadeIn delay={0.04} className="mb-4 grid gap-3 lg:grid-cols-2">
-          <div className="callout-coral">
-            <ShieldAlert className="size-5" strokeWidth={2} />
-            <div>
-              <strong>{t("emergency.title")}</strong>
-              <p>{t("emergency.body")}</p>
+          <div className="info-card border-line">
+            <div className="flex items-start gap-3">
+              <ShieldAlert className="mt-0.5 size-5 shrink-0 text-brand-purple-600" strokeWidth={2} />
+              <div>
+                <h3 className="m-0 mb-1 text-base font-bold text-brand-purple-950">{t("emergency.title")}</h3>
+                <p>{t("emergency.body")}</p>
+              </div>
             </div>
           </div>
           <div className="info-card border-line">
@@ -67,7 +69,7 @@ function FormSection() {
         </FadeIn>
 
         <FadeIn delay={0.08} className="form-card">
-          <AssistanceForm />
+          <AssistanceForm privacyPublished={privacyPublished} />
         </FadeIn>
       </div>
     </section>
@@ -105,7 +107,7 @@ export default async function RequestAssistancePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const content = await getPageContent("request-assistance");
+  const [content, privacy] = await Promise.all([getPageContent("request-assistance"), getLegalPage("privacy-policy")]);
 
   return (
     <PageSections
@@ -114,7 +116,7 @@ export default async function RequestAssistancePage({
       blocks={{
         hero: <AssistanceHero image={pageImage(content, "hero", "/images/program-health-hope.png", locale)} />,
         steps: <ProcessSection />,
-        form: <FormSection />,
+        form: <FormSection privacyPublished={Boolean(privacy?.isPublished)} />,
         otherHelp: <OtherHelp />,
       }}
     />

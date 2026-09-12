@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { LegalArticle } from "@/components/site/LegalArticle";
@@ -15,13 +16,15 @@ export default async function TermsPage({ params }: PageProps<"/[locale]/terms">
   setRequestLocale(locale);
   const [t, page] = await Promise.all([getTranslations({ locale, namespace: "Nav" }), getLegalPage("terms")]);
 
+  // No placeholder page: the route exists only once staff published a version.
+  if (!page?.isPublished) notFound();
+
   return (
     <LegalArticle
-      title={pickText(page?.title, locale) || t("terms")}
-      body={pickText(page?.body, locale)}
-      effectiveDate={page?.effectiveDate ?? null}
-      version={page?.version ?? 0}
-      published={Boolean(page?.isPublished)}
+      title={pickText(page.title, locale) || t("terms")}
+      body={pickText(page.body, locale)}
+      effectiveDate={page.effectiveDate ?? null}
+      version={page.version}
     />
   );
 }

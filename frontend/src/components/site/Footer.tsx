@@ -30,7 +30,7 @@ const SOCIAL_LABELS: Record<string, string> = {
   whatsapp: "WhatsApp",
 };
 
-export function Footer({ settings }: { settings: SiteSettings | null }) {
+export function Footer({ settings, legalHrefs }: { settings: SiteSettings | null; legalHrefs: string[] }) {
   const t = useTranslations("Footer");
   const nav = useTranslations("Nav");
   const brand = useTranslations("Brand");
@@ -47,6 +47,8 @@ export function Footer({ settings }: { settings: SiteSettings | null }) {
     : staticSocialLinks.map((s) => ({ platform: s.label.toLowerCase(), href: s.href }));
   const donateEnabled = settings?.donateEnabled ?? true;
   const involvedLinks = footerInvolvedLinks.filter((link) => donateEnabled || link.key !== "donate");
+  // A legal page is linked only once its first version is published (404 until then).
+  const legalLinks = footerLegalLinks.filter((link) => legalHrefs.includes(link.href));
 
   return (
     <footer className="site-footer">
@@ -128,7 +130,7 @@ export function Footer({ settings }: { settings: SiteSettings | null }) {
           ) : null}
         </p>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          {footerLegalLinks.map((link) => (
+          {legalLinks.map((link) => (
             <Link key={link.href} href={link.href} className="hover:text-white">
               {nav(link.key)}
             </Link>

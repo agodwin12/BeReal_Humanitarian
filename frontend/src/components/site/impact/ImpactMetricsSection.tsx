@@ -6,10 +6,14 @@ import type { MetricView } from "@/lib/impact-view";
 
 // Governance rule (brief Section 8): never show fabricated figures. The API
 // only returns a value once staff published it with a documented-on date;
-// anything else renders the "reporting begins…" state instead of a number.
+// metrics without one are simply not shown, and the whole section stays off
+// the page until the first figure is published (no placeholder cards).
 export function ImpactMetricsSection({ metrics }: { metrics: MetricView[] }) {
   const t = useTranslations("ImpactPage.metrics");
   const format = useFormatter();
+  const published = metrics.filter((metric) => metric.value);
+
+  if (published.length === 0) return null;
 
   return (
     <section className="section">
@@ -21,7 +25,7 @@ export function ImpactMetricsSection({ metrics }: { metrics: MetricView[] }) {
         </FadeIn>
 
         <div className="grid-5">
-          {metrics.map((metric, index) => {
+          {published.map((metric, index) => {
             const Icon = metricIcon(metric.icon);
             return (
               <FadeIn key={metric.key} delay={index * 0.06} className="metric-card">
@@ -29,16 +33,12 @@ export function ImpactMetricsSection({ metrics }: { metrics: MetricView[] }) {
                   <Icon className="size-5" strokeWidth={1.8} />
                 </div>
                 <div className="metric-card__value" aria-hidden="true">
-                  {metric.value ?? "—"}
+                  {metric.value}
                 </div>
                 <h3>{metric.label}</h3>
-                <p>
-                  {metric.value
-                    ? metric.documentedOn
-                      ? t("documentedOn", { date: format.dateTime(new Date(`${metric.documentedOn}T12:00:00Z`), { dateStyle: "long" }) })
-                      : metric.value
-                    : t("pending")}
-                </p>
+                {metric.documentedOn ? (
+                  <p>{t("documentedOn", { date: format.dateTime(new Date(`${metric.documentedOn}T12:00:00Z`), { dateStyle: "long" }) })}</p>
+                ) : null}
               </FadeIn>
             );
           })}
