@@ -51,6 +51,30 @@ Everything works without them, with clearly labelled fallbacks:
 
 `NODE_ENV=production` refuses the email and payment fallbacks.
 
+## Deployment (VPS)
+
+`deploy/vps/` holds everything the server needs: `ecosystem.config.js` (pm2 process list — API on 127.0.0.1:4000, website on 127.0.0.1:3002, backoffice on 127.0.0.1:3003), `nginx-bereal.conf` (one virtual host per app, TLS added by certbot) and `deploy.sh`.
+
+First-time setup on Ubuntu 24.04 with Node 22, pm2, nginx and certbot already present:
+
+```bash
+apt-get install -y postgresql            # then create the role + database named in backend/.env
+git clone https://github.com/agodwin12/BeReal_Humanitarian.git /var/www/bereal
+# create backend/.env, frontend/.env.local, backoffice/.env.local from the .env.example files
+cp /var/www/bereal/deploy/vps/nginx-bereal.conf /etc/nginx/sites-available/bereal
+ln -s /etc/nginx/sites-available/bereal /etc/nginx/sites-enabled/bereal && nginx -t && systemctl reload nginx
+bash /var/www/bereal/deploy/vps/deploy.sh   # install, migrate, seed the first Super Admin, build, pm2, nginx reload
+certbot --nginx -d <site host> -d <backoffice host> -d <api host>
+```
+
+Every later release is `git push` from the PC, then on the server:
+
+```bash
+bash /var/www/bereal/deploy/vps/deploy.sh
+```
+
+The API runs with `NODE_ENV=staging` until the Resend and Stripe keys exist (emails go to `pm2 logs bereal-api`, donations use the simulated checkout). Switching to the real domain: change the `server_name` lines, re-run certbot, update the URLs in the three env files and run `deploy.sh` again.
+
 ## Not in this repository
 
 Design mocks, the specification documents and the source photo set are kept outside the repository (`mocks/`, `doc/`, `images/` are ignored). Secrets live only in the `.env` files, which are ignored too — the `.env.example` files list every variable.
