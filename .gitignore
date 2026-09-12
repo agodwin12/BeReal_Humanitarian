@@ -1,7 +1,7 @@
 # --- not published: design mocks, working documents, source photos ---
 mocks/
 doc/
-images/
+/images/
 
 # --- local tooling ---
 .claude/
