@@ -1,0 +1,30 @@
+# --- not published: design mocks, working documents, source photos ---
+mocks/
+doc/
+images/
+
+# --- local tooling ---
+.claude/
+*.log
+*.pid
+.DS_Store
+Thumbs.db
+
+# --- dependencies & builds (each app also has its own .gitignore) ---
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# --- secrets: only the .env.example files are committed ---
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# --- uploaded media (local storage driver) ---
+backend/uploads/*
+!backend/uploads/.gitkeep

@@ -1,0 +1,204 @@
+/* Caacupe One (login wordmark) — not in next/font/google's list; keep first. */
+@import url("https://fonts.googleapis.com/css2?family=Caacupe+One&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+|--------------------------------------------------------------------------
+| BE REAL BACKOFFICE — DESIGN TOKENS
+|--------------------------------------------------------------------------
+| Same brand as the public site (frontend/src/app/globals.css), tuned for a
+| dashboard: flatter surfaces, tighter radii, denser type.
+|--------------------------------------------------------------------------
+*/
+
+:root {
+  --brand-purple-950: #211044;
+  --brand-purple-900: #2d145c;
+  --brand-purple-800: #3c1a78;
+  --brand-purple-700: #5626a6;
+  --brand-purple-600: #6d35c4;
+  --brand-purple-500: #8050d3;
+  --brand-purple-400: #9d78e0;
+  --brand-purple-200: #d9c9fa;
+  --brand-purple-100: #eee7ff;
+  --brand-purple-50: #f8f5ff;
+
+  --brand-coral-700: #df5149;
+  --brand-coral-600: #f26058;
+  --brand-coral-500: #ff7065;
+  --brand-coral-100: #ffe4df;
+  --brand-coral-50: #fff5f2;
+
+  --ink: #211b38;
+  --ink-soft: #4e4962;
+  --muted-text: #716c80;
+  --line: #e8e3ef;
+  --line-strong: #d9d1e5;
+
+  /* shadcn semantic tokens */
+  --background: #ffffff;
+  --foreground: #211b38;
+  --card: #ffffff;
+  --card-foreground: #211b38;
+  --popover: #ffffff;
+  --popover-foreground: #211b38;
+  --primary: #5626a6;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f1ff;
+  --secondary-foreground: #2d145c;
+  --muted: #f3f0f8;
+  --muted-foreground: #716c80;
+  --accent: #eee7ff;
+  --accent-foreground: #3c1a78;
+  --destructive: #f26058;
+  --destructive-foreground: #ffffff;
+  --border: #e8e3ef;
+  --input: #d9d1e5;
+  --ring: #8050d3;
+  --radius: 0.75rem;
+
+  /* shadcn sidebar tokens — deep purple rail */
+  --sidebar: #211044;
+  --sidebar-foreground: #f3eefc;
+  --sidebar-primary: #ff7065;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #33205f;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #33205f;
+  --sidebar-ring: #8050d3;
+
+  --font-display: "Caacupe One", Georgia, serif;
+  --font-heading: var(--font-roboto), "Roboto", system-ui, sans-serif;
+  --font-sans: var(--font-nunito-sans), "Nunito Sans", system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-brand-purple-950: var(--brand-purple-950);
+  --color-brand-purple-900: var(--brand-purple-900);
+  --color-brand-purple-800: var(--brand-purple-800);
+  --color-brand-purple-700: var(--brand-purple-700);
+  --color-brand-purple-600: var(--brand-purple-600);
+  --color-brand-purple-500: var(--brand-purple-500);
+  --color-brand-purple-400: var(--brand-purple-400);
+  --color-brand-purple-200: var(--brand-purple-200);
+  --color-brand-purple-100: var(--brand-purple-100);
+  --color-brand-purple-50: var(--brand-purple-50);
+  --color-brand-coral-700: var(--brand-coral-700);
+  --color-brand-coral-600: var(--brand-coral-600);
+  --color-brand-coral-500: var(--brand-coral-500);
+  --color-brand-coral-100: var(--brand-coral-100);
+  --color-brand-coral-50: var(--brand-coral-50);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted-text: var(--muted-text);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --font-display: var(--font-display);
+  --font-heading: var(--font-heading);
+  --font-sans: var(--font-sans);
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 19px;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    background: #f7f6fa;
+  }
+
+  body {
+    margin: 0;
+    color: var(--foreground);
+    background: #f7f6fa;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    color: white;
+    background: var(--brand-purple-600);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+  }
+
+  :focus-visible {
+    outline: 3px solid rgb(128 80 211 / 0.36);
+    outline-offset: 2px;
+  }
+}
+
+/* Sidebar menu: active item = coral pill text on the purple rail */
+[data-slot="sidebar-menu-button"][data-active="true"] {
+  background: var(--sidebar-accent);
+  color: white;
+  box-shadow: inset 3px 0 0 var(--brand-coral-500);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Tiptap rich text editor (Phase C) */
+.rich-editor__content p { margin: 0 0 0.75rem; }
+.rich-editor__content p:last-child { margin-bottom: 0; }
+.rich-editor__content h2 { font-size: 1.25rem; font-weight: 700; margin: 1.2rem 0 0.5rem; }
+.rich-editor__content h3 { font-size: 1.05rem; font-weight: 700; margin: 1rem 0 0.4rem; }
+.rich-editor__content ul { list-style: disc; padding-left: 1.4rem; margin: 0 0 0.75rem; }
+.rich-editor__content ol { list-style: decimal; padding-left: 1.4rem; margin: 0 0 0.75rem; }
+.rich-editor__content a { color: var(--brand-purple-700, #5626a6); text-decoration: underline; }
+.rich-editor__content blockquote { border-left: 3px solid #f26058; padding-left: 0.8rem; margin: 0.8rem 0; color: #55506a; }
+.rich-editor__content hr { border: 0; border-top: 1px solid #e8e3ef; margin: 1rem 0; }
+.rich-editor__content p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: #9a95ad; float: left; height: 0; pointer-events: none; }

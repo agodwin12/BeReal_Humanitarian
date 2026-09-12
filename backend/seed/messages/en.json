@@ -1,0 +1,656 @@
+{
+  "Meta": {
+    "title": "Be Real Humanitarian Works Inc.",
+    "description": "Restoring hope, touching lives, and serving with compassion — humanitarian relief, care, and empowerment for vulnerable individuals and families.",
+    "aboutTitle": "About Us — Be Real Humanitarian Works Inc.",
+    "aboutDescription": "Who we are, our mission and vision, our faith and service, and the leadership of Be Real Humanitarian Works Inc., a Texas 501(c)(3) public charity.",
+    "programsTitle": "Our Programs — Be Real Humanitarian Works Inc.",
+    "programsDescription": "Be Real Health & Hope, Be Real Care, Be Real Empowerment, and Faith & Community Outreach — practical, people-centered programs for vulnerable individuals and families.",
+    "impactTitle": "Our Impact — Be Real Humanitarian Works Inc.",
+    "impactDescription": "Our work is beginning. As our programs grow, we will share documented impact, stories, and stewardship updates here.",
+    "getInvolvedTitle": "Get Involved — Be Real Humanitarian Works Inc.",
+    "getInvolvedDescription": "Volunteer, partner, or give. Help Be Real Humanitarian Works turn compassion into action.",
+    "assistanceTitle": "Request Assistance — Be Real Humanitarian Works Inc.",
+    "assistanceDescription": "If you or someone you know is experiencing hardship, you may submit a request for consideration.",
+    "contactTitle": "Contact — Be Real Humanitarian Works Inc.",
+    "contactDescription": "Questions, ideas, or ways you'd like to help — get in touch with Be Real Humanitarian Works Inc.",
+    "donateTitle": "Donate — Be Real Humanitarian Works Inc.",
+    "donateDescription": "Give hope today. Your one-time gift helps Be Real Humanitarian Works bring relief, care and opportunity to vulnerable individuals and families."
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "impact": "Impact",
+    "getInvolved": "Get Involved",
+    "requestAssistance": "Request Assistance",
+    "contact": "Contact",
+    "donate": "Donate",
+    "openMenu": "Open menu",
+    "menu": "Menu",
+    "siteNavigation": "Site navigation",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Website Disclaimer"
+  },
+  "Languages": {
+    "label": "Language",
+    "en": "English",
+    "fr": "Français",
+    "es": "Español"
+  },
+  "Brand": {
+    "name": "Be Real",
+    "sub": "Humanitarian Works",
+    "legalName": "Be Real Humanitarian Works Inc.",
+    "tagline": "Restoring Hope. Touching Lives. Serving With Compassion.",
+    "statusLine": "Texas nonprofit corporation · IRS-recognized 501(c)(3) public charity"
+  },
+  "Hero": {
+    "eyebrow": "A More Compassionate Tomorrow",
+    "line1": "Restoring Hope.",
+    "line2": "Touching Lives.",
+    "line3": "Serving With",
+    "line4": "Compassion.",
+    "lead": "Supporting poor, sick, disabled, elderly, vulnerable, and distressed individuals and families through humanitarian relief, compassionate care, empowerment, and community outreach.",
+    "donate": "Donate Now",
+    "getInvolved": "Get Involved",
+    "requestAssistance": "Request Assistance",
+    "note": "Real People. Brighter Tomorrows.",
+    "imageAlt": "A Be Real Humanitarian Works team member embracing a child in the community they serve"
+  },
+  "Welcome": {
+    "eyebrow": "Welcome to Be Real Humanitarian Works",
+    "title": "People. Purpose. A Kinder World.",
+    "body": "At Be Real Humanitarian Works Inc., we believe compassion becomes meaningful when it becomes action. We exist to meet practical needs, restore dignity, encourage hope, and help vulnerable people move forward. Our work is inspired by Christian faith and expressed through service to people in need.",
+    "cta": "Learn More About Us",
+    "imageAlt": "A mother embracing her child, part of the community Be Real Humanitarian Works serves",
+    "quote": "A world in which vulnerable people are seen, supported, treated with dignity, and given meaningful opportunities to experience hope, stability, and a better future."
+  },
+  "Programs": {
+    "eyebrow": "Our Programs",
+    "title": "What We Do",
+    "intro": "We focus on practical, people-centered programs that address urgent needs and create opportunities for brighter futures.",
+    "viewAll": "View All Programs",
+    "items": {
+      "health-and-hope": {
+        "line1": "Be Real",
+        "line2": "Health & Hope",
+        "purpose": "Humanitarian and health-related support for vulnerable, sick, disabled, elderly, and distressed people.",
+        "alt": "A Be Real Humanitarian Works team member listening to a family during a community visit"
+      },
+      "care": {
+        "line1": "Be Real",
+        "line2": "Care",
+        "purpose": "Practical relief and compassionate assistance for individuals and families facing hardship, including essential needs and community support.",
+        "alt": "Be Real Humanitarian Works staff with schoolchildren at a community water point"
+      },
+      "empowerment": {
+        "line1": "Be Real",
+        "line2": "Empowerment",
+        "purpose": "Programs and opportunities designed to strengthen individuals and communities through education, skills, resources, and pathways toward greater stability.",
+        "alt": "Students studying together with a mentor as part of an education and skills program"
+      },
+      "faith-and-community-outreach": {
+        "line1": "Faith & Community",
+        "line2": "Outreach",
+        "purpose": "Voluntary prayer, spiritual encouragement, missions, Christian humanitarian outreach, and community service. Essential humanitarian assistance is not conditioned on religious participation.",
+        "alt": "A community gathered together in prayer at sunset"
+      }
+    }
+  },
+  "Impact": {
+    "eyebrow": "Why It Matters",
+    "title": "Real Change Happens Together",
+    "body": "Behind every need is a person with dignity, potential, and a story. Our goal is not simply to provide temporary relief, but to stand with people through compassionate service and practical support.",
+    "items": {
+      "communities": {
+        "title": "Stronger Communities",
+        "description": "Help creates hope and opportunity."
+      },
+      "families": {
+        "title": "Healthier Families",
+        "description": "Support today builds brighter tomorrows."
+      },
+      "world": {
+        "title": "A More Compassionate World",
+        "description": "Together, we can make a lasting difference."
+      }
+    }
+  },
+  "GetInvolved": {
+    "eyebrow": "Get Involved",
+    "title": "Be Part of Something Real",
+    "body": "You can help turn compassion into action. Give. Volunteer. Partner. Pray. Serve.",
+    "donate": "Donate Now",
+    "volunteer": "Volunteer With Us",
+    "partner": "Partner With Us",
+    "note": "Kindness Changes Lives."
+  },
+  "Footer": {
+    "quickLinks": "Quick Links",
+    "getInvolved": "Get Involved",
+    "connect": "Connect With Us",
+    "together": "Together we can do more.",
+    "rights": "All rights reserved.",
+    "political": "Be Real Humanitarian Works Inc. does not participate or intervene in political campaigns for or against candidates for public office."
+  },
+  "ProgramsPage": {
+    "eyebrow": "Our Programs",
+    "title": "What We Do",
+    "lead": "Four program areas with one purpose: meeting real needs while restoring hope and dignity.",
+    "heroAlt": "A Be Real Humanitarian Works volunteer sitting in a circle with families in the community",
+    "quickNavLabel": "Jump to a program",
+    "purposeLabel": "Purpose",
+    "includesLabel": "What this includes",
+    "programLabel": "Program",
+    "programs": {
+      "health-and-hope": {
+        "name": "Be Real Health & Hope",
+        "purpose": "Help vulnerable people facing health-related hardship and other urgent human needs.",
+        "item1": "Health-related support within the organization's lawful charitable scope",
+        "item2": "Essential supplies and humanitarian relief",
+        "item3": "Support and encouragement for sick, disabled, elderly, and distressed people",
+        "item4": "Community outreach and referrals to appropriate resources",
+        "alt": "A nurse comforting a smiling child and her mother at a community clinic"
+      },
+      "care": {
+        "name": "Be Real Care",
+        "purpose": "Provide compassionate, practical assistance to people and families experiencing hardship.",
+        "item1": "Food and essential-needs assistance",
+        "item2": "Community relief initiatives",
+        "item3": "Support for vulnerable individuals and families",
+        "item4": "Outreach to people in distress",
+        "alt": "A Be Real Humanitarian Works team member handing a box of food staples to a mother and her children"
+      },
+      "empowerment": {
+        "name": "Be Real Empowerment",
+        "purpose": "Help people build greater stability and opportunity.",
+        "item1": "Education and skills-oriented initiatives",
+        "item2": "Community development",
+        "item3": "Empowerment resources and workshops",
+        "item4": "Programs that encourage sustainable progress",
+        "alt": "Students learning together on a laptop with a mentor"
+      },
+      "faith-and-community-outreach": {
+        "name": "Faith & Community Outreach",
+        "purpose": "Serve communities through Christian-inspired compassion and voluntary spiritual support.",
+        "item1": "Community service",
+        "item2": "Voluntary prayer and spiritual encouragement",
+        "item3": "Mission and humanitarian outreach",
+        "item4": "Partnership with churches and community organizations",
+        "alt": "A community gathered together in prayer at sunset"
+      }
+    },
+    "growth": {
+      "eyebrow": "Growing Responsibly",
+      "title": "Our programs are built to grow",
+      "body": "We describe our programs broadly on purpose. Specific services are announced only once each program has been formally launched and documented by our board — so what you read here is always what we actually do."
+    }
+  },
+  "ImpactPage": {
+    "eyebrow": "Our Impact",
+    "title": "Our work is beginning.",
+    "lead": "As our programs grow, we will share documented impact, stories, and stewardship updates here.",
+    "heroAlt": "A volunteer handing a school bag to a smiling child outside a village school",
+    "metrics": {
+      "eyebrow": "What We Will Report",
+      "title": "Measured, documented, shared",
+      "intro": "These are the figures we commit to publishing as our programs get under way — real numbers only, never estimates.",
+      "pending": "Reporting begins with our first program cycle",
+      "items": {
+        "people": "People and families served",
+        "supplies": "Meals and essential items distributed",
+        "communities": "Communities reached",
+        "volunteers": "Volunteer hours",
+        "spending": "Program spending"
+      },
+      "documentedOn": "Documented {date}"
+    },
+    "principles": {
+      "eyebrow": "How We Report",
+      "title": "Honest impact, shared with consent",
+      "consent": {
+        "title": "Stories with consent",
+        "body": "Outreach photographs and impact stories are published only with the permission of the people involved, with additional safeguards for children."
+      },
+      "stewardship": {
+        "title": "Stewardship updates",
+        "body": "We steward donations and resources responsibly and will share how program funds are used as activities take place."
+      },
+      "truth": {
+        "title": "Real numbers only",
+        "body": "We do not publish beneficiary counts, partnerships, or outcomes that have not actually occurred."
+      },
+      "imageAlt": "A mother embracing her child, part of the community Be Real Humanitarian Works serves"
+    },
+    "stories": {
+      "eyebrow": "Stories",
+      "title": "Shared with consent",
+      "intro": "Real moments from our programs, published only with the permission of the people involved."
+    },
+    "updates": {
+      "eyebrow": "Stewardship",
+      "title": "How gifts were used",
+      "intro": "Dated updates on how donations and resources were put to work."
+    }
+  },
+  "GetInvolvedPage": {
+    "eyebrow": "Get Involved",
+    "title": "Be Part of Something Real",
+    "lead": "You can help turn compassion into action. Give. Volunteer. Partner. Pray. Serve.",
+    "heroAlt": "A Be Real Humanitarian Works volunteer in conversation with community members",
+    "ways": {
+      "volunteer": {
+        "title": "Volunteer",
+        "body": "Use your time and skills to help us serve. Volunteer opportunities may include outreach support, event assistance, administrative help, fundraising support, communications, and program activities.",
+        "cta": "Volunteer With Us"
+      },
+      "partner": {
+        "title": "Partner",
+        "body": "We welcome collaboration with churches, nonprofits, community organizations, healthcare and social-service partners, businesses, and responsible corporate sponsors whose support aligns with our charitable mission.",
+        "cta": "Become a Partner"
+      },
+      "give": {
+        "title": "Give",
+        "body": "Your support helps Be Real Humanitarian Works carry out charitable programs and respond to genuine community needs.",
+        "cta": "Donate Now"
+      }
+    },
+    "volunteerForm": {
+      "eyebrow": "Volunteer Interest",
+      "title": "Tell us how you'd like to help",
+      "intro": "Share a little about yourself and your availability, and we'll follow up."
+    },
+    "partnerForm": {
+      "eyebrow": "Partnership Inquiry",
+      "title": "Let's work together",
+      "intro": "Churches, nonprofits, community organizations, healthcare and social-service partners, businesses — tell us what you have in mind."
+    }
+  },
+  "AssistancePage": {
+    "eyebrow": "Request Assistance",
+    "title": "Ask for help",
+    "lead": "If you or someone you know is experiencing hardship, you may submit a request for consideration. Submitting a request does not guarantee assistance. Requests are reviewed based on charitable need, program criteria, available resources, and the organization's capacity.",
+    "heroAlt": "A Be Real Humanitarian Works team member listening to a family during a community visit",
+    "steps": {
+      "eyebrow": "What to Expect",
+      "title": "How requests are reviewed",
+      "s1": {
+        "title": "You submit a request",
+        "body": "Tell us about your situation using the form below — only the information we need, nothing sensitive."
+      },
+      "s2": {
+        "title": "We review it",
+        "body": "Requests are reviewed based on charitable need, program criteria, available resources, and the organization's capacity."
+      },
+      "s3": {
+        "title": "We contact you",
+        "body": "We reach out using the contact method you prefer. Submitting a request does not guarantee assistance."
+      }
+    },
+    "form": {
+      "eyebrow": "Request Form",
+      "title": "Tell us about your need",
+      "intro": "Please complete the fields below. Fields marked optional can be left blank."
+    },
+    "emergency": {
+      "title": "Not an emergency service",
+      "body": "Be Real Humanitarian Works Inc. is not an emergency response service. If you are experiencing an immediate medical or safety emergency, contact the appropriate local emergency service."
+    },
+    "privacy": {
+      "title": "Your privacy",
+      "body": "Please do not include Social Security numbers, banking details, passwords, or full medical records in this form. We only ask for what we need to review your request."
+    },
+    "otherHelp": {
+      "title": "Other ways we can help",
+      "body": "Learn more about our programs, or contact us with a general question.",
+      "programs": "Our Programs",
+      "contact": "Contact Us"
+    }
+  },
+  "Forms": {
+    "optional": "(optional)",
+    "sending": "Sending…",
+    "demoNote": "Demo mode: your message was validated but not sent — the API is not connected yet.",
+    "footnote": "We only use your details to follow up on this message.",
+    "footnoteAssistance": "Your request is handled confidentially and reviewed only by authorized staff.",
+    "labels": {
+      "fullName": "Full name",
+      "email": "Email",
+      "phone": "Phone number",
+      "location": "Location",
+      "interests": "Interests or skills",
+      "availability": "Availability",
+      "ageConfirmed": "I confirm that I am 18 years of age or older.",
+      "consentVolunteer": "I agree to be contacted by Be Real Humanitarian Works about volunteering.",
+      "organizationName": "Organization",
+      "contactName": "Contact name",
+      "organizationType": "Organization type",
+      "proposal": "Proposed partnership",
+      "message": "Message",
+      "consentPartner": "I agree to be contacted by Be Real Humanitarian Works about this inquiry.",
+      "city": "City",
+      "state": "State / region",
+      "country": "Country",
+      "preferredContact": "Preferred method of contact",
+      "assistanceType": "Type of assistance requested",
+      "needDescription": "Brief description of your need",
+      "urgency": "Urgency",
+      "deadline": "Relevant deadline",
+      "consentAssistance": "I agree to be contacted by Be Real Humanitarian Works about this request.",
+      "privacyAck": "I have read the <link>privacy notice</link> and understand that submitting a request does not guarantee assistance."
+    },
+    "hints": {
+      "phone": "Include your country code if you are outside the United States.",
+      "location": "City, state or region, and country.",
+      "needDescription": "Please do not include Social Security numbers, banking details, passwords, or full medical records.",
+      "deadline": "For example, a date by which support would be needed."
+    },
+    "placeholders": {
+      "select": "Select…",
+      "interests": "e.g. outreach support, events, administrative help, fundraising, communications",
+      "availability": "e.g. weekends, two evenings a month",
+      "proposal": "What kind of collaboration are you proposing?"
+    },
+    "options": {
+      "organizationType": {
+        "church": "Church",
+        "nonprofit": "Nonprofit",
+        "community": "Community organization",
+        "healthcare": "Healthcare or social-service partner",
+        "business": "Business or corporate sponsor",
+        "other": "Other"
+      },
+      "preferredContact": {
+        "email": "Email",
+        "phone": "Phone call",
+        "text": "Text message"
+      },
+      "assistanceType": {
+        "health": "Health-related support",
+        "essentials": "Food and essential needs",
+        "education": "Education and skills",
+        "outreach": "Community or faith outreach",
+        "other": "Other"
+      },
+      "urgency": {
+        "low": "Not urgent",
+        "month": "Within the next month",
+        "twoWeeks": "Within the next two weeks",
+        "asap": "As soon as possible"
+      }
+    },
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a valid phone number.",
+      "select": "Please choose an option.",
+      "minDescription": "Please tell us a little more (at least 20 characters).",
+      "age": "You must confirm that you are 18 or older.",
+      "consent": "Please agree to be contacted.",
+      "privacy": "Please acknowledge the privacy notice."
+    },
+    "submit": {
+      "volunteer": "Send volunteer interest",
+      "partnership": "Send partnership inquiry",
+      "assistance": "Submit request"
+    },
+    "success": {
+      "volunteer": {
+        "title": "Thank you for offering your time",
+        "body": "We've received your volunteer interest and will be in touch."
+      },
+      "partnership": {
+        "title": "Thank you for reaching out",
+        "body": "We've received your partnership inquiry and will review it before getting back to you."
+      },
+      "assistance": {
+        "title": "Your request has been received",
+        "body": "Submitting a request does not guarantee assistance. We will review it and contact you using your preferred method."
+      }
+    },
+    "error": {
+      "title": "Something went wrong",
+      "body": "We couldn't send your message. Please try again in a moment, or contact us directly."
+    }
+  },
+  "ContactPage": {
+    "eyebrow": "Contact",
+    "title": "Get in touch",
+    "lead": "Questions, ideas, or ways you'd like to help — we'd love to hear from you.",
+    "heroAlt": "A Be Real Humanitarian Works nurse listening to a child's heartbeat at a community clinic",
+    "details": {
+      "eyebrow": "Contact Details",
+      "title": "Reach us",
+      "organization": "Organization",
+      "mailing": "Mailing address",
+      "mailingNote": "Registered office — for mail only, not a walk-in office.",
+      "email": "Email",
+      "phone": "Phone",
+      "social": "Follow us",
+      "facebook": "Be Real Humanitarian Works on Facebook",
+      "response": "How we reply",
+      "responseNote": "We reply by email or phone, based on the details you share in the form."
+    },
+    "form": {
+      "eyebrow": "General Contact",
+      "title": "Send us a message",
+      "intro": "Fill in the form and we'll get back to you.",
+      "subject": "Subject",
+      "submit": "Send message",
+      "success": {
+        "title": "Message received",
+        "body": "Thank you for reaching out — we'll be in touch."
+      }
+    },
+    "newsletter": {
+      "eyebrow": "Stay Updated",
+      "title": "Hear how the work grows",
+      "body": "Occasional updates about our programs, stories shared with consent, and ways to help.",
+      "consent": "I agree to receive email updates from Be Real Humanitarian Works.",
+      "unsubscribe": "You can unsubscribe at any time.",
+      "submit": "Subscribe",
+      "success": {
+        "title": "You're on the list",
+        "body": "Thank you — we'll share updates as our programs grow."
+      }
+    }
+  },
+  "About": {
+    "eyebrow": "About Us",
+    "title": "Who We Are",
+    "lead": "Be Real Humanitarian Works Inc. is a Texas nonprofit corporation recognized by the Internal Revenue Service as a tax-exempt organization under Section 501(c)(3). We are committed to humanitarian relief and community assistance for people experiencing poverty, sickness, disability, vulnerability, distress, and other significant needs.",
+    "heroImageAlt": "Be Real Humanitarian Works volunteers and children in front of a community school",
+    "mission": {
+      "eyebrow": "Our Mission",
+      "title": "Demonstrating God's love through practical service",
+      "body": "To demonstrate God's love through humanitarian relief, compassionate assistance, health-related support, poverty and hunger relief, empowerment, and community development for poor, sick, disabled, elderly, vulnerable, and distressed people."
+    },
+    "vision": {
+      "eyebrow": "Our Vision",
+      "title": "A world where vulnerable people are seen",
+      "body": "A world in which vulnerable people are seen, supported, treated with dignity, and given meaningful opportunities to experience hope, stability, and a better future."
+    },
+    "values": {
+      "eyebrow": "Core Values",
+      "title": "What guides our work",
+      "items": {
+        "compassion": {
+          "title": "Compassion",
+          "body": "Respond to human need with dignity and care."
+        },
+        "faith": {
+          "title": "Faith",
+          "body": "Serve from Christian principles while respecting every person."
+        },
+        "integrity": {
+          "title": "Integrity",
+          "body": "Steward donations and resources responsibly."
+        },
+        "dignity": {
+          "title": "Dignity",
+          "body": "See people as people, not as projects."
+        },
+        "service": {
+          "title": "Service",
+          "body": "Turn compassion into practical action."
+        },
+        "empowerment": {
+          "title": "Empowerment",
+          "body": "Help people move toward stability and opportunity."
+        }
+      }
+    },
+    "faith": {
+      "eyebrow": "Our Faith & Service",
+      "title": "Inspired by faith, open to all",
+      "body": "Our work is inspired by Christian principles of love, compassion, generosity, and service. We may offer voluntary prayer, spiritual encouragement, missions, and Christian outreach; however, essential humanitarian assistance is not conditioned on conversion, church membership, financial contribution, or participation in religious activities.",
+      "imageAlt": "A community gathered together in prayer at sunset"
+    },
+    "leadership": {
+      "eyebrow": "Leadership",
+      "title": "Board-governed, people-centered",
+      "intro": "Be Real Humanitarian Works Inc. is governed by its board of directors.",
+      "photoNote": "Photos will be added as each leader approves publication.",
+      "roles": {
+        "founder": "Founder & President",
+        "treasurer": "Treasurer / Director",
+        "secretary": "Secretary / Director",
+        "director": "Director"
+      }
+    },
+    "facts": {
+      "eyebrow": "At a Glance",
+      "title": "Organization facts",
+      "legalName": "Legal name",
+      "type": "Organization type",
+      "typeValue": "Texas nonprofit corporation; board-governed; no voting members",
+      "status": "Federal tax status",
+      "statusValue": "IRS-recognized tax-exempt organization under IRC §501(c)(3)",
+      "classification": "Public charity classification",
+      "classificationValue": "IRC §170(b)(1)(A)(vi)",
+      "ein": "EIN",
+      "fiscalYear": "Fiscal year",
+      "fiscalYearValue": "January 1 – December 31",
+      "scope": "Geographic scope",
+      "scopeValue": "United States and international humanitarian activities, including Cameroon",
+      "office": "Registered office"
+    }
+  },
+  "Unsubscribe": {
+    "metaTitle": "Unsubscribe — Be Real Humanitarian Works Inc.",
+    "eyebrow": "Email updates",
+    "title": "Unsubscribe",
+    "lead": "We're sorry to see you go. You can subscribe again at any time from the Contact page.",
+    "pending": "One moment — we're updating your preferences…",
+    "done": {
+      "title": "You've been unsubscribed",
+      "body": "You will no longer receive email updates from Be Real Humanitarian Works.",
+      "bodyWithEmail": "{email} will no longer receive email updates from Be Real Humanitarian Works."
+    },
+    "invalid": {
+      "title": "This link is no longer valid",
+      "body": "The unsubscribe link may have expired or already been used. If you still receive our emails, use the link at the bottom of the latest one."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "body": "We couldn't update your preferences. Please try again in a moment."
+    },
+    "backHome": "Back to the homepage"
+  },
+  "LegalPage": {
+    "eyebrow": "Legal",
+    "pending": "This page is being prepared and will be published soon.",
+    "effective": "Effective {date}",
+    "version": "Version {version}"
+  },
+  "Preview": {
+    "notice": "Preview mode — you are seeing unpublished draft content.",
+    "exit": "Exit preview"
+  },
+  "DonatePage": {
+    "eyebrow": "Donate",
+    "title": "Give hope today",
+    "lead": "Your gift helps Be Real Humanitarian Works bring relief, care and opportunity to vulnerable individuals and families. Every donation is received by the organization itself and goes to work where it is needed most.",
+    "heroAlt": "A Be Real Humanitarian Works team member embracing a community member",
+    "form": {
+      "eyebrow": "Make a gift",
+      "title": "Choose an amount",
+      "intro": "One-time gift in US dollars. You'll complete your payment on Stripe's secure page — we never see or store your card details.",
+      "amountLabel": "Amount",
+      "otherAmount": "Other amount",
+      "customPlaceholder": "Enter an amount",
+      "minimum": "Minimum {amount}",
+      "nameLabel": "Full name",
+      "emailLabel": "Email (for your receipt)",
+      "anonymous": "Keep my name private in any public acknowledgment",
+      "messageLabel": "Message (optional)",
+      "messagePlaceholder": "A note for the team",
+      "submit": "Donate {amount} securely",
+      "submitPlain": "Continue to secure payment",
+      "redirecting": "Taking you to the secure payment page…",
+      "fees": "100% of your gift goes to Be Real Humanitarian Works — the organization covers the processing fees.",
+      "tax": "Be Real Humanitarian Works Inc. is recognized by the IRS as a 501(c)(3) public charity. Contributions may be tax-deductible to the extent permitted by law. A receipt is emailed to you right after your gift.",
+      "secure": "Payments are processed by Stripe. Your card details never reach our servers.",
+      "testMode": "Test mode — no real payment will be taken.",
+      "errors": {
+        "amount": "Enter a valid amount.",
+        "minimum": "The minimum gift is {amount}.",
+        "maximum": "For gifts above {amount}, please contact us.",
+        "start": "We couldn't start your donation. Please try again in a moment."
+      }
+    },
+    "paused": {
+      "title": "Donations are paused for the moment",
+      "body": "Online giving is temporarily unavailable. Please check back soon or contact us."
+    },
+    "cancelled": {
+      "title": "Your donation was not completed",
+      "body": "No payment was taken. You can try again whenever you're ready."
+    },
+    "why": {
+      "eyebrow": "Why give",
+      "title": "Where your gift goes",
+      "items": {
+        "relief": {
+          "title": "Relief and care",
+          "body": "Food, essential supplies and practical help for people in hardship."
+        },
+        "health": {
+          "title": "Health and hope",
+          "body": "Support and encouragement for the sick, disabled and elderly."
+        },
+        "empowerment": {
+          "title": "Empowerment",
+          "body": "Education, skills and community initiatives that build stability."
+        }
+      },
+      "stewardship": "We steward every gift responsibly and share dated stewardship updates on our Impact page."
+    },
+    "thankYou": {
+      "eyebrow": "Thank you",
+      "title": "Your gift has been received",
+      "pending": "Confirming your gift with our payment provider…",
+      "pendingHint": "This usually takes a few seconds. You can keep this page open.",
+      "receipt": "Receipt {number} · {amount}",
+      "emailed": "A receipt has been emailed to {email}.",
+      "failed": {
+        "title": "The payment didn't go through",
+        "body": "No money was taken. You can try again from the Donate page."
+      },
+      "print": "Print this page",
+      "backHome": "Back to the homepage",
+      "again": "Back to the Donate page"
+    },
+    "simulate": {
+      "eyebrow": "Test payment",
+      "title": "Simulated checkout",
+      "body": "No Stripe keys are configured, so this page stands in for Stripe's secure payment page. Nothing is charged.",
+      "amount": "Amount",
+      "donor": "Donor",
+      "pay": "Pay {amount} (test)",
+      "cancel": "Cancel and go back",
+      "processing": "Processing…"
+    }
+  }
+}

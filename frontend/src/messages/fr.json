@@ -1,0 +1,656 @@
+{
+  "Meta": {
+    "title": "Be Real Humanitarian Works Inc.",
+    "description": "Redonner l'espoir, toucher des vies et servir avec compassion — aide humanitaire, soins et autonomisation pour les personnes et les familles vulnérables.",
+    "aboutTitle": "À propos — Be Real Humanitarian Works Inc.",
+    "aboutDescription": "Qui nous sommes, notre mission et notre vision, notre foi et notre service, et la direction de Be Real Humanitarian Works Inc., organisme de bienfaisance public 501(c)(3) du Texas.",
+    "programsTitle": "Nos programmes — Be Real Humanitarian Works Inc.",
+    "programsDescription": "Be Real Santé & Espoir, Be Real Care, Be Real Autonomisation et Foi & Action communautaire — des programmes concrets, centrés sur les personnes, pour les individus et les familles vulnérables.",
+    "impactTitle": "Notre impact — Be Real Humanitarian Works Inc.",
+    "impactDescription": "Notre travail commence. À mesure que nos programmes se développeront, nous partagerons ici notre impact documenté, des récits et des informations sur notre gestion.",
+    "getInvolvedTitle": "S'impliquer — Be Real Humanitarian Works Inc.",
+    "getInvolvedDescription": "Devenez bénévole, partenaire ou donateur. Aidez Be Real Humanitarian Works à transformer la compassion en action.",
+    "assistanceTitle": "Demander de l'aide — Be Real Humanitarian Works Inc.",
+    "assistanceDescription": "Si vous ou une personne de votre entourage traversez une période difficile, vous pouvez soumettre une demande pour examen.",
+    "contactTitle": "Contact — Be Real Humanitarian Works Inc.",
+    "contactDescription": "Questions, idées ou envie d'aider — contactez Be Real Humanitarian Works Inc.",
+    "donateTitle": "Faire un don — Be Real Humanitarian Works Inc.",
+    "donateDescription": "Donnez de l'espoir aujourd'hui. Votre don ponctuel aide Be Real Humanitarian Works à apporter secours, soins et opportunités aux personnes et familles vulnérables."
+  },
+  "Nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "programs": "Programmes",
+    "impact": "Impact",
+    "getInvolved": "S'impliquer",
+    "requestAssistance": "Demander de l'aide",
+    "contact": "Contact",
+    "donate": "Faire un don",
+    "openMenu": "Ouvrir le menu",
+    "menu": "Menu",
+    "siteNavigation": "Navigation du site",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions et avis du site"
+  },
+  "Languages": {
+    "label": "Langue",
+    "en": "English",
+    "fr": "Français",
+    "es": "Español"
+  },
+  "Brand": {
+    "name": "Be Real",
+    "sub": "Humanitarian Works",
+    "legalName": "Be Real Humanitarian Works Inc.",
+    "tagline": "Redonner l'espoir. Toucher des vies. Servir avec compassion.",
+    "statusLine": "Société à but non lucratif du Texas · Organisme de bienfaisance public 501(c)(3) reconnu par l'IRS"
+  },
+  "Hero": {
+    "eyebrow": "Un lendemain plus solidaire",
+    "line1": "Redonner l'espoir.",
+    "line2": "Toucher des vies.",
+    "line3": "Servir avec",
+    "line4": "compassion.",
+    "lead": "Nous soutenons les personnes et les familles pauvres, malades, handicapées, âgées, vulnérables et en détresse par l'aide humanitaire, des soins bienveillants, l'autonomisation et l'action communautaire.",
+    "donate": "Faire un don",
+    "getInvolved": "S'impliquer",
+    "requestAssistance": "Demander de l'aide",
+    "note": "Des gens réels. Des lendemains meilleurs.",
+    "imageAlt": "Une membre de l'équipe de Be Real Humanitarian Works serrant un enfant dans ses bras au sein de la communauté qu'elle sert"
+  },
+  "Welcome": {
+    "eyebrow": "Bienvenue chez Be Real Humanitarian Works",
+    "title": "Des personnes. Un but. Un monde plus bienveillant.",
+    "body": "Chez Be Real Humanitarian Works Inc., nous croyons que la compassion prend tout son sens lorsqu'elle devient action. Nous existons pour répondre aux besoins concrets, restaurer la dignité, encourager l'espoir et aider les personnes vulnérables à aller de l'avant. Notre travail est inspiré par la foi chrétienne et s'exprime par le service aux personnes dans le besoin.",
+    "cta": "En savoir plus sur nous",
+    "imageAlt": "Une mère serrant son enfant dans ses bras, membre de la communauté servie par Be Real Humanitarian Works",
+    "quote": "Un monde où les personnes vulnérables sont vues, soutenues, traitées avec dignité et reçoivent de véritables opportunités de connaître l'espoir, la stabilité et un avenir meilleur."
+  },
+  "Programs": {
+    "eyebrow": "Nos programmes",
+    "title": "Ce que nous faisons",
+    "intro": "Nous privilégions des programmes concrets, centrés sur les personnes, qui répondent aux besoins urgents et créent des opportunités pour un avenir meilleur.",
+    "viewAll": "Voir tous les programmes",
+    "items": {
+      "health-and-hope": {
+        "line1": "Be Real",
+        "line2": "Santé & Espoir",
+        "purpose": "Soutien humanitaire et lié à la santé pour les personnes vulnérables, malades, handicapées, âgées et en détresse.",
+        "alt": "Une membre de l'équipe de Be Real Humanitarian Works à l'écoute d'une famille lors d'une visite communautaire"
+      },
+      "care": {
+        "line1": "Be Real",
+        "line2": "Care",
+        "purpose": "Aide concrète et assistance bienveillante aux personnes et aux familles en difficulté, y compris pour les besoins essentiels et le soutien communautaire.",
+        "alt": "Le personnel de Be Real Humanitarian Works avec des écoliers à un point d'eau communautaire"
+      },
+      "empowerment": {
+        "line1": "Be Real",
+        "line2": "Autonomisation",
+        "purpose": "Des programmes et des opportunités conçus pour renforcer les personnes et les communautés par l'éducation, les compétences, les ressources et des voies vers plus de stabilité.",
+        "alt": "Des étudiantes qui apprennent ensemble avec une mentore dans le cadre d'un programme d'éducation et de compétences"
+      },
+      "faith-and-community-outreach": {
+        "line1": "Foi & Action",
+        "line2": "communautaire",
+        "purpose": "Prière volontaire, encouragement spirituel, missions, action humanitaire chrétienne et service communautaire. L'aide humanitaire essentielle n'est pas conditionnée à une participation religieuse.",
+        "alt": "Une communauté réunie en prière au coucher du soleil"
+      }
+    }
+  },
+  "Impact": {
+    "eyebrow": "Pourquoi c'est important",
+    "title": "Le vrai changement se construit ensemble",
+    "body": "Derrière chaque besoin, il y a une personne avec sa dignité, son potentiel et son histoire. Notre objectif n'est pas seulement d'apporter un soulagement temporaire, mais d'accompagner les personnes par un service bienveillant et un soutien concret.",
+    "items": {
+      "communities": {
+        "title": "Des communautés plus fortes",
+        "description": "L'entraide crée l'espoir et les opportunités."
+      },
+      "families": {
+        "title": "Des familles en meilleure santé",
+        "description": "Le soutien d'aujourd'hui bâtit les lendemains meilleurs."
+      },
+      "world": {
+        "title": "Un monde plus solidaire",
+        "description": "Ensemble, nous pouvons faire une différence durable."
+      }
+    }
+  },
+  "GetInvolved": {
+    "eyebrow": "S'impliquer",
+    "title": "Faites partie de quelque chose de vrai",
+    "body": "Vous pouvez aider à transformer la compassion en action. Donner. Faire du bénévolat. S'associer. Prier. Servir.",
+    "donate": "Faire un don",
+    "volunteer": "Devenir bénévole",
+    "partner": "Devenir partenaire",
+    "note": "La bonté change des vies."
+  },
+  "Footer": {
+    "quickLinks": "Liens rapides",
+    "getInvolved": "S'impliquer",
+    "connect": "Suivez-nous",
+    "together": "Ensemble, nous pouvons faire plus.",
+    "rights": "Tous droits réservés.",
+    "political": "Be Real Humanitarian Works Inc. ne participe ni n'intervient dans les campagnes politiques en faveur ou à l'encontre de candidats à une fonction publique."
+  },
+  "ProgramsPage": {
+    "eyebrow": "Nos programmes",
+    "title": "Ce que nous faisons",
+    "lead": "Quatre domaines de programme, un seul but : répondre à de vrais besoins tout en redonnant espoir et dignité.",
+    "heroAlt": "Une bénévole de Be Real Humanitarian Works assise en cercle avec des familles de la communauté",
+    "quickNavLabel": "Aller à un programme",
+    "purposeLabel": "Objectif",
+    "includesLabel": "Ce que cela comprend",
+    "programLabel": "Programme",
+    "programs": {
+      "health-and-hope": {
+        "name": "Be Real Santé & Espoir",
+        "purpose": "Aider les personnes vulnérables confrontées à des difficultés de santé et à d'autres besoins humains urgents.",
+        "item1": "Soutien lié à la santé dans le cadre caritatif légal de l'organisation",
+        "item2": "Fournitures essentielles et aide humanitaire",
+        "item3": "Soutien et encouragement aux personnes malades, handicapées, âgées et en détresse",
+        "item4": "Action communautaire et orientation vers les ressources appropriées",
+        "alt": "Une infirmière réconfortant une enfant souriante et sa mère dans un dispensaire communautaire"
+      },
+      "care": {
+        "name": "Be Real Care",
+        "purpose": "Apporter une aide concrète et bienveillante aux personnes et aux familles en difficulté.",
+        "item1": "Aide alimentaire et pour les besoins essentiels",
+        "item2": "Initiatives d'aide communautaire",
+        "item3": "Soutien aux personnes et aux familles vulnérables",
+        "item4": "Action auprès des personnes en détresse",
+        "alt": "Une membre de l'équipe de Be Real Humanitarian Works remettant un carton de denrées de base à une mère et ses enfants"
+      },
+      "empowerment": {
+        "name": "Be Real Autonomisation",
+        "purpose": "Aider les personnes à construire plus de stabilité et d'opportunités.",
+        "item1": "Initiatives axées sur l'éducation et les compétences",
+        "item2": "Développement communautaire",
+        "item3": "Ressources et ateliers d'autonomisation",
+        "item4": "Programmes qui favorisent un progrès durable",
+        "alt": "Des étudiantes apprenant ensemble sur un ordinateur portable avec une mentore"
+      },
+      "faith-and-community-outreach": {
+        "name": "Foi & Action communautaire",
+        "purpose": "Servir les communautés par une compassion d'inspiration chrétienne et un soutien spirituel volontaire.",
+        "item1": "Service communautaire",
+        "item2": "Prière volontaire et encouragement spirituel",
+        "item3": "Missions et action humanitaire",
+        "item4": "Partenariat avec des églises et des organisations communautaires",
+        "alt": "Une communauté réunie en prière au coucher du soleil"
+      }
+    },
+    "growth": {
+      "eyebrow": "Grandir de façon responsable",
+      "title": "Nos programmes sont conçus pour grandir",
+      "body": "Nous décrivons volontairement nos programmes de manière large. Les services précis ne sont annoncés qu'une fois chaque programme officiellement lancé et documenté par notre conseil — ainsi, ce que vous lisez ici correspond toujours à ce que nous faisons réellement."
+    }
+  },
+  "ImpactPage": {
+    "eyebrow": "Notre impact",
+    "title": "Notre travail commence.",
+    "lead": "À mesure que nos programmes se développeront, nous partagerons ici notre impact documenté, des récits et des informations sur notre gestion.",
+    "heroAlt": "Un bénévole remettant un cartable à un enfant souriant devant une école de village",
+    "metrics": {
+      "eyebrow": "Ce que nous publierons",
+      "title": "Mesuré, documenté, partagé",
+      "intro": "Voici les chiffres que nous nous engageons à publier dès que nos programmes seront en cours — uniquement des chiffres réels, jamais des estimations.",
+      "pending": "La publication commencera avec notre premier cycle de programmes",
+      "items": {
+        "people": "Personnes et familles aidées",
+        "supplies": "Repas et articles essentiels distribués",
+        "communities": "Communautés atteintes",
+        "volunteers": "Heures de bénévolat",
+        "spending": "Dépenses de programme"
+      },
+      "documentedOn": "Documenté le {date}"
+    },
+    "principles": {
+      "eyebrow": "Notre façon de rendre compte",
+      "title": "Un impact honnête, partagé avec consentement",
+      "consent": {
+        "title": "Des récits avec consentement",
+        "body": "Les photographies et les récits d'impact ne sont publiés qu'avec l'accord des personnes concernées, avec des garanties supplémentaires pour les enfants."
+      },
+      "stewardship": {
+        "title": "Informations sur la gestion",
+        "body": "Nous gérons les dons et les ressources de manière responsable et partagerons l'utilisation des fonds des programmes au fil des activités."
+      },
+      "truth": {
+        "title": "Uniquement des chiffres réels",
+        "body": "Nous ne publions aucun nombre de bénéficiaires, partenariat ou résultat qui ne se soit pas réellement produit."
+      },
+      "imageAlt": "Une mère serrant son enfant dans ses bras, membre de la communauté servie par Be Real Humanitarian Works"
+    },
+    "stories": {
+      "eyebrow": "Récits",
+      "title": "Partagés avec consentement",
+      "intro": "Des moments réels de nos programmes, publiés uniquement avec l'accord des personnes concernées."
+    },
+    "updates": {
+      "eyebrow": "Bonne gestion",
+      "title": "Comment les dons ont été utilisés",
+      "intro": "Des mises à jour datées sur l'usage des dons et des ressources."
+    }
+  },
+  "GetInvolvedPage": {
+    "eyebrow": "S'impliquer",
+    "title": "Faites partie de quelque chose de vrai",
+    "lead": "Vous pouvez aider à transformer la compassion en action. Donner. Faire du bénévolat. S'associer. Prier. Servir.",
+    "heroAlt": "Une bénévole de Be Real Humanitarian Works en discussion avec des membres de la communauté",
+    "ways": {
+      "volunteer": {
+        "title": "Bénévolat",
+        "body": "Mettez votre temps et vos compétences au service des autres. Les missions bénévoles peuvent inclure le soutien aux actions de terrain, l'aide lors d'événements, l'appui administratif, le soutien à la collecte de fonds, la communication et les activités de programme.",
+        "cta": "Devenir bénévole"
+      },
+      "partner": {
+        "title": "Partenariat",
+        "body": "Nous accueillons la collaboration avec des églises, des organisations à but non lucratif, des organisations communautaires, des partenaires de santé et de services sociaux, des entreprises et des sponsors responsables dont le soutien s'aligne sur notre mission caritative.",
+        "cta": "Devenir partenaire"
+      },
+      "give": {
+        "title": "Donner",
+        "body": "Votre soutien aide Be Real Humanitarian Works à mener ses programmes caritatifs et à répondre aux besoins réels des communautés.",
+        "cta": "Faire un don"
+      }
+    },
+    "volunteerForm": {
+      "eyebrow": "Intérêt pour le bénévolat",
+      "title": "Dites-nous comment vous souhaitez aider",
+      "intro": "Parlez-nous un peu de vous et de vos disponibilités, et nous vous recontacterons."
+    },
+    "partnerForm": {
+      "eyebrow": "Demande de partenariat",
+      "title": "Travaillons ensemble",
+      "intro": "Églises, organisations à but non lucratif, organisations communautaires, partenaires de santé et de services sociaux, entreprises — dites-nous ce que vous avez en tête."
+    }
+  },
+  "AssistancePage": {
+    "eyebrow": "Demander de l'aide",
+    "title": "Demander de l'aide",
+    "lead": "Si vous ou une personne de votre entourage traversez une période difficile, vous pouvez soumettre une demande pour examen. Soumettre une demande ne garantit pas une aide. Les demandes sont examinées selon le besoin caritatif, les critères des programmes, les ressources disponibles et la capacité de l'organisation.",
+    "heroAlt": "Une membre de l'équipe de Be Real Humanitarian Works à l'écoute d'une famille lors d'une visite communautaire",
+    "steps": {
+      "eyebrow": "À quoi s'attendre",
+      "title": "Comment les demandes sont examinées",
+      "s1": {
+        "title": "Vous soumettez une demande",
+        "body": "Décrivez votre situation à l'aide du formulaire ci-dessous — uniquement les informations nécessaires, rien de sensible."
+      },
+      "s2": {
+        "title": "Nous l'examinons",
+        "body": "Les demandes sont examinées selon le besoin caritatif, les critères des programmes, les ressources disponibles et la capacité de l'organisation."
+      },
+      "s3": {
+        "title": "Nous vous contactons",
+        "body": "Nous vous recontactons par le moyen que vous préférez. Soumettre une demande ne garantit pas une aide."
+      }
+    },
+    "form": {
+      "eyebrow": "Formulaire de demande",
+      "title": "Parlez-nous de votre besoin",
+      "intro": "Veuillez remplir les champs ci-dessous. Les champs facultatifs peuvent être laissés vides."
+    },
+    "emergency": {
+      "title": "Pas un service d'urgence",
+      "body": "Be Real Humanitarian Works Inc. n'est pas un service d'intervention d'urgence. En cas d'urgence médicale ou de sécurité immédiate, contactez le service d'urgence local approprié."
+    },
+    "privacy": {
+      "title": "Votre vie privée",
+      "body": "Veuillez ne pas indiquer de numéro de sécurité sociale, de coordonnées bancaires, de mots de passe ni de dossier médical complet dans ce formulaire. Nous ne demandons que ce qui est nécessaire pour examiner votre demande."
+    },
+    "otherHelp": {
+      "title": "D'autres façons de vous aider",
+      "body": "Découvrez nos programmes ou contactez-nous pour une question générale.",
+      "programs": "Nos programmes",
+      "contact": "Nous contacter"
+    }
+  },
+  "Forms": {
+    "optional": "(facultatif)",
+    "sending": "Envoi en cours…",
+    "demoNote": "Mode démo : votre message a été validé mais pas envoyé — l'API n'est pas encore connectée.",
+    "footnote": "Vos coordonnées servent uniquement à donner suite à ce message.",
+    "footnoteAssistance": "Votre demande est traitée de manière confidentielle et examinée uniquement par le personnel autorisé.",
+    "labels": {
+      "fullName": "Nom complet",
+      "email": "E-mail",
+      "phone": "Numéro de téléphone",
+      "location": "Localisation",
+      "interests": "Centres d'intérêt ou compétences",
+      "availability": "Disponibilités",
+      "ageConfirmed": "Je confirme avoir 18 ans ou plus.",
+      "consentVolunteer": "J'accepte d'être contacté(e) par Be Real Humanitarian Works au sujet du bénévolat.",
+      "organizationName": "Organisation",
+      "contactName": "Nom du contact",
+      "organizationType": "Type d'organisation",
+      "proposal": "Partenariat proposé",
+      "message": "Message",
+      "consentPartner": "J'accepte d'être contacté(e) par Be Real Humanitarian Works au sujet de cette demande.",
+      "city": "Ville",
+      "state": "État / région",
+      "country": "Pays",
+      "preferredContact": "Moyen de contact préféré",
+      "assistanceType": "Type d'aide demandée",
+      "needDescription": "Brève description de votre besoin",
+      "urgency": "Urgence",
+      "deadline": "Échéance concernée",
+      "consentAssistance": "J'accepte d'être contacté(e) par Be Real Humanitarian Works au sujet de cette demande.",
+      "privacyAck": "J'ai lu l'<link>avis de confidentialité</link> et je comprends que soumettre une demande ne garantit pas une aide."
+    },
+    "hints": {
+      "phone": "Indiquez votre indicatif international si vous êtes hors des États-Unis.",
+      "location": "Ville, État ou région, et pays.",
+      "needDescription": "Veuillez ne pas indiquer de numéro de sécurité sociale, de coordonnées bancaires, de mots de passe ni de dossier médical complet.",
+      "deadline": "Par exemple, une date à laquelle l'aide serait nécessaire."
+    },
+    "placeholders": {
+      "select": "Sélectionner…",
+      "interests": "ex. soutien de terrain, événements, aide administrative, collecte de fonds, communication",
+      "availability": "ex. week-ends, deux soirées par mois",
+      "proposal": "Quel type de collaboration proposez-vous ?"
+    },
+    "options": {
+      "organizationType": {
+        "church": "Église",
+        "nonprofit": "Organisation à but non lucratif",
+        "community": "Organisation communautaire",
+        "healthcare": "Partenaire de santé ou de services sociaux",
+        "business": "Entreprise ou sponsor",
+        "other": "Autre"
+      },
+      "preferredContact": {
+        "email": "E-mail",
+        "phone": "Appel téléphonique",
+        "text": "SMS"
+      },
+      "assistanceType": {
+        "health": "Soutien lié à la santé",
+        "essentials": "Alimentation et besoins essentiels",
+        "education": "Éducation et compétences",
+        "outreach": "Action communautaire ou spirituelle",
+        "other": "Autre"
+      },
+      "urgency": {
+        "low": "Pas urgent",
+        "month": "Dans le mois à venir",
+        "twoWeeks": "Dans les deux prochaines semaines",
+        "asap": "Dès que possible"
+      }
+    },
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "email": "Saisissez une adresse e-mail valide.",
+      "phone": "Saisissez un numéro de téléphone valide.",
+      "select": "Veuillez choisir une option.",
+      "minDescription": "Merci de nous en dire un peu plus (au moins 20 caractères).",
+      "age": "Vous devez confirmer avoir 18 ans ou plus.",
+      "consent": "Veuillez accepter d'être contacté(e).",
+      "privacy": "Veuillez confirmer avoir lu l'avis de confidentialité."
+    },
+    "submit": {
+      "volunteer": "Envoyer ma candidature bénévole",
+      "partnership": "Envoyer ma demande de partenariat",
+      "assistance": "Envoyer la demande"
+    },
+    "success": {
+      "volunteer": {
+        "title": "Merci de nous offrir votre temps",
+        "body": "Nous avons bien reçu votre intérêt pour le bénévolat et nous vous recontacterons."
+      },
+      "partnership": {
+        "title": "Merci de nous avoir contactés",
+        "body": "Nous avons bien reçu votre demande de partenariat et l'examinerons avant de revenir vers vous."
+      },
+      "assistance": {
+        "title": "Votre demande a bien été reçue",
+        "body": "Soumettre une demande ne garantit pas une aide. Nous l'examinerons et vous contacterons par le moyen que vous préférez."
+      }
+    },
+    "error": {
+      "title": "Une erreur est survenue",
+      "body": "Nous n'avons pas pu envoyer votre message. Veuillez réessayer dans un instant ou nous contacter directement."
+    }
+  },
+  "ContactPage": {
+    "eyebrow": "Contact",
+    "title": "Contactez-nous",
+    "lead": "Questions, idées ou envie d'aider — nous serons heureux de vous lire.",
+    "heroAlt": "Une infirmière de Be Real Humanitarian Works auscultant une enfant dans un dispensaire communautaire",
+    "details": {
+      "eyebrow": "Coordonnées",
+      "title": "Nous joindre",
+      "organization": "Organisation",
+      "mailing": "Adresse postale",
+      "mailingNote": "Siège enregistré — pour le courrier uniquement, pas un bureau d'accueil.",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "social": "Suivez-nous",
+      "facebook": "Be Real Humanitarian Works sur Facebook",
+      "response": "Comment nous répondons",
+      "responseNote": "Nous répondons par e-mail ou par téléphone, selon les informations que vous indiquez dans le formulaire."
+    },
+    "form": {
+      "eyebrow": "Contact général",
+      "title": "Envoyez-nous un message",
+      "intro": "Remplissez le formulaire et nous vous répondrons.",
+      "subject": "Objet",
+      "submit": "Envoyer le message",
+      "success": {
+        "title": "Message reçu",
+        "body": "Merci de nous avoir écrit — nous vous recontacterons."
+      }
+    },
+    "newsletter": {
+      "eyebrow": "Restez informé",
+      "title": "Suivez l'évolution de notre travail",
+      "body": "Des nouvelles occasionnelles sur nos programmes, des récits partagés avec consentement et des façons d'aider.",
+      "consent": "J'accepte de recevoir les nouvelles de Be Real Humanitarian Works par e-mail.",
+      "unsubscribe": "Vous pouvez vous désabonner à tout moment.",
+      "submit": "S'abonner",
+      "success": {
+        "title": "Vous êtes inscrit(e)",
+        "body": "Merci — nous partagerons des nouvelles à mesure que nos programmes se développeront."
+      }
+    }
+  },
+  "About": {
+    "eyebrow": "À propos",
+    "title": "Qui nous sommes",
+    "lead": "Be Real Humanitarian Works Inc. est une société à but non lucratif du Texas, reconnue par l'Internal Revenue Service comme organisation exonérée d'impôt en vertu de la section 501(c)(3). Nous nous engageons dans l'aide humanitaire et l'assistance communautaire auprès des personnes confrontées à la pauvreté, la maladie, le handicap, la vulnérabilité, la détresse et d'autres besoins importants.",
+    "heroImageAlt": "Des bénévoles de Be Real Humanitarian Works et des enfants devant une école communautaire",
+    "mission": {
+      "eyebrow": "Notre mission",
+      "title": "Manifester l'amour de Dieu par un service concret",
+      "body": "Manifester l'amour de Dieu par l'aide humanitaire, l'assistance bienveillante, le soutien lié à la santé, la lutte contre la pauvreté et la faim, l'autonomisation et le développement communautaire pour les personnes pauvres, malades, handicapées, âgées, vulnérables et en détresse."
+    },
+    "vision": {
+      "eyebrow": "Notre vision",
+      "title": "Un monde où les personnes vulnérables sont vues",
+      "body": "Un monde où les personnes vulnérables sont vues, soutenues, traitées avec dignité et reçoivent de véritables opportunités de connaître l'espoir, la stabilité et un avenir meilleur."
+    },
+    "values": {
+      "eyebrow": "Nos valeurs",
+      "title": "Ce qui guide notre travail",
+      "items": {
+        "compassion": {
+          "title": "Compassion",
+          "body": "Répondre aux besoins humains avec dignité et attention."
+        },
+        "faith": {
+          "title": "Foi",
+          "body": "Servir selon des principes chrétiens tout en respectant chaque personne."
+        },
+        "integrity": {
+          "title": "Intégrité",
+          "body": "Gérer les dons et les ressources de manière responsable."
+        },
+        "dignity": {
+          "title": "Dignité",
+          "body": "Voir des personnes, pas des projets."
+        },
+        "service": {
+          "title": "Service",
+          "body": "Transformer la compassion en action concrète."
+        },
+        "empowerment": {
+          "title": "Autonomisation",
+          "body": "Aider les personnes à avancer vers la stabilité et les opportunités."
+        }
+      }
+    },
+    "faith": {
+      "eyebrow": "Notre foi et notre service",
+      "title": "Inspirés par la foi, ouverts à tous",
+      "body": "Notre travail est inspiré par les principes chrétiens d'amour, de compassion, de générosité et de service. Nous pouvons proposer une prière volontaire, un encouragement spirituel, des missions et une action chrétienne ; toutefois, l'aide humanitaire essentielle n'est pas conditionnée à une conversion, à l'appartenance à une église, à une contribution financière ou à la participation à des activités religieuses.",
+      "imageAlt": "Une communauté réunie en prière au coucher du soleil"
+    },
+    "leadership": {
+      "eyebrow": "Direction",
+      "title": "Gouvernée par un conseil, centrée sur les personnes",
+      "intro": "Be Real Humanitarian Works Inc. est dirigée par son conseil d'administration.",
+      "photoNote": "Les photos seront ajoutées dès que chaque dirigeant aura approuvé leur publication.",
+      "roles": {
+        "founder": "Fondateur et président",
+        "treasurer": "Trésorier / Administrateur",
+        "secretary": "Secrétaire / Administrateur",
+        "director": "Administratrice"
+      }
+    },
+    "facts": {
+      "eyebrow": "En bref",
+      "title": "Informations sur l'organisation",
+      "legalName": "Nom légal",
+      "type": "Type d'organisation",
+      "typeValue": "Société à but non lucratif du Texas ; gouvernée par un conseil ; sans membres votants",
+      "status": "Statut fiscal fédéral",
+      "statusValue": "Organisation exonérée d'impôt reconnue par l'IRS en vertu de l'IRC §501(c)(3)",
+      "classification": "Classification d'organisme public",
+      "classificationValue": "IRC §170(b)(1)(A)(vi)",
+      "ein": "EIN",
+      "fiscalYear": "Exercice fiscal",
+      "fiscalYearValue": "1er janvier – 31 décembre",
+      "scope": "Portée géographique",
+      "scopeValue": "États-Unis et activités humanitaires internationales, y compris au Cameroun",
+      "office": "Siège enregistré"
+    }
+  },
+  "Unsubscribe": {
+    "metaTitle": "Se désabonner — Be Real Humanitarian Works Inc.",
+    "eyebrow": "Actualités par e-mail",
+    "title": "Se désabonner",
+    "lead": "Nous sommes désolés de vous voir partir. Vous pouvez vous réabonner à tout moment depuis la page Contact.",
+    "pending": "Un instant — nous mettons à jour vos préférences…",
+    "done": {
+      "title": "Vous avez été désabonné(e)",
+      "body": "Vous ne recevrez plus les actualités par e-mail de Be Real Humanitarian Works.",
+      "bodyWithEmail": "{email} ne recevra plus les actualités par e-mail de Be Real Humanitarian Works."
+    },
+    "invalid": {
+      "title": "Ce lien n'est plus valide",
+      "body": "Le lien de désabonnement a peut-être expiré ou déjà été utilisé. Si vous recevez encore nos e-mails, utilisez le lien en bas du plus récent."
+    },
+    "error": {
+      "title": "Une erreur s'est produite",
+      "body": "Nous n'avons pas pu mettre à jour vos préférences. Veuillez réessayer dans un instant."
+    },
+    "backHome": "Retour à l'accueil"
+  },
+  "LegalPage": {
+    "eyebrow": "Mentions légales",
+    "pending": "Cette page est en préparation et sera publiée prochainement.",
+    "effective": "En vigueur le {date}",
+    "version": "Version {version}"
+  },
+  "Preview": {
+    "notice": "Mode aperçu — vous voyez du contenu brouillon non publié.",
+    "exit": "Quitter l'aperçu"
+  },
+  "DonatePage": {
+    "eyebrow": "Faire un don",
+    "title": "Donnez de l'espoir aujourd'hui",
+    "lead": "Votre don aide Be Real Humanitarian Works à apporter secours, soins et opportunités aux personnes et familles vulnérables. Chaque don est reçu par l'organisation elle-même et sert là où le besoin est le plus grand.",
+    "heroAlt": "Un membre de l'équipe de Be Real Humanitarian Works serrant dans ses bras un membre de la communauté",
+    "form": {
+      "eyebrow": "Faire un don",
+      "title": "Choisissez un montant",
+      "intro": "Don ponctuel en dollars américains. Vous finalisez le paiement sur la page sécurisée de Stripe — nous ne voyons ni ne conservons jamais vos données de carte.",
+      "amountLabel": "Montant",
+      "otherAmount": "Autre montant",
+      "customPlaceholder": "Saisissez un montant",
+      "minimum": "Minimum {amount}",
+      "nameLabel": "Nom complet",
+      "emailLabel": "E-mail (pour votre reçu)",
+      "anonymous": "Ne pas mentionner mon nom dans les remerciements publics",
+      "messageLabel": "Message (facultatif)",
+      "messagePlaceholder": "Un mot pour l'équipe",
+      "submit": "Donner {amount} en toute sécurité",
+      "submitPlain": "Continuer vers le paiement sécurisé",
+      "redirecting": "Redirection vers la page de paiement sécurisée…",
+      "fees": "100 % de votre don va à Be Real Humanitarian Works — l'organisation prend en charge les frais de traitement.",
+      "tax": "Be Real Humanitarian Works Inc. est reconnue par l'IRS comme organisme de bienfaisance public 501(c)(3). Les dons peuvent être déductibles fiscalement dans la mesure permise par la loi. Un reçu vous est envoyé par e-mail juste après votre don.",
+      "secure": "Les paiements sont traités par Stripe. Vos données de carte n'atteignent jamais nos serveurs.",
+      "testMode": "Mode test — aucun paiement réel ne sera effectué.",
+      "errors": {
+        "amount": "Saisissez un montant valide.",
+        "minimum": "Le don minimum est de {amount}.",
+        "maximum": "Pour un don supérieur à {amount}, merci de nous contacter.",
+        "start": "Impossible de démarrer votre don. Veuillez réessayer dans un instant."
+      }
+    },
+    "paused": {
+      "title": "Les dons sont suspendus pour le moment",
+      "body": "Le don en ligne est temporairement indisponible. Revenez bientôt ou contactez-nous."
+    },
+    "cancelled": {
+      "title": "Votre don n'a pas été finalisé",
+      "body": "Aucun paiement n'a été effectué. Vous pouvez réessayer quand vous le souhaitez."
+    },
+    "why": {
+      "eyebrow": "Pourquoi donner",
+      "title": "Où va votre don",
+      "items": {
+        "relief": {
+          "title": "Secours et soins",
+          "body": "Nourriture, biens essentiels et aide concrète pour les personnes en difficulté."
+        },
+        "health": {
+          "title": "Santé et espoir",
+          "body": "Soutien et encouragement pour les malades, les personnes handicapées et les aînés."
+        },
+        "empowerment": {
+          "title": "Autonomisation",
+          "body": "Éducation, compétences et initiatives communautaires qui construisent la stabilité."
+        }
+      },
+      "stewardship": "Nous gérons chaque don avec responsabilité et publions des mises à jour datées sur notre page Impact."
+    },
+    "thankYou": {
+      "eyebrow": "Merci",
+      "title": "Votre don a bien été reçu",
+      "pending": "Confirmation de votre don auprès de notre prestataire de paiement…",
+      "pendingHint": "Cela prend généralement quelques secondes. Vous pouvez garder cette page ouverte.",
+      "receipt": "Reçu {number} · {amount}",
+      "emailed": "Un reçu a été envoyé à {email}.",
+      "failed": {
+        "title": "Le paiement n'a pas abouti",
+        "body": "Aucun montant n'a été prélevé. Vous pouvez réessayer depuis la page Faire un don."
+      },
+      "print": "Imprimer cette page",
+      "backHome": "Retour à l'accueil",
+      "again": "Retour à la page Faire un don"
+    },
+    "simulate": {
+      "eyebrow": "Paiement test",
+      "title": "Paiement simulé",
+      "body": "Aucune clé Stripe n'est configurée : cette page remplace la page de paiement sécurisée de Stripe. Rien n'est débité.",
+      "amount": "Montant",
+      "donor": "Donateur",
+      "pay": "Payer {amount} (test)",
+      "cancel": "Annuler et revenir",
+      "processing": "Traitement…"
+    }
+  }
+}
