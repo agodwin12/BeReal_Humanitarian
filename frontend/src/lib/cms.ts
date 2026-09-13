@@ -47,6 +47,8 @@ export type SiteSettings = {
   donateEnabled: boolean;
   donateDisabledMessage: Localized;
   enabledLocales: Locale[];
+  brandPrimary: string | null;
+  brandAccent: string | null;
   seoDescription: Localized;
   logo: CmsMedia | null;
   favicon: CmsMedia | null;

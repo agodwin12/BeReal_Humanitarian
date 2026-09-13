@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import "../globals.css";
 
 import { Header } from "@/components/site/Header";
+import { BrandStyle } from "@/components/site/BrandStyle";
 import { Footer } from "@/components/site/Footer";
 import { PreviewBanner } from "@/components/site/PreviewBanner";
 import { routing } from "@/i18n/routing";
@@ -77,6 +78,7 @@ export default async function LocaleLayout({
       className={`${roboto.variable} ${nunitoSans.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <BrandStyle settings={settings} />
         <NextIntlClientProvider>
           <div className="site-shell flex flex-1 flex-col">
             <PreviewBanner locale={locale} />
