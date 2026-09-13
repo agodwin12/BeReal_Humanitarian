@@ -13,7 +13,7 @@ export function ContactDetails({ settings }: { settings: SiteSettings | null }) 
   const locale = useLocale();
 
   const legalName = settings?.legalName ?? siteConfig.orgLegalName;
-  const address = settings?.addressLine ?? siteConfig.registeredAddress;
+  const address = settings ? settings.addressLine : siteConfig.publicLocation;
   const addressNote = pickText(settings?.addressNote, locale) || t("mailingNote");
   const email = settings ? settings.contactEmail : siteConfig.contactEmail;
   const phone = settings ? settings.contactPhone : siteConfig.contactPhone;

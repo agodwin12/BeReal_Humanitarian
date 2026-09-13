@@ -34,7 +34,7 @@ const PAGES = [
       { key: "values", title: "Core values", messageKeys: ["About.values."] },
       { key: "faith", title: "Faith & service", messageKeys: ["About.faith."], images: [{ slot: "faith", label: "Faith & service photo", default: "/images/program-faith-outreach.png" }] },
       { key: "leadership", title: "Leadership", description: "Names, roles, bios and photos are managed on the Team screen.", messageKeys: ["About.leadership.eyebrow", "About.leadership.title", "About.leadership.intro"] },
-      { key: "facts", title: "Organization facts", description: "Legal name, EIN and registered office come from Site settings.", messageKeys: ["About.facts."] },
+      { key: "facts", title: "Transparency & Accountability", description: "Legal name, EIN and the public location come from Site settings.", messageKeys: ["About.facts."] },
       CTA_SECTION,
       { key: "seo", title: "Search & social preview", messageKeys: ["Meta.aboutTitle", "Meta.aboutDescription"], seo: true },
     ],

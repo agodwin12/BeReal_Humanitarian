@@ -423,8 +423,8 @@
       "eyebrow": "Coordonnées",
       "title": "Nous joindre",
       "organization": "Organisation",
-      "mailing": "Adresse postale",
-      "mailingNote": "Siège enregistré — pour le courrier uniquement, pas un bureau d'accueil.",
+      "mailing": "Localisation",
+      "mailingNote": "Adresse postale disponible sur demande.",
       "email": "E-mail",
       "phone": "Téléphone",
       "social": "Suivez-nous",
@@ -515,17 +515,18 @@
         "founder": "Fondateur et président",
         "treasurer": "Trésorier / Administrateur",
         "secretary": "Secrétaire / Administrateur",
-        "director": "Administratrice"
+        "director": "Administratrice",
+        "counselor": "Conseillère"
       }
     },
     "facts": {
       "eyebrow": "En bref",
-      "title": "Informations sur l'organisation",
+      "title": "Transparence et responsabilité",
       "legalName": "Nom légal",
       "type": "Type d'organisation",
       "typeValue": "Société à but non lucratif du Texas ; gouvernée par un conseil ; sans membres votants",
       "status": "Statut fiscal fédéral",
-      "statusValue": "Organisation exonérée d'impôt reconnue par l'IRS en vertu de l'IRC §501(c)(3)",
+      "statusValue": "Be Real Humanitarian Works Inc. est reconnue par l'IRS comme organisation exonérée d'impôt au titre de la section 501(c)(3). Les dons sont déductibles des impôts dans la mesure permise par la loi.",
       "classification": "Classification d'organisme public",
       "classificationValue": "IRC §170(b)(1)(A)(vi)",
       "ein": "EIN",
@@ -533,7 +534,7 @@
       "fiscalYearValue": "1er janvier – 31 décembre",
       "scope": "Portée géographique",
       "scopeValue": "États-Unis et activités humanitaires internationales, y compris au Cameroun",
-      "office": "Siège enregistré"
+      "office": "Localisation"
     }
   },
   "Unsubscribe": {

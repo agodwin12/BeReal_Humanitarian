@@ -14,7 +14,7 @@ export function ContentHealth() {
   const [items, setItems] = useState<Item[]>([
     { label: "Fields awaiting French review", href: "/translations", value: null },
     { label: "Fields awaiting Spanish review", href: "/translations", value: null },
-    { label: "Team photos awaiting approval", href: "/content/team", value: null },
+    { label: "Team members without a photo", href: "/content/team", value: null },
     { label: "Pages with unpublished changes", href: "/content/pages", value: null },
   ]);
 
@@ -30,7 +30,7 @@ export function ContentHealth() {
       setItems([
         { label: "Fields awaiting French review", href: "/translations", value: pending("fr") },
         { label: "Fields awaiting Spanish review", href: "/translations", value: pending("es") },
-        { label: "Team photos awaiting approval", href: "/content/team", value: team.status === "fulfilled" ? team.value.data.filter((m) => m.photoMediaId && !m.photoApprovedAt).length : null },
+        { label: "Team members without a photo", href: "/content/team", value: team.status === "fulfilled" ? team.value.data.filter((m) => !m.photoMediaId).length : null },
         { label: "Pages with unpublished changes", href: "/content/pages", value: pages.status === "fulfilled" ? pages.value.data.filter((p) => p.hasUnpublishedChanges).length : null },
       ]);
     });

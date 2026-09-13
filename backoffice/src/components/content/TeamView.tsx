@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { BadgeCheck, Eye, EyeOff, Pencil, Plus, ShieldOff, Trash2 } from "lucide-react";
+import { BadgeCheck, Eye, EyeOff, Pencil, Plus, Trash2 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -34,19 +34,19 @@ function errorMessage(err: unknown) {
   return err instanceof ApiError || err instanceof Error ? err.message : "Something went wrong.";
 }
 
+// A photo is live on the site the moment it is saved; we only show who set it and when.
 function PhotoStatus({ member }: { member: TeamMember }) {
   if (!member.photo) return <span className="text-[0.74rem] text-muted-foreground">No photo — initials are shown</span>;
-  if (member.photoApprovedAt)
-    return (
-      <span className="inline-flex items-center gap-1 text-[0.74rem] font-bold text-emerald-700">
-        <BadgeCheck className="size-3.5" />
-        Photo approved by {member.photoApprovedBy} · {formatDateTime(member.photoApprovedAt)}
-      </span>
-    );
   return (
-    <span className="inline-flex items-center gap-1 text-[0.74rem] font-bold text-amber-800">
-      <ShieldOff className="size-3.5" />
-      Photo awaiting the person&apos;s approval — not shown on the site
+    <span className="inline-flex items-center gap-1 text-[0.74rem] font-bold text-emerald-700">
+      <BadgeCheck className="size-3.5" />
+      Photo live on the site
+      {member.photoApprovedAt ? (
+        <span className="font-normal text-muted-foreground">
+          · added {member.photoApprovedBy ? `by ${member.photoApprovedBy} ` : ""}
+          {formatDateTime(member.photoApprovedAt)}
+        </span>
+      ) : null}
     </span>
   );
 }
@@ -113,7 +113,7 @@ export function TeamView() {
     <div className="grid gap-4">
       <Card className="gap-3 rounded-[14px] border border-border px-5 ring-0 shadow-none">
         <div className="flex flex-wrap items-center gap-3">
-          <p className="text-[0.8rem] text-muted-foreground">Shown in the About page leadership section, in this order. A photo goes live only after you record the person&apos;s approval.</p>
+          <p className="text-[0.8rem] text-muted-foreground">Shown in the About page leadership section, in this order. A photo appears on the site as soon as it is saved here — make sure the person has agreed before you add it.</p>
           {canEdit ? (
             <Button variant="coral" size="sm" className="ml-auto" onClick={() => setEditing("new")}>
               <Plus className="size-4" />
@@ -134,7 +134,7 @@ export function TeamView() {
                 <SortControls index={index} count={members.length} onMove={reorder} disabled={!canEdit} />
                 <div className="relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-brand-purple-100 text-[0.9rem] font-extrabold text-brand-purple-700">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {thumb ? <img src={thumb} alt="" className={cn("size-full object-cover", !member.photoApprovedAt && "opacity-50 grayscale")} /> : initials(member.name)}
+                  {thumb ? <img src={thumb} alt="" className="size-full object-cover" /> : initials(member.name)}
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
@@ -172,6 +172,7 @@ export function TeamView() {
       )}
 
       <MemberSheet
+        key={editing === null ? "none" : editing === "new" ? "new" : editing.id}
         member={editing}
         canEdit={canEdit}
         onClose={() => setEditing(null)}
@@ -207,23 +208,16 @@ function MemberSheet({
   onClose: () => void;
   onSaved: (member: TeamMember, isNew: boolean) => void;
 }) {
-  const [draft, setDraft] = useState<Draft>(emptyDraft());
+  // State starts from the member being edited; the parent keys this sheet by member so a switch remounts it.
+  const [draft, setDraft] = useState<Draft>(() => (member && member !== "new" ? toDraft(member) : emptyDraft()));
   const [locale, setLocale] = useState<Locale>("en");
-  const [approvedBy, setApprovedBy] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    setDraft(member && member !== "new" ? toDraft(member) : emptyDraft());
-    setApprovedBy("");
-    setError(null);
-  }, [member]);
 
   if (!member) return <Sheet open={false} />;
   const isNew = member === "new";
   const disabled = !canEdit || busy;
   const patch = (changes: Partial<Draft>) => setDraft((d) => ({ ...d, ...changes }));
-  const photoChanged = !isNew && (draft.photo?.id ?? null) !== (member.photoMediaId ?? null);
 
   const save = async () => {
     if (draft.name.trim().length < 2) return setError("Name is required.");
@@ -242,42 +236,12 @@ function MemberSheet({
     }
   };
 
-  const approve = async () => {
-    if (isNew) return;
-    if (approvedBy.trim().length < 2) return setError("Say who confirmed the approval (e.g. “Desmond, by email on 12 Sep”).");
-    setBusy(true);
-    setError(null);
-    try {
-      const { data } = await api.post<TeamMember>(`/api/team-members/${member.id}/photo-approval`, { approvedBy: approvedBy.trim() });
-      toast.success("Photo approval recorded — it is now live on the site.");
-      onSaved(data, false);
-    } catch (err) {
-      setError(errorMessage(err));
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const revoke = async () => {
-    if (isNew) return;
-    setBusy(true);
-    try {
-      const { data } = await api.delete<TeamMember>(`/api/team-members/${member.id}/photo-approval`);
-      toast.success("Approval withdrawn — the photo is hidden again.");
-      onSaved(data, false);
-    } catch (err) {
-      setError(errorMessage(err));
-    } finally {
-      setBusy(false);
-    }
-  };
-
   return (
     <Sheet open onOpenChange={(open) => !open && onClose()}>
       <SheetContent className="w-full overflow-y-auto sm:max-w-xl">
         <SheetHeader className="border-b border-border pb-4">
           <SheetTitle className="text-lg font-bold text-brand-purple-950">{isNew ? "New team member" : draft.name || "Team member"}</SheetTitle>
-          <SheetDescription>Role and bio in EN / FR / ES. Photos need the person&apos;s approval before they appear.</SheetDescription>
+          <SheetDescription>Role and bio in EN / FR / ES. The photo is shown on the site as soon as you save.</SheetDescription>
         </SheetHeader>
 
         <div className="grid gap-5 px-4 pb-6">
@@ -297,37 +261,12 @@ function MemberSheet({
           </div>
           <LocalizedInput label="Role" value={draft.role} onChange={(v) => patch({ role: v })} locale={locale} disabled={disabled} placeholder="e.g. Founder & President" />
           <LocalizedInput label="Short bio" value={draft.bio} onChange={(v) => patch({ bio: v })} locale={locale} multiline disabled={disabled} hint="Optional. Two or three sentences." />
-          <MediaField label="Photo" value={draft.photo} onChange={(m) => patch({ photo: m })} disabled={disabled} hint="Choosing a different photo resets its approval." />
+          <MediaField label="Photo" value={draft.photo} onChange={(m) => patch({ photo: m })} disabled={disabled} hint="Goes live on the About page when you save. Leave empty to show the person's initials." />
 
-          {!isNew && member.photoMediaId && !photoChanged ? (
-            <section className="grid gap-2 rounded-[12px] border border-border bg-brand-purple-50 p-3">
-              <h3 className="text-[0.72rem] font-extrabold tracking-[0.18em] text-muted-foreground uppercase">Photo publication approval</h3>
-              {member.photoApprovedAt ? (
-                <div className="flex flex-wrap items-center justify-between gap-2 text-[0.82rem]">
-                  <span className="inline-flex items-center gap-1 font-bold text-emerald-700">
-                    <BadgeCheck className="size-4" />
-                    Approved by {member.photoApprovedBy} on {formatDateTime(member.photoApprovedAt)}
-                  </span>
-                  {canEdit ? (
-                    <Button variant="outline" size="sm" onClick={revoke} disabled={busy}>
-                      Withdraw approval
-                    </Button>
-                  ) : null}
-                </div>
-              ) : (
-                <>
-                  <p className="text-[0.8rem] text-muted-foreground">The photo stays hidden until the person confirms it may be published. Record who confirmed it and how.</p>
-                  {canEdit ? (
-                    <div className="flex gap-2">
-                      <Input value={approvedBy} onChange={(e) => setApprovedBy(e.target.value)} placeholder="e.g. Desmond Nkemzi, by email on 12 Sep 2026" className="min-h-10 rounded-[10px] bg-white" />
-                      <Button variant="purple" onClick={approve} disabled={busy}>
-                        Record approval
-                      </Button>
-                    </div>
-                  ) : null}
-                </>
-              )}
-            </section>
+          {!isNew && member.photo ? (
+            <p className="text-[0.78rem] text-muted-foreground">
+              <PhotoStatus member={member} />
+            </p>
           ) : null}
 
           {error ? (

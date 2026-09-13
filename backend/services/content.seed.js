@@ -37,6 +37,7 @@ const TEAM_SEED = [
   { name: "Christian Fohtung", roleKey: "treasurer" },
   { name: "Joel Nyaghu", roleKey: "secretary" },
   { name: "Mildred Fomengia", roleKey: "director" },
+  { name: "Pastor Joan", roleKey: "counselor" },
 ];
 
 const METRIC_SEED = [
@@ -64,7 +65,7 @@ async function ensureContentDefaults() {
       // Public email and phone are [TO CONFIRM] in the brief — left empty.
       contactEmail: null,
       contactPhone: null,
-      addressLine: "6914 Ventura Dr, Rosharon, TX 77583",
+      addressLine: "Greater Houston Area, Texas",
       addressNote: localized(messages, "ContactPage.details.mailingNote"),
       socialLinks: [{ platform: "facebook", url: "https://www.facebook.com/share/17zNHepmRv/" }],
       navigation: NAV_ITEMS.map((item) => ({ ...item, visible: true })),

@@ -111,7 +111,6 @@ module.exports = {
     mediaIdRule("photoMediaId"),
   ],
   teamCreateRules: [body("name").isString().trim().isLength({ min: 2, max: 120 }).withMessage("Name is required")],
-  photoApprovalRules: [body("approvedBy").isString().trim().isLength({ min: 2, max: 120 }).withMessage("Say who confirmed the approval")],
 
   metricRules: [
     localized("label", { max: 120 }),

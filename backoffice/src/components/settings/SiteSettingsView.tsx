@@ -241,7 +241,7 @@ export function SiteSettingsView() {
               <Input id="contactPhone" value={draft.contactPhone} onChange={(e) => patch({ contactPhone: e.target.value })} disabled={disabled} className="min-h-10 rounded-[10px] bg-white" />
             </Field>
           </div>
-          <Field id="addressLine" label="Mailing address">
+          <Field id="addressLine" label="Public location (shown on Contact, About and receipts — not the street address)">
             <Input id="addressLine" value={draft.addressLine} onChange={(e) => patch({ addressLine: e.target.value })} disabled={disabled} className="min-h-10 rounded-[10px] bg-white" />
           </Field>
           <LocalizedInput label="Address note" value={draft.addressNote} onChange={(v) => patch({ addressNote: v })} locale={locale} disabled={disabled} hint="e.g. “Registered office — for mail only, not a walk-in office”." />

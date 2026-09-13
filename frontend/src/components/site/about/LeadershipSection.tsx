@@ -32,7 +32,7 @@ export function LeadershipSection({ members }: { members: CmsTeamMember[] | null
           <p className="lead">{t("intro")}</p>
         </FadeIn>
 
-        <div className="grid-4">
+        <div className="leader-grid">
           {people.map((person, index) => (
             <FadeIn key={person.id} delay={index * 0.06} className="leader-card">
               {person.photo ? (

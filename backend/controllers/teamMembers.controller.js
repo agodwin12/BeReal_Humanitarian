@@ -12,15 +12,15 @@ function serialize(row) {
   return { ...plain, photo: mediaSummary(row.photo) };
 }
 
-async function apply(row, body) {
+async function apply(row, body, actor) {
   for (const field of ["name", "order", "visible"]) if (body[field] !== undefined) row[field] = body[field];
   for (const field of ["role", "bio"]) if (body[field] !== undefined) row[field] = normalizeLocalized(body[field]);
   if (body.photoMediaId !== undefined && body.photoMediaId !== row.photoMediaId) {
     if (body.photoMediaId && !(await Media.findByPk(body.photoMediaId))) throw ApiError.badRequest("photoMediaId: media not found");
     row.photoMediaId = body.photoMediaId;
-    // A new photo needs a fresh approval from the person (brief rule).
-    row.photoApprovedAt = null;
-    row.photoApprovedBy = null;
+    // The photo is live on the site as soon as staff set it; keep who did it and when.
+    row.photoApprovedAt = body.photoMediaId ? new Date() : null;
+    row.photoApprovedBy = body.photoMediaId ? actor || null : null;
   }
 }
 
@@ -30,7 +30,7 @@ exports.list = asyncHandler(async (req, res) => ok(res, (await ordered()).map(se
 
 exports.create = asyncHandler(async (req, res) => {
   const row = TeamMember.build({ order: (await TeamMember.max("order")) + 1 || 0, role: { en: "", fr: "", es: "" }, bio: { en: "", fr: "", es: "" } });
-  await apply(row, req.body);
+  await apply(row, req.body, req.user?.name);
   await row.save();
   await row.reload({ include: INCLUDES });
   await audit.record(req, { action: "team.created", entity: "team_member", entityId: row.id, after: serialize(row) });
@@ -41,7 +41,7 @@ exports.update = asyncHandler(async (req, res) => {
   const row = await TeamMember.findByPk(req.params.id, { include: INCLUDES });
   if (!row) throw ApiError.notFound("Team member not found");
   const before = serialize(row);
-  await apply(row, req.body);
+  await apply(row, req.body, req.user?.name);
   await row.save();
   await row.reload({ include: INCLUDES });
   await audit.record(req, { action: "team.updated", entity: "team_member", entityId: row.id, before, after: serialize(row) });
@@ -66,26 +66,7 @@ exports.reorder = asyncHandler(async (req, res) => {
   return ok(res, (await ordered()).map(serialize));
 });
 
-exports.approvePhoto = asyncHandler(async (req, res) => {
-  const row = await TeamMember.findByPk(req.params.id, { include: INCLUDES });
-  if (!row) throw ApiError.notFound("Team member not found");
-  if (!row.photoMediaId) throw ApiError.badRequest("Add a photo before recording its approval");
-  row.photoApprovedAt = new Date();
-  row.photoApprovedBy = req.body.approvedBy;
-  await row.save();
-  await audit.record(req, { action: "team.photo_approved", entity: "team_member", entityId: row.id, meta: { approvedBy: row.photoApprovedBy } });
-  return ok(res, serialize(row));
-});
 
-exports.revokePhotoApproval = asyncHandler(async (req, res) => {
-  const row = await TeamMember.findByPk(req.params.id, { include: INCLUDES });
-  if (!row) throw ApiError.notFound("Team member not found");
-  row.photoApprovedAt = null;
-  row.photoApprovedBy = null;
-  await row.save();
-  await audit.record(req, { action: "team.photo_approval_revoked", entity: "team_member", entityId: row.id });
-  return ok(res, serialize(row));
-});
 
 exports.serialize = serialize;
 exports.INCLUDES = INCLUDES;

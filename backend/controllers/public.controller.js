@@ -70,13 +70,13 @@ exports.programs = asyncHandler(async (req, res) => {
   );
 });
 
-// Photos are exposed only once the person approved publication.
+// Photos are shown as soon as staff set one (the person's consent is handled offline).
 exports.team = asyncHandler(async (req, res) => {
   cache(res, false);
   const rows = await TeamMember.findAll({ where: { visible: true }, include: team.INCLUDES, order: [["order", "ASC"], ["id", "ASC"]] });
   return ok(
     res,
-    rows.map((row) => ({ id: row.id, name: row.name, role: row.role, bio: row.bio, photo: row.photoApprovedAt ? mediaSummary(row.photo) : null })),
+    rows.map((row) => ({ id: row.id, name: row.name, role: row.role, bio: row.bio, photo: mediaSummary(row.photo) })),
   );
 });
 

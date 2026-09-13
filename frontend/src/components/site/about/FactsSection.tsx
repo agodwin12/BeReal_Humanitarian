@@ -4,15 +4,15 @@ import { FadeIn } from "@/components/motion/FadeIn";
 import { pickText, type SiteSettings } from "@/lib/cms";
 import { siteConfig } from "@/lib/site-config";
 
-// Organization facts exactly as supplied in the content brief (Section 1);
-// legal name, EIN, fiscal year and registered office come from Site settings.
+// Transparency & Accountability facts; legal name, EIN, fiscal year and the
+// public location come from Site settings (the street address is not published).
 export function FactsSection({ settings }: { settings: SiteSettings | null }) {
   const t = useTranslations("About.facts");
   const locale = useLocale();
 
   const legalName = settings?.legalName ?? siteConfig.orgLegalName;
   const ein = settings ? (settings.showEin ? settings.ein : null) : siteConfig.ein;
-  const address = settings?.addressLine ?? siteConfig.registeredAddress;
+  const address = settings ? settings.addressLine : siteConfig.publicLocation;
   const fiscalYear = pickText(settings?.fiscalYear, locale) || t("fiscalYearValue");
 
   const rows: { label: string; value: string | null }[] = [

@@ -2107,8 +2107,8 @@
 
 .leader-photo {
   position: relative;
-  width: 112px;
-  height: 112px;
+  width: 84px;
+  height: 84px;
   margin: 0 auto 0.9rem;
   border-radius: 50%;
   overflow: hidden;
@@ -2473,4 +2473,24 @@
   font-size: 0.68rem;
   font-weight: 600;
   opacity: 0.75;
+}
+
+/* Leadership — everyone on one row on desktop (4 or 5 people), wrapping below */
+.leader-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.1rem;
+}
+
+@media (max-width: 620px) {
+  .leader-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .leader-grid {
+    grid-template-columns: 1fr;
+  }
 }

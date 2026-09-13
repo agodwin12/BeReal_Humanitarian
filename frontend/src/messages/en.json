@@ -423,8 +423,8 @@
       "eyebrow": "Contact Details",
       "title": "Reach us",
       "organization": "Organization",
-      "mailing": "Mailing address",
-      "mailingNote": "Registered office — for mail only, not a walk-in office.",
+      "mailing": "Location",
+      "mailingNote": "Mailing address available on request.",
       "email": "Email",
       "phone": "Phone",
       "social": "Follow us",
@@ -515,17 +515,18 @@
         "founder": "Founder & President",
         "treasurer": "Treasurer / Director",
         "secretary": "Secretary / Director",
-        "director": "Director"
+        "director": "Director",
+        "counselor": "Counselor"
       }
     },
     "facts": {
       "eyebrow": "At a Glance",
-      "title": "Organization facts",
+      "title": "Transparency & Accountability",
       "legalName": "Legal name",
       "type": "Organization type",
       "typeValue": "Texas nonprofit corporation; board-governed; no voting members",
       "status": "Federal tax status",
-      "statusValue": "IRS-recognized tax-exempt organization under IRC §501(c)(3)",
+      "statusValue": "Be Real Humanitarian Works Inc. is recognized by the IRS as a tax-exempt organization under Section 501(c)(3). Contributions are tax-deductible to the extent permitted by law.",
       "classification": "Public charity classification",
       "classificationValue": "IRC §170(b)(1)(A)(vi)",
       "ein": "EIN",
@@ -533,7 +534,7 @@
       "fiscalYearValue": "January 1 – December 31",
       "scope": "Geographic scope",
       "scopeValue": "United States and international humanitarian activities, including Cameroon",
-      "office": "Registered office"
+      "office": "Location"
     }
   },
   "Unsubscribe": {

@@ -51,8 +51,6 @@ teamRouter.post("/", editor, rules.teamCreateRules, rules.teamRules, validate, t
 teamRouter.post("/reorder", editor, rules.reorderRules, validate, team.reorder);
 teamRouter.patch("/:id", editor, rules.idParam, rules.teamRules, validate, team.update);
 teamRouter.delete("/:id", editor, rules.idParam, validate, team.destroy);
-teamRouter.post("/:id/photo-approval", editor, rules.idParam, rules.photoApprovalRules, validate, team.approvePhoto);
-teamRouter.delete("/:id/photo-approval", editor, rules.idParam, validate, team.revokePhotoApproval);
 
 // ---- Impact -------------------------------------------------------------------
 const impactRouter = express.Router();
