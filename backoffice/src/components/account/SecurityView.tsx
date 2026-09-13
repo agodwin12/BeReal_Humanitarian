@@ -18,7 +18,9 @@ import { getSessionUser, setSession, getSessionToken } from "@/lib/auth";
 import { formatDateTime } from "@/lib/format";
 import { ROLE_LABEL, type AdminUser } from "@/lib/types";
 
+// Show the field-level reason (e.g. "Enter the 6-digit code…") instead of the generic "Validation failed".
 function errorMessage(err: unknown) {
+  if (err instanceof ApiError && err.errors?.length) return err.errors.map((e) => e.message).join(" ");
   return err instanceof ApiError || err instanceof Error ? err.message : "Something went wrong.";
 }
 

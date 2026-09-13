@@ -17,12 +17,12 @@ module.exports = {
   acceptInviteRules: [token, password],
   twoFactorLoginRules: [
     body("challengeToken").isString().notEmpty().withMessage("Sign-in step missing"),
-    body("code").isString().trim().isLength({ min: 6, max: 12 }).withMessage("Enter the 6-digit code or a recovery code"),
+    body("code").isString().trim().isLength({ min: 6, max: 20 }).withMessage("Enter the 6-digit code from your authenticator app, or one of your recovery codes"),
   ],
-  twoFactorCodeRules: [body("code").isString().trim().isLength({ min: 6, max: 12 }).withMessage("Enter the 6-digit code")],
+  twoFactorCodeRules: [body("code").isString().trim().isLength({ min: 6, max: 20 }).withMessage("Enter the 6-digit code from your authenticator app")],
   twoFactorDisableRules: [
-    body("password").isString().notEmpty().withMessage("Password is required"),
-    body("code").isString().trim().isLength({ min: 6, max: 12 }).withMessage("Enter the 6-digit code or a recovery code"),
+    body("password").isString().notEmpty().withMessage("Enter your current password"),
+    body("code").isString().trim().isLength({ min: 6, max: 20 }).withMessage("Enter the 6-digit code from your authenticator app, or one of your recovery codes"),
   ],
   changePasswordRules: [
     body("currentPassword").isString().notEmpty().withMessage("Current password is required"),
