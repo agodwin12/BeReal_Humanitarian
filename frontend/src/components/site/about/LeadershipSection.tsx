@@ -35,24 +35,27 @@ export function LeadershipSection({ members }: { members: CmsTeamMember[] | null
         <div className="leader-grid">
           {people.map((person, index) => (
             <FadeIn key={person.id} delay={index * 0.06} className="leader-card">
-              {person.photo ? (
-                <div className="leader-photo image-container">
+              {/* Square photo (or initials tile) filling the top of the card; name and role below. */}
+              <div className="leader-media">
+                {person.photo ? (
                   <Image
                     src={mediaSrc(person.photo, "medium")}
                     alt={pickText(person.photo.alt, locale, person.name)}
                     fill
-                    sizes="(max-width: 620px) 50vw, 25vw"
+                    sizes="(max-width: 620px) 50vw, 20vw"
                     className="object-cover"
                   />
-                </div>
-              ) : (
-                <div className="leader-avatar" aria-hidden="true">
-                  {initials(person.name)}
-                </div>
-              )}
-              <h3>{person.name}</h3>
-              <p>{person.role}</p>
-              {person.bio ? <p className="leader-bio">{person.bio}</p> : null}
+                ) : (
+                  <div className="leader-avatar" aria-hidden="true">
+                    {initials(person.name)}
+                  </div>
+                )}
+              </div>
+              <div className="leader-body">
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+                {person.bio ? <p className="leader-bio">{person.bio}</p> : null}
+              </div>
             </FadeIn>
           ))}
         </div>

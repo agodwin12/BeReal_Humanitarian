@@ -1088,7 +1088,8 @@
 }
 
 .leader-card {
-  padding: 1.6rem 1.2rem;
+  padding: 0;
+  overflow: hidden;
   text-align: center;
   border-radius: 14px;
   background: white;
@@ -1096,19 +1097,33 @@
   box-shadow: var(--shadow-xs);
 }
 
+/* Square media block: the photo (or the initials tile) fills the top of the card edge to edge. */
+.leader-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--brand-purple-50);
+}
+
+/* Portrait photos: keep the face in frame without cutting the top of the head. */
+.leader-media img {
+  object-position: 50% 22%;
+}
+
 .leader-avatar {
-  width: 84px;
-  height: 84px;
-  margin: 0 auto 0.9rem;
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: var(--brand-purple-100);
+  background: linear-gradient(160deg, var(--brand-purple-100), var(--brand-purple-50));
   color: var(--brand-purple-700);
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+}
+
+.leader-body {
+  padding: 1rem 0.9rem 1.2rem;
 }
 
 .leader-card h3 {
@@ -2103,16 +2118,6 @@
 .preview-banner a {
   color: #ffd9d6;
   text-decoration: underline;
-}
-
-.leader-photo {
-  position: relative;
-  width: 84px;
-  height: 84px;
-  margin: 0 auto 0.9rem;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: var(--shadow-xs);
 }
 
 .leader-card .leader-bio {
