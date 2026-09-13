@@ -1,0 +1,5 @@
+# Be Real Humanitarian Works — daily backup (content JSON + PostgreSQL dump + media).
+# Installed by deploy/vps/deploy.sh as /etc/cron.d/bereal-backup. Times are UTC.
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+15 3 * * * root /bin/bash /var/www/bereal/deploy/vps/backup.sh

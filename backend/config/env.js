@@ -20,6 +20,12 @@ module.exports = {
   previewSecret: process.env.PREVIEW_SECRET || "",
   // Launch copy used to seed content tables on first run.
   contentSeedDir: process.env.CONTENT_SEED_DIR || require("path").join(__dirname, "..", "seed", "messages"),
+  // Daily backup job (scripts/backup.js): where the files go, where the status JSON for the System screen is written.
+  backup: {
+    dir: process.env.BACKUP_DIR || require("path").join(__dirname, "..", "backups"),
+    statusPath: process.env.BACKUP_STATUS_PATH || require("path").join(process.env.BACKUP_DIR || require("path").join(__dirname, "..", "backups"), "status.json"),
+    keepDays: Number(process.env.BACKUP_KEEP_DAYS || 14),
+  },
 
   db: {
     url: process.env.DATABASE_URL || null,

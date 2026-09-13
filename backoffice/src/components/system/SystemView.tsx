@@ -119,11 +119,11 @@ export function SystemView() {
         </Panel>
 
         <Panel icon={HardDrive} title="Storage & media">
-          <Row label="Driver" value={<span className="inline-flex items-center gap-1.5"><Dot ok={status.storage.driver === "r2"} warn />{status.storage.driver === "r2" ? `Cloudflare R2 · ${status.storage.r2Bucket}` : "Local folder (set R2 keys for production)"}</span>} />
+          <Row label="Driver" value={<span className="inline-flex items-center gap-1.5"><Dot ok />{status.storage.driver === "r2" ? `Cloudflare R2 · ${status.storage.r2Bucket}` : "Server folder (backed up daily with the database)"}</span>} />
           <Row label="Files" value={`${status.storage.mediaCount} · ${formatBytes(status.storage.mediaBytes)}`} />
           <Row label="Backup job" value={<span className="inline-flex items-center gap-1.5"><Dot ok={status.backup.configured && status.backup.status === "ok"} warn={!status.backup.configured} />{status.backup.configured ? `${status.backup.status ?? "?"} · ${status.backup.lastRunAt ? formatRelative(status.backup.lastRunAt) : "never"}` : "Not configured"}</span>} />
           {!status.backup.configured ? (
-            <p className="text-[0.72rem] text-muted-foreground">Point BACKUP_STATUS_PATH at the JSON your backup job writes (lastRunAt, status, sizeBytes, location) to see it here. The button above downloads a full content backup any time.</p>
+            <p className="text-[0.72rem] text-muted-foreground">No backup job has reported yet. On the server it runs every night at 03:15 UTC (deploy/vps/backup.sh); the button above downloads a content backup any time.</p>
           ) : status.backup.location ? (
             <p className="text-[0.72rem] text-muted-foreground">{status.backup.location}</p>
           ) : null}

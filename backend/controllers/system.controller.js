@@ -9,6 +9,7 @@ const asyncHandler = require("../utils/asyncHandler");
 const { ok } = require("../utils/apiResponse");
 const audit = require("../utils/audit");
 const storage = require("../services/storage.service");
+const { buildContentExport } = require("../services/backup.service");
 const { parsePagination, paginationMeta } = require("../utils/pagination");
 
 const { sequelize, Media, EmailLog, AuditLog } = models;
@@ -44,7 +45,7 @@ exports.status = asyncHandler(async (req, res) => {
   const lastAudit = await AuditLog.findOne({ order: [["createdAt", "DESC"]], attributes: ["action", "createdAt"] });
 
   let backup = { configured: false };
-  const backupPath = process.env.BACKUP_STATUS_PATH || "";
+  const backupPath = env.backup.statusPath || "";
   if (backupPath && fs.existsSync(backupPath)) {
     try {
       backup = { configured: true, ...JSON.parse(fs.readFileSync(backupPath, "utf8")) };
@@ -93,24 +94,7 @@ exports.emailLogs = asyncHandler(async (req, res) => {
 // GET /api/system/export — every content table as one JSON file (a manual
 // backup a Super Admin can download any time).
 exports.exportContent = asyncHandler(async (req, res) => {
-  const plain = (rows) => rows.map((r) => r.get({ plain: true }));
-  const payload = {
-    exportedAt: new Date().toISOString(),
-    apiVersion: pkg.version,
-    siteSettings: plain(await models.SiteSetting.findAll()),
-    media: plain(await models.Media.findAll()),
-    programs: plain(await models.Program.findAll()),
-    teamMembers: plain(await models.TeamMember.findAll()),
-    impactMetrics: plain(await models.ImpactMetric.findAll()),
-    impactStories: plain(await models.ImpactStory.findAll()),
-    stewardshipUpdates: plain(await models.StewardshipUpdate.findAll()),
-    pages: plain(await models.Page.findAll()),
-    pageVersions: plain(await models.PageVersion.findAll()),
-    legalPages: plain(await models.LegalPage.findAll()),
-    legalPageVersions: plain(await models.LegalPageVersion.findAll()),
-    notificationSettings: plain(await models.NotificationSetting.findAll()),
-    translationReviews: plain(await models.TranslationReview.findAll()),
-  };
+  const payload = await buildContentExport();
   await audit.record(req, { action: "system.content_exported", entity: "system" });
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("Content-Disposition", `attachment; filename="be-real-content-${new Date().toISOString().slice(0, 10)}.json"`);

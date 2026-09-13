@@ -47,6 +47,11 @@ echo "== pm2"
 pm2 startOrReload "$APP_DIR/deploy/vps/ecosystem.config.js" --update-env
 pm2 save
 
+echo "== backup job"
+mkdir -p /var/backups/bereal && chmod 700 /var/backups/bereal
+install -m 644 "$APP_DIR/deploy/vps/bereal-backup.cron" /etc/cron.d/bereal-backup
+echo "cron installed: /etc/cron.d/bereal-backup (daily 03:15 UTC)"
+
 echo "== nginx"
 nginx -t && systemctl reload nginx
 echo "Done. pm2 status:"

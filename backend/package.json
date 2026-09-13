@@ -9,7 +9,8 @@
     "migrate": "node db/migrate.js up",
     "migrate:down": "node db/migrate.js down",
     "migrate:pending": "node db/migrate.js pending",
-    "seed:admin": "node scripts/seed-admin.js"
+    "seed:admin": "node scripts/seed-admin.js",
+    "backup": "node scripts/backup.js"
   },
   "keywords": [],
   "author": "Godwin Tech Solution",
