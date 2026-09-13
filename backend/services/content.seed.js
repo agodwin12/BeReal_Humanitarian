@@ -37,7 +37,7 @@ const TEAM_SEED = [
   { name: "Christian Fohtung", roleKey: "treasurer" },
   { name: "Joel Nyaghu", roleKey: "secretary" },
   { name: "Mildred Fomengia", roleKey: "director" },
-  { name: "Pastor Joan", roleKey: "counselor" },
+  { name: "Pst Joan Emeadi", roleKey: "counselor" },
 ];
 
 const METRIC_SEED = [
