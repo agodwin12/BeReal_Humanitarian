@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
-import { FileText, ImagePlus, Search, Trash2, UploadCloud } from "lucide-react";
+import { FileText, Film, ImagePlus, Search, Trash2, UploadCloud } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -33,15 +33,24 @@ export function formatBytes(bytes: number) {
 }
 
 // Upload form shared by the picker and the Media library screen.
+const ACCEPT: Record<string, string> = {
+  all: "image/jpeg,image/png,image/webp,image/avif,image/gif,image/svg+xml,application/pdf,video/mp4,video/webm,video/quicktime",
+  image: "image/jpeg,image/png,image/webp,image/avif,image/gif,image/svg+xml",
+  pdf: "application/pdf",
+  video: "video/mp4,video/webm,video/quicktime",
+};
+
 export function UploadForm({
   onUploaded,
   replaceId,
   compact = false,
+  kind = "all",
 }: {
   onUploaded: (media: Media) => void;
   /** When set, replaces the file behind this media id instead of creating one. */
   replaceId?: number;
   compact?: boolean;
+  kind?: "all" | "image" | "pdf" | "video";
 }) {
   const id = useId();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -103,14 +112,14 @@ export function UploadForm({
           </span>
         ) : (
           <span>
-            <span className="font-bold text-brand-purple-800">Choose a file</span> or drop it here — JPEG, PNG, WebP, SVG or PDF, up to 15 MB
+            <span className="font-bold text-brand-purple-800">Choose a file</span> or drop it here — {kind === "video" ? "MP4, WebM or MOV, up to 200 MB" : "JPEG, PNG, WebP, SVG or PDF, up to 15 MB"}
           </span>
         )}
         <input
           ref={fileRef}
           id={`${id}-file`}
           type="file"
-          accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/svg+xml,application/pdf"
+          accept={ACCEPT[kind] ?? ACCEPT.all}
           className="sr-only"
           onChange={(e) => setFile(e.target.files?.[0] ?? null)}
         />
@@ -168,7 +177,7 @@ export function MediaGrid({
   onSelect: (media: Media) => void;
   selectedId?: number | null;
   refreshKey?: number;
-  kind?: "all" | "image" | "pdf";
+  kind?: "all" | "image" | "pdf" | "video";
   compact?: boolean;
 }) {
   const [items, setItems] = useState<Media[]>([]);
@@ -237,7 +246,7 @@ export function MediaGrid({
                     <img src={thumb} alt={media.alt.en ?? ""} className="size-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
                   ) : (
                     <div className="flex size-full items-center justify-center text-muted-foreground">
-                      <FileText className="size-8" />
+                      {media.mimeType.startsWith("video/") ? <Film className="size-8" /> : <FileText className="size-8" />}
                     </div>
                   )}
                 </div>
@@ -283,7 +292,7 @@ export function MediaPickerDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSelect: (media: Media) => void;
-  kind?: "all" | "image" | "pdf";
+  kind?: "all" | "image" | "pdf" | "video";
   title?: string;
 }) {
   const [tab, setTab] = useState<"library" | "upload">("library");
@@ -319,6 +328,7 @@ export function MediaPickerDialog({
         ) : (
           <UploadForm
             compact
+            kind={kind}
             onUploaded={(media) => {
               setRefreshKey((k) => k + 1);
               onSelect(media);
@@ -348,7 +358,7 @@ export function MediaField({
   defaultSrc?: string;
   disabled?: boolean;
   hint?: string;
-  kind?: "all" | "image" | "pdf";
+  kind?: "all" | "image" | "pdf" | "video";
 }) {
   const [open, setOpen] = useState(false);
   const thumb = value ? mediaThumb(value) : defaultSrc ?? null;
@@ -363,7 +373,7 @@ export function MediaField({
             <img src={thumb} alt="" className="size-full object-cover" />
           ) : (
             <div className="flex size-full items-center justify-center text-muted-foreground">
-              <FileText className="size-6" />
+              {value?.mimeType.startsWith("video/") ? <Film className="size-6" /> : <FileText className="size-6" />}
             </div>
           )}
         </div>
@@ -387,7 +397,7 @@ export function MediaField({
         </div>
       </div>
       {hint ? <p className="text-[0.74rem] text-muted-foreground">{hint}</p> : null}
-      <MediaPickerDialog open={open} onOpenChange={setOpen} onSelect={onChange} kind={kind} />
+      <MediaPickerDialog open={open} onOpenChange={setOpen} onSelect={onChange} kind={kind} title={kind === "video" ? "Choose a video" : "Choose a photo"} />
     </div>
   );
 }

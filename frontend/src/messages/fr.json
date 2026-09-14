@@ -15,7 +15,9 @@
     "contactTitle": "Contact — Be Real Humanitarian Works Inc.",
     "contactDescription": "Questions, idées ou envie d'aider — contactez Be Real Humanitarian Works Inc.",
     "donateTitle": "Faire un don — Be Real Humanitarian Works Inc.",
-    "donateDescription": "Donnez de l'espoir aujourd'hui. Votre don ponctuel aide Be Real Humanitarian Works à apporter secours, soins et opportunités aux personnes et familles vulnérables."
+    "donateDescription": "Donnez de l'espoir aujourd'hui. Votre don ponctuel aide Be Real Humanitarian Works à apporter secours, soins et opportunités aux personnes et familles vulnérables.",
+    "galleryTitle": "Galerie — Be Real Humanitarian Works Inc.",
+    "galleryDescription": "Photos et vidéos des actions de Be Real Humanitarian Works : distributions alimentaires, visites, soins et travail communautaire."
   },
   "Nav": {
     "home": "Accueil",
@@ -30,7 +32,8 @@
     "menu": "Menu",
     "siteNavigation": "Navigation du site",
     "privacy": "Politique de confidentialité",
-    "terms": "Conditions et avis du site"
+    "terms": "Conditions et avis du site",
+    "gallery": "Galerie"
   },
   "Languages": {
     "label": "Langue",
@@ -705,6 +708,22 @@
       "notActive": "Ce don mensuel n'est pas actif.",
       "giveAgain": "Faire un nouveau don",
       "error": "Une erreur est survenue. Veuillez réessayer."
+    }
+  },
+  "GalleryPage": {
+    "eyebrow": "Galerie",
+    "title": "Notre action en images",
+    "lead": "Des moments réels de nos actions sur le terrain — les personnes que nous servons, les bénévoles présents et l'aide qui parvient aux familles.",
+    "heroAlt": "Bénévoles de Be Real Humanitarian Works lors d'une distribution communautaire",
+    "grid": {
+      "eyebrow": "Moments sur le terrain",
+      "title": "Photos et vidéos",
+      "intro": "Chaque entrée indique ce qui s'est passé et quand. Les plus récentes d'abord.",
+      "empty": "Les photos et vidéos apparaîtront ici au fil de nos actions.",
+      "photo": "Photo",
+      "video": "Vidéo",
+      "open": "Agrandir",
+      "close": "Fermer"
     }
   }
 }

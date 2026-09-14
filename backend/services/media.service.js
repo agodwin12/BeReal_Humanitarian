@@ -6,8 +6,12 @@ const storage = require("./storage.service");
 
 // Raster formats get web-size WebP variants; SVG and PDF are stored as-is.
 const RASTER_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/avif", "image/gif"]);
-const ALLOWED_TYPES = new Set([...RASTER_TYPES, "image/svg+xml", "application/pdf"]);
+const VIDEO_TYPES = new Set(["video/mp4", "video/webm", "video/quicktime"]);
+const ALLOWED_TYPES = new Set([...RASTER_TYPES, "image/svg+xml", "application/pdf", ...VIDEO_TYPES]);
+// Images and documents up to 15 MB; videos (gallery) up to 200 MB.
 const MAX_BYTES = 15 * 1024 * 1024;
+const MAX_VIDEO_BYTES = 200 * 1024 * 1024;
+const maxBytesFor = (mimeType) => (VIDEO_TYPES.has(mimeType) ? MAX_VIDEO_BYTES : MAX_BYTES);
 
 const VARIANTS = [
   { name: "thumb", width: 400 },
@@ -38,7 +42,7 @@ function buildKeyBase(filename) {
 // Stores the upload (+ variants) and returns the columns for a Media row.
 async function storeUpload(file) {
   if (!ALLOWED_TYPES.has(file.mimetype)) throw new Error("Unsupported file type");
-  if (file.size > MAX_BYTES) throw new Error("File is larger than 15 MB");
+  if (file.size > maxBytesFor(file.mimetype)) throw new Error(VIDEO_TYPES.has(file.mimetype) ? "Video is larger than 200 MB" : "File is larger than 15 MB");
 
   const { folder, base, ext } = buildKeyBase(file.originalname);
   const key = `${folder}/${base}${ext || ""}`;
@@ -81,4 +85,4 @@ async function removeStored(media) {
   for (const variant of Object.values(media.variants || {})) await storage.remove(variant.key);
 }
 
-module.exports = { storeUpload, removeStored, ALLOWED_TYPES, MAX_BYTES };
+module.exports = { storeUpload, removeStored, ALLOWED_TYPES, VIDEO_TYPES, MAX_BYTES, MAX_VIDEO_BYTES, maxBytesFor };

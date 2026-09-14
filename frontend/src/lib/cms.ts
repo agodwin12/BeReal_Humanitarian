@@ -102,6 +102,19 @@ export type DonationConfig = {
   mode: "live" | "test" | "simulated";
 };
 
+export type CmsGalleryItem = {
+  id: number;
+  kind: "image" | "video";
+  media: (CmsMedia & { mimeType?: string }) | null;
+  videoUrl: string | null;
+  embedUrl: string | null;
+  title: Localized;
+  description: Localized;
+  happenedOn: string | null;
+  location: string | null;
+  published: boolean;
+};
+
 export function pickText(value: Localized | undefined | null, locale: string, fallback = ""): string {
   if (!value) return fallback;
   return value[locale as Locale] || value.en || fallback;
@@ -147,6 +160,7 @@ export const getSiteSettings = cache(() => cmsFetch<SiteSettings>("/site-setting
 export const getPrograms = cache(() => cmsFetch<CmsProgram[]>("/programs"));
 export const getTeam = cache(() => cmsFetch<CmsTeamMember[]>("/team"));
 export const getImpact = cache(() => cmsFetch<CmsImpact>("/impact"));
+export const getGallery = cache(() => cmsFetch<CmsGalleryItem[]>("/gallery"));
 export const getLegalPage = cache((slug: string) => cmsFetch<CmsLegalPage>(`/legal/${slug}`));
 export const getDonationConfig = cache(() => cmsFetch<DonationConfig>("/donations/config"));
 

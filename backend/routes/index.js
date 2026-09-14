@@ -21,6 +21,7 @@ router.use("/media", content.media);
 router.use("/programs", content.programs);
 router.use("/team-members", content.team);
 router.use("/impact", content.impact);
+router.use("/gallery", content.gallery);
 router.use("/pages", content.pages);
 router.use("/legal-pages", content.legal);
 

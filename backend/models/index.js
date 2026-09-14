@@ -10,7 +10,7 @@ const SubmissionNote = require("./submissionNote.model")(sequelize, DataTypes);
 const NewsletterSubscriber = require("./newsletterSubscriber.model")(sequelize, DataTypes);
 const NotificationSetting = require("./notificationSetting.model")(sequelize, DataTypes);
 // Phase C
-const { Media, SiteSetting, Program, TeamMember, ImpactMetric, ImpactStory, StewardshipUpdate, Page, PageVersion, LegalPage, LegalPageVersion } =
+const { Media, SiteSetting, Program, TeamMember, ImpactMetric, ImpactStory, StewardshipUpdate, Page, PageVersion, LegalPage, LegalPageVersion, GalleryItem } =
   require("./content.models")(sequelize, DataTypes);
 // Phase D
 const { TranslationReview, EmailLog } = require("./phaseD.models")(sequelize, DataTypes);
@@ -41,6 +41,7 @@ Program.belongsTo(Media, { as: "cardMedia", foreignKey: "cardMediaId" });
 Program.belongsTo(Media, { as: "detailMedia", foreignKey: "detailMediaId" });
 TeamMember.belongsTo(Media, { as: "photo", foreignKey: "photoMediaId" });
 ImpactStory.belongsTo(Media, { as: "media", foreignKey: "mediaId" });
+GalleryItem.belongsTo(Media, { as: "media", foreignKey: "mediaId" });
 Page.hasMany(PageVersion, { as: "versions", foreignKey: "pageId", onDelete: "CASCADE" });
 PageVersion.belongsTo(User, { as: "createdBy", foreignKey: "createdById" });
 LegalPage.hasMany(LegalPageVersion, { as: "versions", foreignKey: "legalPageId", onDelete: "CASCADE" });
@@ -60,6 +61,7 @@ module.exports = {
   TeamMember,
   ImpactMetric,
   ImpactStory,
+  GalleryItem,
   StewardshipUpdate,
   Page,
   PageVersion,

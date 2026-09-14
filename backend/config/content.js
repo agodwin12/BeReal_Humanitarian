@@ -2,7 +2,7 @@
 // and used by the public site — keep the three in sync.
 const LOCALES = ["en", "fr", "es"];
 
-const PAGE_SLUGS = ["home", "about", "programs", "impact", "get-involved", "request-assistance", "contact", "donate", "global"];
+const PAGE_SLUGS = ["home", "about", "programs", "impact", "gallery", "get-involved", "request-assistance", "contact", "donate", "global"];
 const LEGAL_SLUGS = ["privacy-policy", "terms"];
 
 // lucide icon names the public site knows how to render for a program card.
@@ -31,6 +31,7 @@ const NAV_ITEMS = [
   { key: "about", href: "/about" },
   { key: "programs", href: "/programs" },
   { key: "impact", href: "/impact" },
+  { key: "gallery", href: "/gallery" },
   { key: "getInvolved", href: "/get-involved" },
   { key: "requestAssistance", href: "/request-assistance" },
   { key: "contact", href: "/contact" },

@@ -102,6 +102,17 @@ const PAGES = [
     ],
   },
   {
+    slug: "gallery",
+    title: "Gallery",
+    path: "/gallery",
+    sections: [
+      { key: "hero", title: "Hero", locked: true, messageKeys: ["GalleryPage.eyebrow", "GalleryPage.title", "GalleryPage.lead", "GalleryPage.heroAlt"], images: [{ slot: "hero", label: "Hero photo", default: "/images/cta-community.png" }] },
+      { key: "grid", title: "Photos & videos", description: "The entries themselves (photo or video, title, description, date) are managed on the Gallery screen.", messageKeys: ["GalleryPage.grid."] },
+      CTA_SECTION,
+      { key: "seo", title: "Search & social preview", messageKeys: ["Meta.galleryTitle", "Meta.galleryDescription"], seo: true },
+    ],
+  },
+  {
     slug: "donate",
     title: "Donate",
     path: "/donate",

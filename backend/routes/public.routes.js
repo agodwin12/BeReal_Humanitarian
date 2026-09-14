@@ -26,6 +26,7 @@ router.get("/pages/:slug", ctrl.page);
 router.get("/programs", ctrl.programs);
 router.get("/team", ctrl.team);
 router.get("/impact", ctrl.impact);
+router.get("/gallery", require("../controllers/gallery.controller").publicList);
 router.get("/legal/:slug", ctrl.legal);
 
 module.exports = router;

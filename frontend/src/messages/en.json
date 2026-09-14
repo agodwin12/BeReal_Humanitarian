@@ -15,7 +15,9 @@
     "contactTitle": "Contact — Be Real Humanitarian Works Inc.",
     "contactDescription": "Questions, ideas, or ways you'd like to help — get in touch with Be Real Humanitarian Works Inc.",
     "donateTitle": "Donate — Be Real Humanitarian Works Inc.",
-    "donateDescription": "Give hope today. Your one-time gift helps Be Real Humanitarian Works bring relief, care and opportunity to vulnerable individuals and families."
+    "donateDescription": "Give hope today. Your one-time gift helps Be Real Humanitarian Works bring relief, care and opportunity to vulnerable individuals and families.",
+    "galleryTitle": "Gallery — Be Real Humanitarian Works Inc.",
+    "galleryDescription": "Photos and videos from Be Real Humanitarian Works outreach: food distributions, visits, care and community work."
   },
   "Nav": {
     "home": "Home",
@@ -30,7 +32,8 @@
     "menu": "Menu",
     "siteNavigation": "Site navigation",
     "privacy": "Privacy Policy",
-    "terms": "Terms & Website Disclaimer"
+    "terms": "Terms & Website Disclaimer",
+    "gallery": "Gallery"
   },
   "Languages": {
     "label": "Language",
@@ -705,6 +708,22 @@
       "notActive": "This monthly gift is not active.",
       "giveAgain": "Make a new gift",
       "error": "Something went wrong. Please try again."
+    }
+  },
+  "GalleryPage": {
+    "eyebrow": "Gallery",
+    "title": "Our Work in Action",
+    "lead": "Real moments from our outreach — the people we serve, the volunteers who show up, and the help that reaches families.",
+    "heroAlt": "Be Real Humanitarian Works volunteers during a community distribution",
+    "grid": {
+      "eyebrow": "Moments from the field",
+      "title": "Photos and videos",
+      "intro": "Each entry shows what happened and when. Newest first.",
+      "empty": "Photos and videos will appear here as our outreach continues.",
+      "photo": "Photo",
+      "video": "Video",
+      "open": "View larger",
+      "close": "Close"
     }
   }
 }

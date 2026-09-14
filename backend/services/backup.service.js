@@ -31,6 +31,7 @@ async function buildContentExport() {
     notificationSettings: plain(await models.NotificationSetting.findAll()),
     translationReviews: plain(await models.TranslationReview.findAll()),
     donationSettings: plain(await models.DonationSetting.findAll()),
+    galleryItems: plain(await models.GalleryItem.findAll()),
   };
 }
 

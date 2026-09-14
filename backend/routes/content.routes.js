@@ -11,6 +11,7 @@ const media = require("../controllers/media.controller");
 const programs = require("../controllers/programs.controller");
 const team = require("../controllers/teamMembers.controller");
 const impact = require("../controllers/impact.controller");
+const gallery = require("../controllers/gallery.controller");
 const pages = require("../controllers/pages.controller");
 const legal = require("../controllers/legalPages.controller");
 
@@ -53,6 +54,13 @@ teamRouter.patch("/:id", editor, rules.idParam, rules.teamRules, validate, team.
 teamRouter.delete("/:id", editor, rules.idParam, validate, team.destroy);
 
 // ---- Impact -------------------------------------------------------------------
+const galleryRouter = express.Router();
+galleryRouter.use(authenticate);
+galleryRouter.get("/", gallery.list);
+galleryRouter.post("/", editor, rules.galleryRules, validate, gallery.create);
+galleryRouter.patch("/:id", editor, rules.idParam, rules.galleryRules, validate, gallery.update);
+galleryRouter.delete("/:id", editor, rules.idParam, validate, gallery.destroy);
+
 const impactRouter = express.Router();
 impactRouter.use(authenticate);
 impactRouter.get("/", impact.overview);
@@ -90,4 +98,4 @@ legalRouter.post("/:slug/publish", editor, rules.legalSlugParam, validate, legal
 legalRouter.get("/:slug/versions/:versionId", rules.legalSlugParam, rules.versionParam, validate, legal.version);
 legalRouter.post("/:slug/versions/:versionId/restore", editor, rules.legalSlugParam, rules.versionParam, validate, legal.restore);
 
-module.exports = { siteSettings, media: mediaRouter, programs: programsRouter, team: teamRouter, impact: impactRouter, pages: pagesRouter, legal: legalRouter };
+module.exports = { siteSettings, media: mediaRouter, programs: programsRouter, team: teamRouter, impact: impactRouter, gallery: galleryRouter, pages: pagesRouter, legal: legalRouter };

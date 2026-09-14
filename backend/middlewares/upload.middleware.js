@@ -1,15 +1,16 @@
 const multer = require("multer");
 
-const { ALLOWED_TYPES, MAX_BYTES } = require("../services/media.service");
+const { ALLOWED_TYPES, MAX_VIDEO_BYTES } = require("../services/media.service");
 const ApiError = require("../utils/apiError");
 
 // Single-file uploads kept in memory: sharp needs the buffer and the storage
 // driver writes it out (local disk or R2).
 const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: MAX_BYTES, files: 1 },
+  // Multer's limit is the video ceiling; media.service enforces 15 MB for images and documents.
+  limits: { fileSize: MAX_VIDEO_BYTES, files: 1 },
   fileFilter(req, file, cb) {
-    if (!ALLOWED_TYPES.has(file.mimetype)) return cb(ApiError.badRequest("Only JPEG, PNG, WebP, AVIF, GIF, SVG or PDF files are accepted"));
+    if (!ALLOWED_TYPES.has(file.mimetype)) return cb(ApiError.badRequest("Only JPEG, PNG, WebP, AVIF, GIF, SVG, PDF, MP4, WebM or MOV files are accepted"));
     cb(null, true);
   },
 });
@@ -18,7 +19,7 @@ const singleFile = (field = "file") => (req, res, next) =>
   upload.single(field)(req, res, (error) => {
     if (!error) return next();
     if (error instanceof multer.MulterError) {
-      return next(ApiError.badRequest(error.code === "LIMIT_FILE_SIZE" ? "File is larger than 15 MB" : error.message));
+      return next(ApiError.badRequest(error.code === "LIMIT_FILE_SIZE" ? "File is larger than 200 MB" : error.message));
     }
     return next(error);
   });

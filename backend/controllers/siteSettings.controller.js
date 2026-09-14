@@ -31,7 +31,12 @@ function serialize(row) {
 function normalizeNavigation(saved) {
   const byKey = new Map((Array.isArray(saved) ? saved : []).map((n) => [n.key, n]));
   const ordered = [...byKey.keys()].filter((key) => NAV_ITEMS.some((n) => n.key === key));
-  for (const item of NAV_ITEMS) if (!byKey.has(item.key)) ordered.push(item.key);
+  // A key added later (e.g. a new page) slots in after its default predecessor, not at the end.
+  NAV_ITEMS.forEach((item, index) => {
+    if (ordered.includes(item.key)) return;
+    const prev = NAV_ITEMS.slice(0, index).map((n) => n.key).filter((k) => ordered.includes(k)).pop();
+    ordered.splice(prev ? ordered.indexOf(prev) + 1 : 0, 0, item.key);
+  });
   return ordered.map((key) => {
     const base = NAV_ITEMS.find((n) => n.key === key);
     return { key, href: base.href, visible: byKey.get(key)?.visible !== false };

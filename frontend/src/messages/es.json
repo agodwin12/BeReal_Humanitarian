@@ -15,7 +15,9 @@
     "contactTitle": "Contacto — Be Real Humanitarian Works Inc.",
     "contactDescription": "Preguntas, ideas o formas de ayudar — ponte en contacto con Be Real Humanitarian Works Inc.",
     "donateTitle": "Donar — Be Real Humanitarian Works Inc.",
-    "donateDescription": "Da esperanza hoy. Tu donación única ayuda a Be Real Humanitarian Works a llevar ayuda, cuidado y oportunidades a personas y familias vulnerables."
+    "donateDescription": "Da esperanza hoy. Tu donación única ayuda a Be Real Humanitarian Works a llevar ayuda, cuidado y oportunidades a personas y familias vulnerables.",
+    "galleryTitle": "Galería — Be Real Humanitarian Works Inc.",
+    "galleryDescription": "Fotos y vídeos de las acciones de Be Real Humanitarian Works: repartos de alimentos, visitas, cuidados y trabajo comunitario."
   },
   "Nav": {
     "home": "Inicio",
@@ -30,7 +32,8 @@
     "menu": "Menú",
     "siteNavigation": "Navegación del sitio",
     "privacy": "Política de privacidad",
-    "terms": "Términos y aviso del sitio"
+    "terms": "Términos y aviso del sitio",
+    "gallery": "Galería"
   },
   "Languages": {
     "label": "Idioma",
@@ -705,6 +708,22 @@
       "notActive": "Esta donación mensual no está activa.",
       "giveAgain": "Hacer una nueva donación",
       "error": "Algo salió mal. Inténtalo de nuevo."
+    }
+  },
+  "GalleryPage": {
+    "eyebrow": "Galería",
+    "title": "Nuestra labor en imágenes",
+    "lead": "Momentos reales de nuestras acciones: las personas a las que servimos, los voluntarios que acuden y la ayuda que llega a las familias.",
+    "heroAlt": "Voluntarios de Be Real Humanitarian Works durante un reparto comunitario",
+    "grid": {
+      "eyebrow": "Momentos sobre el terreno",
+      "title": "Fotos y vídeos",
+      "intro": "Cada entrada muestra qué ocurrió y cuándo. Lo más reciente primero.",
+      "empty": "Las fotos y los vídeos aparecerán aquí a medida que avance nuestra labor.",
+      "photo": "Foto",
+      "video": "Vídeo",
+      "open": "Ver en grande",
+      "close": "Cerrar"
     }
   }
 }

@@ -115,6 +115,24 @@ module.exports = (sequelize, DataTypes) => {
     { tableName: "impact_metrics", timestamps: true },
   );
 
+  // Gallery: photos and videos of the outreach, with the day they happened.
+  const GalleryItem = sequelize.define(
+    "GalleryItem",
+    {
+      id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+      kind: { type: DataTypes.STRING(10), allowNull: false, defaultValue: "image" },
+      mediaId: { type: DataTypes.INTEGER, allowNull: true },
+      videoUrl: { type: DataTypes.STRING(500), allowNull: true },
+      title: localized(DataTypes),
+      description: localized(DataTypes),
+      happenedOn: { type: DataTypes.DATEONLY, allowNull: true },
+      location: { type: DataTypes.STRING(160), allowNull: true },
+      published: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
+      createdById: { type: DataTypes.INTEGER, allowNull: true },
+    },
+    { tableName: "gallery_items", timestamps: true },
+  );
+
   const ImpactStory = sequelize.define(
     "ImpactStory",
     {
@@ -206,5 +224,5 @@ module.exports = (sequelize, DataTypes) => {
     { tableName: "legal_page_versions", timestamps: true, updatedAt: false },
   );
 
-  return { Media, SiteSetting, Program, TeamMember, ImpactMetric, ImpactStory, StewardshipUpdate, Page, PageVersion, LegalPage, LegalPageVersion };
+  return { Media, SiteSetting, Program, TeamMember, ImpactMetric, ImpactStory, StewardshipUpdate, Page, PageVersion, LegalPage, LegalPageVersion, GalleryItem };
 };

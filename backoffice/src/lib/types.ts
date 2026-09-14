@@ -216,6 +216,21 @@ export type TeamMember = {
   updatedAt: string;
 };
 
+export type GalleryItem = {
+  id: number;
+  kind: "image" | "video";
+  media: Media | null;
+  videoUrl: string | null;
+  embedUrl: string | null;
+  title: Localized;
+  description: Localized;
+  happenedOn: string | null;
+  location: string | null;
+  published: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type ImpactMetric = {
   id: number;
   key: string;

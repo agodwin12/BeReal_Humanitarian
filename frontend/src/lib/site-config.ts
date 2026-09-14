@@ -19,6 +19,7 @@ export type NavKey =
   | "about"
   | "programs"
   | "impact"
+  | "gallery"
   | "getInvolved"
   | "requestAssistance"
   | "contact"
@@ -31,6 +32,7 @@ export const mainNavLinks: { key: NavKey; href: string }[] = [
   { key: "about", href: "/about" },
   { key: "programs", href: "/programs" },
   { key: "impact", href: "/impact" },
+  { key: "gallery", href: "/gallery" },
   { key: "getInvolved", href: "/get-involved" },
   { key: "requestAssistance", href: "/request-assistance" },
   { key: "contact", href: "/contact" },

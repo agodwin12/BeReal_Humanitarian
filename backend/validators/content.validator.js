@@ -75,7 +75,7 @@ module.exports = {
 
   mediaListRules: [
     query("q").optional().isString().trim().isLength({ max: 120 }),
-    query("kind").optional().isIn(["image", "pdf", "all"]),
+    query("kind").optional().isIn(["image", "pdf", "all", "video"]),
     query("unused").optional().isIn(["true", "false"]),
   ],
   mediaMetaRules: [
@@ -111,6 +111,17 @@ module.exports = {
     mediaIdRule("photoMediaId"),
   ],
   teamCreateRules: [body("name").isString().trim().isLength({ min: 2, max: 120 }).withMessage("Name is required")],
+
+  galleryRules: [
+    body("kind").optional().isIn(["image", "video"]),
+    localized("title", { max: 160 }),
+    localized("description", { max: 2000 }),
+    dateOnly("happenedOn"),
+    body("location").optional({ values: "null" }).isString().trim().isLength({ max: 160 }),
+    body("published").optional().isBoolean(),
+    mediaIdRule("mediaId"),
+    body("videoUrl").optional({ values: "null" }).isString().trim().isLength({ max: 500 }),
+  ],
 
   metricRules: [
     localized("label", { max: 120 }),

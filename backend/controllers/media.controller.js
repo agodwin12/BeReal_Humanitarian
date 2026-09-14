@@ -1,6 +1,6 @@
 const { Op } = require("sequelize");
 
-const { Media, Program, TeamMember, ImpactStory, SiteSetting, Page, User } = require("../models");
+const { Media, Program, TeamMember, ImpactStory, SiteSetting, Page, User, GalleryItem } = require("../models");
 const ApiError = require("../utils/apiError");
 const asyncHandler = require("../utils/asyncHandler");
 const { ok } = require("../utils/apiResponse");
@@ -44,6 +44,9 @@ async function usageOf(mediaId) {
   for (const s of await ImpactStory.findAll({ where: { mediaId: id } })) {
     usage.push({ type: "story", id: s.id, label: s.title?.en || `Story #${s.id}`, field: "Photo", href: "/content/impact" });
   }
+  for (const g of await GalleryItem.findAll({ where: { mediaId: id } })) {
+    usage.push({ type: "gallery", id: g.id, label: g.title?.en || `Gallery #${g.id}`, field: g.kind === "video" ? "Video" : "Photo", href: "/content/gallery" });
+  }
 
   const settings = await SiteSetting.findByPk(1);
   if (settings) {
@@ -71,6 +74,7 @@ exports.list = asyncHandler(async (req, res) => {
   const where = {};
   if (kind === "image") where.mimeType = { [Op.like]: "image/%" };
   if (kind === "pdf") where.mimeType = "application/pdf";
+  if (kind === "video") where.mimeType = { [Op.like]: "video/%" };
   if (q) {
     where[Op.or] = [
       { filename: { [Op.iLike]: `%${q}%` } },
