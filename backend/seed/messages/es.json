@@ -79,25 +79,25 @@
         "line1": "Be Real",
         "line2": "Salud y Esperanza",
         "purpose": "Apoyo humanitario y relacionado con la salud para personas vulnerables, enfermas, con discapacidad, mayores y en dificultad.",
-        "alt": "Una integrante del equipo de Be Real Humanitarian Works escuchando a una familia durante una visita comunitaria"
+        "alt": "Un voluntario de Be Real Humanitarian Works apoyando a un hombre con discapacidad, de pie en su casa"
       },
       "care": {
         "line1": "Be Real",
         "line2": "Care",
         "purpose": "Alivio práctico y asistencia compasiva para personas y familias en dificultad, incluidas las necesidades esenciales y el apoyo comunitario.",
-        "alt": "Personal de Be Real Humanitarian Works con escolares en un punto de agua comunitario"
+        "alt": "Familias y voluntarios reunidos detrás de una mesa con sacos de arroz, cubos y aceite en un reparto de Be Real Humanitarian Works en Calvary"
       },
       "empowerment": {
         "line1": "Be Real",
         "line2": "Empoderamiento",
         "purpose": "Programas y oportunidades diseñados para fortalecer a las personas y las comunidades mediante educación, habilidades, recursos y caminos hacia una mayor estabilidad.",
-        "alt": "Estudiantes aprendiendo juntas con una mentora en un programa de educación y habilidades"
+        "alt": "Beneficiarios sentados bajo la pancarta de Be Real Humanitarian Works en Calvary con sobres de apoyo económico, voluntarios de pie detrás de ellos"
       },
       "faith-and-community-outreach": {
         "line1": "Fe y Acción",
         "line2": "Comunitaria",
         "purpose": "Oración voluntaria, aliento espiritual, misiones, acción humanitaria cristiana y servicio comunitario. La ayuda humanitaria esencial no está condicionada a la participación religiosa.",
-        "alt": "Una comunidad reunida en oración al atardecer"
+        "alt": "Una voluntaria de Be Real Humanitarian Works hablando a un grupo de beneficiarios sentados bajo la pancarta de la organización en Calvary"
       }
     }
   },
@@ -155,7 +155,7 @@
         "item2": "Suministros esenciales y ayuda humanitaria",
         "item3": "Apoyo y aliento para personas enfermas, con discapacidad, mayores y en dificultad",
         "item4": "Acción comunitaria y derivación a los recursos adecuados",
-        "alt": "Una enfermera consolando a una niña sonriente y a su madre en una clínica comunitaria"
+        "alt": "Beneficiarios, algunos con muletas, sentados bajo la pancarta de Be Real Humanitarian Works en Calvary, cada uno con un sobre que contiene una ayuda"
       },
       "care": {
         "name": "Be Real Care",
@@ -164,7 +164,7 @@
         "item2": "Iniciativas de alivio comunitario",
         "item3": "Apoyo a personas y familias vulnerables",
         "item4": "Acercamiento a personas en dificultad",
-        "alt": "Una integrante del equipo de Be Real Humanitarian Works entregando una caja de alimentos básicos a una madre y sus hijos"
+        "alt": "Voluntarios detrás de la pancarta de Be Real Humanitarian Works en Calvary con arroz, aceite, conservas y bebidas listos para el reparto"
       },
       "empowerment": {
         "name": "Be Real Empoderamiento",
@@ -173,7 +173,7 @@
         "item2": "Desarrollo comunitario",
         "item3": "Recursos y talleres de empoderamiento",
         "item4": "Programas que fomentan un progreso sostenible",
-        "alt": "Estudiantes aprendiendo juntas en una computadora portátil con una mentora"
+        "alt": "Un voluntario de Be Real Humanitarian Works junto a una mujer mayor frente a su casa"
       },
       "faith-and-community-outreach": {
         "name": "Fe y Acción Comunitaria",
@@ -182,7 +182,7 @@
         "item2": "Oración voluntaria y aliento espiritual",
         "item3": "Misiones y acción humanitaria",
         "item4": "Alianzas con iglesias y organizaciones comunitarias",
-        "alt": "Una comunidad reunida en oración al atardecer"
+        "alt": "Un voluntario sentado junto a una mujer mayor, tomándole las manos, durante una visita a domicilio"
       }
     },
     "growth": {

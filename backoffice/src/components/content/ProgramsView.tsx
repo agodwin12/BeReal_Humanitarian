@@ -28,16 +28,16 @@ import { cn } from "@/lib/utils";
 
 // Built-in photos of the launch programs, shown while no media is chosen.
 const DEFAULT_CARD: Record<string, string> = {
-  "health-and-hope": "/images/program-health-hope.png",
-  care: "/images/program-care.png",
-  empowerment: "/images/program-empowerment.png",
-  "faith-and-community-outreach": "/images/program-faith-outreach.png",
+  "health-and-hope": "/images/program-health-hope-card.jpg",
+  care: "/images/program-care-card.jpg",
+  empowerment: "/images/program-empowerment-card.jpg",
+  "faith-and-community-outreach": "/images/program-faith-card.jpg",
 };
 const DEFAULT_DETAIL: Record<string, string> = {
-  "health-and-hope": "/images/program-health-detail.png",
+  "health-and-hope": "/images/program-health-hope-detail.jpg",
   care: "/images/program-care-detail.png",
-  empowerment: "/images/program-empowerment.png",
-  "faith-and-community-outreach": "/images/program-faith-outreach.png",
+  empowerment: "/images/program-empowerment-detail.jpg",
+  "faith-and-community-outreach": "/images/program-faith-detail.jpg",
 };
 
 const ICON_ITEMS = Object.fromEntries(PROGRAM_ICONS.map((i) => [i, PROGRAM_ICON_LABEL[i]]));

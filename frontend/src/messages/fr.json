@@ -79,25 +79,25 @@
         "line1": "Be Real",
         "line2": "Santé & Espoir",
         "purpose": "Soutien humanitaire et lié à la santé pour les personnes vulnérables, malades, handicapées, âgées et en détresse.",
-        "alt": "Une membre de l'équipe de Be Real Humanitarian Works à l'écoute d'une famille lors d'une visite communautaire"
+        "alt": "Un bénévole de Be Real Humanitarian Works soutenant un homme en situation de handicap, debout chez lui"
       },
       "care": {
         "line1": "Be Real",
         "line2": "Care",
         "purpose": "Aide concrète et assistance bienveillante aux personnes et aux familles en difficulté, y compris pour les besoins essentiels et le soutien communautaire.",
-        "alt": "Le personnel de Be Real Humanitarian Works avec des écoliers à un point d'eau communautaire"
+        "alt": "Familles et bénévoles réunis derrière une table de sacs de riz, de seaux et d’huile lors d’une distribution de Be Real Humanitarian Works à Calvary"
       },
       "empowerment": {
         "line1": "Be Real",
         "line2": "Autonomisation",
         "purpose": "Des programmes et des opportunités conçus pour renforcer les personnes et les communautés par l'éducation, les compétences, les ressources et des voies vers plus de stabilité.",
-        "alt": "Des étudiantes qui apprennent ensemble avec une mentore dans le cadre d'un programme d'éducation et de compétences"
+        "alt": "Bénéficiaires assis sous la bannière de Be Real Humanitarian Works à Calvary tenant des enveloppes d’aide financière, bénévoles debout derrière eux"
       },
       "faith-and-community-outreach": {
         "line1": "Foi & Action",
         "line2": "communautaire",
         "purpose": "Prière volontaire, encouragement spirituel, missions, action humanitaire chrétienne et service communautaire. L'aide humanitaire essentielle n'est pas conditionnée à une participation religieuse.",
-        "alt": "Une communauté réunie en prière au coucher du soleil"
+        "alt": "Une bénévole de Be Real Humanitarian Works s’adressant à un groupe de bénéficiaires assis sous la bannière de l’organisation à Calvary"
       }
     }
   },
@@ -155,7 +155,7 @@
         "item2": "Fournitures essentielles et aide humanitaire",
         "item3": "Soutien et encouragement aux personnes malades, handicapées, âgées et en détresse",
         "item4": "Action communautaire et orientation vers les ressources appropriées",
-        "alt": "Une infirmière réconfortant une enfant souriante et sa mère dans un dispensaire communautaire"
+        "alt": "Des bénéficiaires, certains avec des béquilles, assis sous la bannière de Be Real Humanitarian Works à Calvary, chacun tenant une enveloppe contenant un don"
       },
       "care": {
         "name": "Be Real Care",
@@ -164,7 +164,7 @@
         "item2": "Initiatives d'aide communautaire",
         "item3": "Soutien aux personnes et aux familles vulnérables",
         "item4": "Action auprès des personnes en détresse",
-        "alt": "Une membre de l'équipe de Be Real Humanitarian Works remettant un carton de denrées de base à une mère et ses enfants"
+        "alt": "Bénévoles derrière la bannière de Be Real Humanitarian Works à Calvary avec du riz, de l’huile, des conserves et des boissons prêts à être distribués"
       },
       "empowerment": {
         "name": "Be Real Autonomisation",
@@ -173,7 +173,7 @@
         "item2": "Développement communautaire",
         "item3": "Ressources et ateliers d'autonomisation",
         "item4": "Programmes qui favorisent un progrès durable",
-        "alt": "Des étudiantes apprenant ensemble sur un ordinateur portable avec une mentore"
+        "alt": "Un bénévole de Be Real Humanitarian Works aux côtés d’une femme âgée devant sa maison"
       },
       "faith-and-community-outreach": {
         "name": "Foi & Action communautaire",
@@ -182,7 +182,7 @@
         "item2": "Prière volontaire et encouragement spirituel",
         "item3": "Missions et action humanitaire",
         "item4": "Partenariat avec des églises et des organisations communautaires",
-        "alt": "Une communauté réunie en prière au coucher du soleil"
+        "alt": "Un bénévole assis près d’une femme âgée, lui tenant les mains, lors d’une visite à domicile"
       }
     },
     "growth": {
