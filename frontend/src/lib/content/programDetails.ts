@@ -17,7 +17,7 @@ export const programDetails: ProgramDetail[] = [
   {
     slug: "health-and-hope",
     icon: "heart-pulse",
-    photo: "/images/program-health-hope-detail.jpg",
+    photo: "/images/program-health-detail.png",
     tint: "lavender",
     imageSide: "left",
   },
@@ -31,14 +31,14 @@ export const programDetails: ProgramDetail[] = [
   {
     slug: "empowerment",
     icon: "graduation-cap",
-    photo: "/images/program-empowerment-detail.jpg",
+    photo: "/images/program-empowerment.png",
     tint: "lavender",
     imageSide: "left",
   },
   {
     slug: "faith-and-community-outreach",
     icon: "users",
-    photo: "/images/program-faith-detail.jpg",
+    photo: "/images/program-faith-outreach.png",
     tint: "coral",
     imageSide: "right",
   },

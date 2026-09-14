@@ -79,25 +79,25 @@
         "line1": "Be Real",
         "line2": "Health & Hope",
         "purpose": "Humanitarian and health-related support for vulnerable, sick, disabled, elderly, and distressed people.",
-        "alt": "A Be Real Humanitarian Works volunteer supporting a man living with a disability as he stands at home"
+        "alt": "A Be Real Humanitarian Works team member listening to a family during a community visit"
       },
       "care": {
         "line1": "Be Real",
         "line2": "Care",
         "purpose": "Practical relief and compassionate assistance for individuals and families facing hardship, including essential needs and community support.",
-        "alt": "Families and volunteers gathered behind a table of rice sacks, buckets and cooking oil at a Be Real Humanitarian Works distribution in Calvary"
+        "alt": "Be Real Humanitarian Works staff with schoolchildren at a community water point"
       },
       "empowerment": {
         "line1": "Be Real",
         "line2": "Empowerment",
         "purpose": "Programs and opportunities designed to strengthen individuals and communities through education, skills, resources, and pathways toward greater stability.",
-        "alt": "Beneficiaries seated under the Be Real Humanitarian Works banner in Calvary holding envelopes with cash support, volunteers standing behind them"
+        "alt": "Students studying together with a mentor as part of an education and skills program"
       },
       "faith-and-community-outreach": {
         "line1": "Faith & Community",
         "line2": "Outreach",
         "purpose": "Voluntary prayer, spiritual encouragement, missions, Christian humanitarian outreach, and community service. Essential humanitarian assistance is not conditioned on religious participation.",
-        "alt": "A Be Real Humanitarian Works volunteer speaking to a seated group of beneficiaries under the organization’s banner in Calvary"
+        "alt": "A community gathered together in prayer at sunset"
       }
     }
   },
@@ -155,7 +155,7 @@
         "item2": "Essential supplies and humanitarian relief",
         "item3": "Support and encouragement for sick, disabled, elderly, and distressed people",
         "item4": "Community outreach and referrals to appropriate resources",
-        "alt": "Beneficiaries, some with crutches, seated under the Be Real Humanitarian Works banner in Calvary, each holding an envelope with a cash gift"
+        "alt": "A nurse comforting a smiling child and her mother at a community clinic"
       },
       "care": {
         "name": "Be Real Care",
@@ -164,7 +164,7 @@
         "item2": "Community relief initiatives",
         "item3": "Support for vulnerable individuals and families",
         "item4": "Outreach to people in distress",
-        "alt": "Volunteers behind the Be Real Humanitarian Works banner in Calvary with rice, cooking oil, tinned food and drinks ready for distribution"
+        "alt": "A Be Real Humanitarian Works team member handing a box of food staples to a mother and her children"
       },
       "empowerment": {
         "name": "Be Real Empowerment",
@@ -173,7 +173,7 @@
         "item2": "Community development",
         "item3": "Empowerment resources and workshops",
         "item4": "Programs that encourage sustainable progress",
-        "alt": "A Be Real Humanitarian Works volunteer standing beside an elderly woman outside her home"
+        "alt": "Students learning together on a laptop with a mentor"
       },
       "faith-and-community-outreach": {
         "name": "Faith & Community Outreach",
@@ -182,7 +182,7 @@
         "item2": "Voluntary prayer and spiritual encouragement",
         "item3": "Mission and humanitarian outreach",
         "item4": "Partnership with churches and community organizations",
-        "alt": "A volunteer sitting close to an elderly woman and holding her hands during a home visit"
+        "alt": "A community gathered together in prayer at sunset"
       }
     },
     "growth": {
