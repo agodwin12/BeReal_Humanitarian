@@ -43,6 +43,7 @@ export const footerQuickLinks: { key: NavKey; href: string }[] = [
   { key: "about", href: "/about" },
   { key: "programs", href: "/programs" },
   { key: "impact", href: "/impact" },
+  { key: "gallery", href: "/gallery" },
 ];
 
 export const footerInvolvedLinks: { key: NavKey; href: string }[] = [
