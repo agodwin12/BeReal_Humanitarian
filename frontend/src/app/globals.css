@@ -2525,6 +2525,11 @@
   overflow: hidden;
 }
 
+/* Portrait photos: keep the upper part (faces) in the 4:3 card crop; the lightbox shows the full photo. */
+.gallery-card__media img {
+  object-position: 50% 22%;
+}
+
 .gallery-card__media--video iframe,
 .gallery-card__media--video video {
   position: absolute;
