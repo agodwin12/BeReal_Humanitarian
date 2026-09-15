@@ -101,7 +101,7 @@ Stripe ──POST /api/donations/webhook (raw body, signature checked)──► 
 server.js            connect, run migrations, ensure defaults, listen (HOST=127.0.0.1 on the server)
 app.js               helmet, CORS (CLIENT_URLS), Stripe webhook with raw body BEFORE express.json, /uploads static, /api routes
 config/              env.js (all variables, with defaults) · content.js (LOCALES, PAGE_SLUGS, NAV_ITEMS, icon lists) · pageSchema.js · formFields.js · database.js
-migrations/          001-create-users … 009-chat-assistant — numbered, umzug, auto-applied at startup and by `npm run migrate`
+migrations/          001-create-users … 010-impact-stories-and-hero — numbered, umzug, auto-applied at startup and by `npm run migrate`
 models/              one file per domain, registered + associated in models/index.js
 validators/          express-validator rule sets; `validate` middleware turns failures into the errors[] array
 controllers/         asyncHandler + ok()/ApiError; `apply(row, body)` pattern for create/update; serialize() for output
