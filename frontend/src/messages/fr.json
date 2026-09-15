@@ -66,7 +66,7 @@
     "title": "Des personnes. Un but. Un monde plus bienveillant.",
     "body": "Chez Be Real Humanitarian Works Inc., nous croyons que la compassion prend tout son sens lorsqu'elle devient action. Nous existons pour répondre aux besoins concrets, restaurer la dignité, encourager l'espoir et aider les personnes vulnérables à aller de l'avant. Notre travail est inspiré par la foi chrétienne et s'exprime par le service aux personnes dans le besoin.",
     "cta": "En savoir plus sur nous",
-    "imageAlt": "Une mère serrant son enfant dans ses bras, membre de la communauté servie par Be Real Humanitarian Works",
+    "imageAlt": "Des bénévoles trient des conserves et des produits frais destinés aux familles dans le besoin",
     "quote": "Un monde où les personnes vulnérables sont vues, soutenues, traitées avec dignité et reçoivent de véritables opportunités de connaître l'espoir, la stabilité et un avenir meilleur."
   },
   "Programs": {
@@ -751,7 +751,6 @@
     "send": "Envoyer",
     "thinking": "Réflexion…",
     "error": "Désolé, je n’ai pas pu répondre. Réessayez ou utilisez la page Contact.",
-    "limit": "Vous avez envoyé beaucoup de messages en peu de temps. Patientez une minute puis réessayez.",
-    "disclaimer": "Assistant IA : les réponses sont générées à partir de nos informations publiées et peuvent contenir des erreurs. Ce n’est pas un service d’urgence — en cas d’urgence, contactez les services d’urgence locaux."
+    "limit": "Vous avez envoyé beaucoup de messages en peu de temps. Patientez une minute puis réessayez."
   }
 }

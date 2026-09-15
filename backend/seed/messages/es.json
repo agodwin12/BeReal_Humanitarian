@@ -66,7 +66,7 @@
     "title": "Personas. Propósito. Un mundo más amable.",
     "body": "En Be Real Humanitarian Works Inc. creemos que la compasión cobra sentido cuando se convierte en acción. Existimos para atender necesidades concretas, restaurar la dignidad, alentar la esperanza y ayudar a las personas vulnerables a salir adelante. Nuestro trabajo se inspira en la fe cristiana y se expresa a través del servicio a las personas necesitadas.",
     "cta": "Conoce más sobre nosotros",
-    "imageAlt": "Una madre abrazando a su hija, parte de la comunidad a la que sirve Be Real Humanitarian Works",
+    "imageAlt": "Voluntarios clasificando conservas y productos frescos donados para familias necesitadas",
     "quote": "Un mundo en el que las personas vulnerables sean vistas, apoyadas, tratadas con dignidad y reciban oportunidades reales de vivir esperanza, estabilidad y un futuro mejor."
   },
   "Programs": {
@@ -751,7 +751,6 @@
     "send": "Enviar",
     "thinking": "Pensando…",
     "error": "Lo siento, no pude responder ahora. Inténtalo de nuevo o usa la página de Contacto.",
-    "limit": "Has enviado muchos mensajes en poco tiempo. Espera un minuto e inténtalo de nuevo.",
-    "disclaimer": "Asistente de IA: las respuestas se generan a partir de nuestra información publicada y pueden contener errores. No es un servicio de emergencia; en caso de urgencia, contacta a los servicios de emergencia locales."
+    "limit": "Has enviado muchos mensajes en poco tiempo. Espera un minuto e inténtalo de nuevo."
   }
 }

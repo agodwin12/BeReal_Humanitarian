@@ -247,7 +247,6 @@ export function ChatWidget({ config }: { config: ChatConfig | null }) {
               <Send className="size-4" aria-hidden="true" />
             </button>
           </form>
-          <p className="chat-footer">{t("disclaimer")}</p>
         </section>
       ) : null}
     </>

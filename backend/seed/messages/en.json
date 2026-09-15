@@ -66,7 +66,7 @@
     "title": "People. Purpose. A Kinder World.",
     "body": "At Be Real Humanitarian Works Inc., we believe compassion becomes meaningful when it becomes action. We exist to meet practical needs, restore dignity, encourage hope, and help vulnerable people move forward. Our work is inspired by Christian faith and expressed through service to people in need.",
     "cta": "Learn More About Us",
-    "imageAlt": "A mother embracing her child, part of the community Be Real Humanitarian Works serves",
+    "imageAlt": "Volunteers sorting canned food and fresh produce donations for families in need",
     "quote": "A world in which vulnerable people are seen, supported, treated with dignity, and given meaningful opportunities to experience hope, stability, and a better future."
   },
   "Programs": {
@@ -751,7 +751,6 @@
     "send": "Send",
     "thinking": "Thinking…",
     "error": "Sorry, I could not answer just now. Please try again, or use the Contact page.",
-    "limit": "You have sent many messages in a short time. Please wait a minute and try again.",
-    "disclaimer": "AI assistant: answers are generated from our published information and can contain mistakes. This is not an emergency service — for urgent needs, contact local emergency services."
+    "limit": "You have sent many messages in a short time. Please wait a minute and try again."
   }
 }

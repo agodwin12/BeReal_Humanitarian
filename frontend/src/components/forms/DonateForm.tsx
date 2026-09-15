@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
@@ -42,6 +42,13 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
   const [redirecting, setRedirecting] = useState(false);
   const [frequency, setFrequency] = useState<DonationFrequency>("one_time");
   const [custom, setCustom] = useState(false);
+
+  // The custom-amount field is display:none until "Other" is chosen, so
+  // focusing it in the same click that reveals it is a no-op (the browser
+  // won't focus a hidden element) — the focus has to wait for that re-render.
+  useEffect(() => {
+    if (custom) document.getElementById(`${id}-amount`)?.focus();
+  }, [custom, id]);
 
   const monthlyAvailable = config.monthly.enabled && config.monthly.suggestedAmounts.length > 0;
   const chips = frequency === "monthly" && monthlyAvailable ? config.monthly.suggestedAmounts : config.suggestedAmounts;
@@ -181,7 +188,6 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
             onClick={() => {
               setCustom(true);
               setValue("amount", "", { shouldValidate: false });
-              document.getElementById(`${id}-amount`)?.focus();
             }}
             aria-pressed={custom}
           >
