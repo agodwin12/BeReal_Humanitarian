@@ -47,10 +47,10 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <AboutHero image={pageImage(content, "hero", "/images/about-team-school.png", locale)} />,
+        hero: <AboutHero image={pageImage(content, "hero", "/images/outreach-team-photo.jpg", locale)} />,
         mission: <MissionVisionSection />,
         values: <ValuesSection />,
-        faith: <FaithSection image={pageImage(content, "faith", "/images/program-faith-outreach.png", locale)} />,
+        faith: <FaithSection image={pageImage(content, "faith", "/images/outreach-faith-service.jpg", locale)} />,
         leadership: <LeadershipSection members={team} />,
         facts: <FactsSection settings={settings} />,
         cta: <CtaBand />,

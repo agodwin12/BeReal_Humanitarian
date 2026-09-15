@@ -69,7 +69,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <ContactHero image={pageImage(content, "hero", "/images/contact-hero.png", locale)} />,
+        hero: <ContactHero image={pageImage(content, "hero", "/images/outreach-contact-hero.jpg", locale)} />,
         message: <ContactSection settings={settings} />,
         newsletter: <NewsletterSection />,
         cta: <CtaBand />,

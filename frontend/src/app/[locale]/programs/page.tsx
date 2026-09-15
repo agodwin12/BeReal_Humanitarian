@@ -62,7 +62,7 @@ export default async function ProgramsPage({
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <ProgramsHero image={pageImage(content, "hero", "/images/programs-hero.png", locale)} programs={programs} />,
+        hero: <ProgramsHero image={pageImage(content, "hero", "/images/outreach-programs-hero.jpg", locale)} programs={programs} />,
         programs: programs.map((program, index) => <ProgramDetailSection key={program.slug} program={program} index={index} />),
         growth: <GrowthNote />,
         cta: <CtaBand />,

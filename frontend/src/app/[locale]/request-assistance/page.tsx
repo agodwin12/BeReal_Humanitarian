@@ -114,7 +114,7 @@ export default async function RequestAssistancePage({
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <AssistanceHero image={pageImage(content, "hero", "/images/program-health-hope.png", locale)} />,
+        hero: <AssistanceHero image={pageImage(content, "hero", "/images/outreach-health-hope.jpg", locale)} />,
         steps: <ProcessSection />,
         form: <FormSection privacyPublished={Boolean(privacy?.isPublished)} />,
         otherHelp: <OtherHelp />,

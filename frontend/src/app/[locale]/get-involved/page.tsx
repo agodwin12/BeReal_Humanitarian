@@ -83,7 +83,7 @@ export default async function GetInvolvedPage({
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <GetInvolvedHero image={pageImage(content, "hero", "/images/cta-community.png", locale)} />,
+        hero: <GetInvolvedHero image={pageImage(content, "hero", "/images/outreach-cta-community.jpg", locale)} />,
         ways: <WaysSection donateEnabled={settings?.donateEnabled ?? true} donateMessage={pickText(settings?.donateDisabledMessage, locale)} />,
         volunteerForm: <VolunteerSection />,
         partnerForm: <PartnerSection />,

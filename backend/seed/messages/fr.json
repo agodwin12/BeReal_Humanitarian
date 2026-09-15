@@ -7,7 +7,7 @@
     "programsTitle": "Nos programmes — Be Real Humanitarian Works Inc.",
     "programsDescription": "Be Real Santé & Espoir, Be Real Care, Be Real Autonomisation et Foi & Action communautaire — des programmes concrets, centrés sur les personnes, pour les individus et les familles vulnérables.",
     "impactTitle": "Notre impact — Be Real Humanitarian Works Inc.",
-    "impactDescription": "Notre travail commence. À mesure que nos programmes se développeront, nous partagerons ici notre impact documenté, des récits et des informations sur notre gestion.",
+    "impactDescription": "Découvrez l'impact documenté de Be Real Humanitarian Works — de l'action communautaire en Afrique au travail que nous bâtissons aux États-Unis et au-delà.",
     "getInvolvedTitle": "S'impliquer — Be Real Humanitarian Works Inc.",
     "getInvolvedDescription": "Devenez bénévole, partenaire ou donateur. Aidez Be Real Humanitarian Works à transformer la compassion en action.",
     "assistanceTitle": "Demander de l'aide — Be Real Humanitarian Works Inc.",
@@ -59,7 +59,7 @@
     "getInvolved": "S'impliquer",
     "requestAssistance": "Demander de l'aide",
     "note": "Des gens réels. Des lendemains meilleurs.",
-    "imageAlt": "Une membre de l'équipe de Be Real Humanitarian Works serrant un enfant dans ses bras au sein de la communauté qu'elle sert"
+    "imageAlt": "Des bénévoles célèbrent ensemble lors d'une distribution communautaire de Be Real Humanitarian Works"
   },
   "Welcome": {
     "eyebrow": "Bienvenue chez Be Real Humanitarian Works",
@@ -142,7 +142,7 @@
     "eyebrow": "Nos programmes",
     "title": "Ce que nous faisons",
     "lead": "Quatre domaines de programme, un seul but : répondre à de vrais besoins tout en redonnant espoir et dignité.",
-    "heroAlt": "Une bénévole de Be Real Humanitarian Works assise en cercle avec des familles de la communauté",
+    "heroAlt": "Des enfants célèbrent avec des bénévoles autour de sacs de riz et de provisions lors d'une distribution de Be Real Humanitarian Works",
     "quickNavLabel": "Aller à un programme",
     "purposeLabel": "Objectif",
     "includesLabel": "Ce que cela comprend",
@@ -195,9 +195,9 @@
     "eyebrow": "Notre impact",
     "title": "La compassion en action. Des vies touchées. L'espoir restauré.",
     "lead": "De l'action communautaire et de l'aide humanitaire en Afrique au travail que nous bâtissons aux États-Unis et au-delà, chaque initiative reflète notre engagement à servir les personnes avec dignité, compassion et amour.",
-    "heroAlt": "Un bénévole remettant un cartable à un enfant souriant devant une école de village",
+    "heroAlt": "Des bénévoles et des enfants masqués réunis autour de provisions alimentaires lors d'une distribution de Be Real Humanitarian Works pendant la pandémie de COVID-19",
     "metrics": {
-      "eyebrow": "Ce que nous publierons",
+      "eyebrow": "Ce que nous avons documenté",
       "title": "Mesuré, documenté, partagé",
       "intro": "Voici les chiffres que nous nous engageons à publier dès que nos programmes seront en cours — uniquement des chiffres réels, jamais des estimations.",
       "items": {
@@ -224,7 +224,7 @@
         "title": "Uniquement des chiffres réels",
         "body": "Nous ne publions aucun nombre de bénéficiaires, partenariat ou résultat qui ne se soit pas réellement produit."
       },
-      "imageAlt": "Une mère serrant son enfant dans ses bras, membre de la communauté servie par Be Real Humanitarian Works"
+      "imageAlt": "Des femmes et des enfants de la communauté réunis lors d'une action de Be Real Humanitarian Works"
     },
     "stories": {
       "eyebrow": "Récits",
@@ -255,7 +255,7 @@
     "eyebrow": "S'impliquer",
     "title": "Faites partie de quelque chose de vrai",
     "lead": "Vous pouvez aider à transformer la compassion en action. Donner. Faire du bénévolat. S'associer. Prier. Servir.",
-    "heroAlt": "Une bénévole de Be Real Humanitarian Works en discussion avec des membres de la communauté",
+    "heroAlt": "Des bénévoles célèbrent ensemble lors d'une distribution communautaire de Be Real Humanitarian Works",
     "ways": {
       "volunteer": {
         "title": "Bénévolat",
@@ -288,7 +288,7 @@
     "eyebrow": "Demander de l'aide",
     "title": "Demander de l'aide",
     "lead": "Si vous ou une personne de votre entourage traversez une période difficile, vous pouvez soumettre une demande pour examen. Soumettre une demande ne garantit pas une aide. Les demandes sont examinées selon le besoin caritatif, les critères des programmes, les ressources disponibles et la capacité de l'organisation.",
-    "heroAlt": "Une membre de l'équipe de Be Real Humanitarian Works à l'écoute d'une famille lors d'une visite communautaire",
+    "heroAlt": "Un bénévole de Be Real Humanitarian Works échange avec des membres âgés et en situation de handicap de la communauté, assis en cercle",
     "steps": {
       "eyebrow": "À quoi s'attendre",
       "title": "Comment les demandes sont examinées",
@@ -435,7 +435,7 @@
     "eyebrow": "Contact",
     "title": "Contactez-nous",
     "lead": "Questions, idées ou envie d'aider — nous serons heureux de vous lire.",
-    "heroAlt": "Une infirmière de Be Real Humanitarian Works auscultant une enfant dans un dispensaire communautaire",
+    "heroAlt": "Un grand groupe de bénévoles et de membres de la communauté réunis lors d'une action de Be Real Humanitarian Works",
     "details": {
       "eyebrow": "Coordonnées",
       "title": "Nous joindre",
@@ -477,7 +477,7 @@
     "eyebrow": "À propos",
     "title": "Qui nous sommes",
     "lead": "Be Real Humanitarian Works Inc. est une société à but non lucratif du Texas, reconnue par l'Internal Revenue Service comme organisation exonérée d'impôt en vertu de la section 501(c)(3). Nous nous engageons dans l'aide humanitaire et l'assistance communautaire auprès des personnes confrontées à la pauvreté, la maladie, le handicap, la vulnérabilité, la détresse et d'autres besoins importants.",
-    "heroImageAlt": "Des bénévoles de Be Real Humanitarian Works et des enfants devant une école communautaire",
+    "heroImageAlt": "Des bénévoles et des membres de la communauté de Be Real Humanitarian Works réunis sous la bannière de l'organisation à Calvary",
     "mission": {
       "eyebrow": "Notre mission",
       "title": "Manifester l'amour de Dieu par un service concret",
@@ -522,7 +522,7 @@
       "eyebrow": "Notre foi et notre service",
       "title": "Inspirés par la foi, ouverts à tous",
       "body": "Notre travail est inspiré par les principes chrétiens d'amour, de compassion, de générosité et de service. Nous pouvons proposer une prière volontaire, un encouragement spirituel, des missions et une action chrétienne ; toutefois, l'aide humanitaire essentielle n'est pas conditionnée à une conversion, à l'appartenance à une église, à une contribution financière ou à la participation à des activités religieuses.",
-      "imageAlt": "Une communauté réunie en prière au coucher du soleil"
+      "imageAlt": "Des enfants et des bénévoles réunis de près lors d'une action communautaire de Be Real Humanitarian Works"
     },
     "leadership": {
       "eyebrow": "Direction",
@@ -588,7 +588,7 @@
     "eyebrow": "Faire un don",
     "title": "Donnez de l'espoir aujourd'hui",
     "lead": "Votre don aide Be Real Humanitarian Works à apporter secours, soins et opportunités aux personnes et familles vulnérables. Chaque don est reçu par l'organisation elle-même et sert là où le besoin est le plus grand.",
-    "heroAlt": "Un membre de l'équipe de Be Real Humanitarian Works serrant dans ses bras un membre de la communauté",
+    "heroAlt": "Des bénévoles et des enfants réunis autour de sacs de riz et de provisions lors d'une distribution de Be Real Humanitarian Works",
     "form": {
       "eyebrow": "Faire un don",
       "title": "Choisissez un montant",
@@ -728,7 +728,7 @@
     "eyebrow": "Galerie",
     "title": "Notre action en images",
     "lead": "Des moments réels de nos actions sur le terrain — les personnes que nous servons, les bénévoles présents et l'aide qui parvient aux familles.",
-    "heroAlt": "Bénévoles de Be Real Humanitarian Works lors d'une distribution communautaire",
+    "heroAlt": "Des bénévoles célèbrent ensemble lors d'une distribution communautaire de Be Real Humanitarian Works",
     "grid": {
       "eyebrow": "Moments sur le terrain",
       "title": "Photos et vidéos",

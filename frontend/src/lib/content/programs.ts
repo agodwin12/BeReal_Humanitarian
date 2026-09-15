@@ -9,8 +9,8 @@ export type ProgramSummary = {
 };
 
 export const programs: ProgramSummary[] = [
-  { slug: "health-and-hope", icon: "heart-pulse", photo: "/images/program-health-hope.png" },
-  { slug: "care", icon: "hand-heart", photo: "/images/program-care.png" },
-  { slug: "empowerment", icon: "graduation-cap", photo: "/images/program-empowerment.png" },
-  { slug: "faith-and-community-outreach", icon: "users", photo: "/images/program-faith-outreach.png" },
+  { slug: "health-and-hope", icon: "heart-pulse", photo: "/images/outreach-health-hope.jpg" },
+  { slug: "care", icon: "hand-heart", photo: "/images/outreach-care-card.jpg" },
+  { slug: "empowerment", icon: "graduation-cap", photo: "/images/outreach-empowerment.jpg" },
+  { slug: "faith-and-community-outreach", icon: "users", photo: "/images/outreach-faith-service.jpg" },
 ];

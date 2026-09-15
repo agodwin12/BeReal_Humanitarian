@@ -33,7 +33,7 @@ export default async function GalleryPage({ params }: PageProps<"/[locale]/galle
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <GalleryHero image={pageImage(content, "hero", "/images/cta-community.png", locale)} />,
+        hero: <GalleryHero image={pageImage(content, "hero", "/images/outreach-cta-community.jpg", locale)} />,
         grid: <GalleryGrid items={items ?? []} />,
         cta: <CtaBand />,
       }}

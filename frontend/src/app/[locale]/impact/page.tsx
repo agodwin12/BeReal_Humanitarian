@@ -47,11 +47,11 @@ export default async function ImpactPage({ params }: PageProps<"/[locale]/impact
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <ImpactHero image={pageImage(content, "hero", "/images/impact-hero.png", locale)} />,
+        hero: <ImpactHero image={pageImage(content, "hero", "/images/outreach-impact-hero.jpg", locale)} />,
         metrics: <ImpactMetricsSection metrics={impact.metrics} />,
         stories: <ImpactStoriesSection stories={impact.stories} />,
         updates: <StewardshipUpdatesSection updates={impact.updates} />,
-        principles: <ImpactPrinciplesSection image={pageImage(content, "principles", "/images/welcome-family.png", locale)} />,
+        principles: <ImpactPrinciplesSection image={pageImage(content, "principles", "/images/outreach-principles.jpg", locale)} />,
         cta: <CtaBand />,
       }}
     />

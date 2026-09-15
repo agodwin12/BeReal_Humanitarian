@@ -11,7 +11,7 @@ export async function CtaBand() {
   const [global, settings] = await Promise.all([getPageContent("global"), getSiteSettings()]);
   return (
     <GetInvolvedSection
-      image={pageImage(global, "cta", "/images/cta-community.png", locale)}
+      image={pageImage(global, "cta", "/images/outreach-cta-community.jpg", locale)}
       donateEnabled={settings?.donateEnabled ?? true}
     />
   );

@@ -7,7 +7,7 @@
     "programsTitle": "Our Programs — Be Real Humanitarian Works Inc.",
     "programsDescription": "Be Real Health & Hope, Be Real Care, Be Real Empowerment, and Faith & Community Outreach — practical, people-centered programs for vulnerable individuals and families.",
     "impactTitle": "Our Impact — Be Real Humanitarian Works Inc.",
-    "impactDescription": "Our work is beginning. As our programs grow, we will share documented impact, stories, and stewardship updates here.",
+    "impactDescription": "See the documented impact of Be Real Humanitarian Works — from community outreach in Africa to the work we are building in the United States and beyond.",
     "getInvolvedTitle": "Get Involved — Be Real Humanitarian Works Inc.",
     "getInvolvedDescription": "Volunteer, partner, or give. Help Be Real Humanitarian Works turn compassion into action.",
     "assistanceTitle": "Request Assistance — Be Real Humanitarian Works Inc.",
@@ -59,7 +59,7 @@
     "getInvolved": "Get Involved",
     "requestAssistance": "Request Assistance",
     "note": "Real People. Brighter Tomorrows.",
-    "imageAlt": "A Be Real Humanitarian Works team member embracing a child in the community they serve"
+    "imageAlt": "Volunteers celebrating together at a Be Real Humanitarian Works community distribution"
   },
   "Welcome": {
     "eyebrow": "Welcome to Be Real Humanitarian Works",
@@ -142,7 +142,7 @@
     "eyebrow": "Our Programs",
     "title": "What We Do",
     "lead": "Four program areas with one purpose: meeting real needs while restoring hope and dignity.",
-    "heroAlt": "A Be Real Humanitarian Works volunteer sitting in a circle with families in the community",
+    "heroAlt": "Children celebrating with volunteers around bags of rice and supplies at a Be Real Humanitarian Works distribution",
     "quickNavLabel": "Jump to a program",
     "purposeLabel": "Purpose",
     "includesLabel": "What this includes",
@@ -195,9 +195,9 @@
     "eyebrow": "Our Impact",
     "title": "Compassion in Action. Lives Touched. Hope Restored.",
     "lead": "From community outreach and humanitarian relief in Africa to the work we are building in the United States and beyond, every initiative reflects our commitment to serving people with dignity, compassion and love.",
-    "heroAlt": "A volunteer handing a school bag to a smiling child outside a village school",
+    "heroAlt": "Masked volunteers and children gathered around food supplies at a Be Real Humanitarian Works distribution during the COVID-19 pandemic",
     "metrics": {
-      "eyebrow": "What We Will Report",
+      "eyebrow": "What We've Documented",
       "title": "Measured, documented, shared",
       "intro": "These are the figures we commit to publishing as our programs get under way — real numbers only, never estimates.",
       "items": {
@@ -224,7 +224,7 @@
         "title": "Real numbers only",
         "body": "We do not publish beneficiary counts, partnerships, or outcomes that have not actually occurred."
       },
-      "imageAlt": "A mother embracing her child, part of the community Be Real Humanitarian Works serves"
+      "imageAlt": "Women and children from the community gathered together during a Be Real Humanitarian Works outreach"
     },
     "stories": {
       "eyebrow": "Stories",
@@ -255,7 +255,7 @@
     "eyebrow": "Get Involved",
     "title": "Be Part of Something Real",
     "lead": "You can help turn compassion into action. Give. Volunteer. Partner. Pray. Serve.",
-    "heroAlt": "A Be Real Humanitarian Works volunteer in conversation with community members",
+    "heroAlt": "Volunteers celebrating together at a Be Real Humanitarian Works community distribution",
     "ways": {
       "volunteer": {
         "title": "Volunteer",
@@ -288,7 +288,7 @@
     "eyebrow": "Request Assistance",
     "title": "Ask for help",
     "lead": "If you or someone you know is experiencing hardship, you may submit a request for consideration. Submitting a request does not guarantee assistance. Requests are reviewed based on charitable need, program criteria, available resources, and the organization's capacity.",
-    "heroAlt": "A Be Real Humanitarian Works team member listening to a family during a community visit",
+    "heroAlt": "A Be Real Humanitarian Works volunteer meets with elderly and disabled community members seated in a circle",
     "steps": {
       "eyebrow": "What to Expect",
       "title": "How requests are reviewed",
@@ -435,7 +435,7 @@
     "eyebrow": "Contact",
     "title": "Get in touch",
     "lead": "Questions, ideas, or ways you'd like to help — we'd love to hear from you.",
-    "heroAlt": "A Be Real Humanitarian Works nurse listening to a child's heartbeat at a community clinic",
+    "heroAlt": "A large group of volunteers and community members gathered at a Be Real Humanitarian Works outreach",
     "details": {
       "eyebrow": "Contact Details",
       "title": "Reach us",
@@ -477,7 +477,7 @@
     "eyebrow": "About Us",
     "title": "Who We Are",
     "lead": "Be Real Humanitarian Works Inc. is a Texas nonprofit corporation recognized by the Internal Revenue Service as a tax-exempt organization under Section 501(c)(3). We are committed to humanitarian relief and community assistance for people experiencing poverty, sickness, disability, vulnerability, distress, and other significant needs.",
-    "heroImageAlt": "Be Real Humanitarian Works volunteers and children in front of a community school",
+    "heroImageAlt": "Be Real Humanitarian Works volunteers and community members gathered under the organization's banner in Calvary",
     "mission": {
       "eyebrow": "Our Mission",
       "title": "Demonstrating God's love through practical service",
@@ -522,7 +522,7 @@
       "eyebrow": "Our Faith & Service",
       "title": "Inspired by faith, open to all",
       "body": "Our work is inspired by Christian principles of love, compassion, generosity, and service. We may offer voluntary prayer, spiritual encouragement, missions, and Christian outreach; however, essential humanitarian assistance is not conditioned on conversion, church membership, financial contribution, or participation in religious activities.",
-      "imageAlt": "A community gathered together in prayer at sunset"
+      "imageAlt": "Children and volunteers gathered closely together during a Be Real Humanitarian Works community outreach"
     },
     "leadership": {
       "eyebrow": "Leadership",
@@ -588,7 +588,7 @@
     "eyebrow": "Donate",
     "title": "Give hope today",
     "lead": "Your gift helps Be Real Humanitarian Works bring relief, care and opportunity to vulnerable individuals and families. Every donation is received by the organization itself and goes to work where it is needed most.",
-    "heroAlt": "A Be Real Humanitarian Works team member embracing a community member",
+    "heroAlt": "Volunteers and children gathered around bags of rice and supplies at a Be Real Humanitarian Works distribution",
     "form": {
       "eyebrow": "Make a gift",
       "title": "Choose an amount",
@@ -728,7 +728,7 @@
     "eyebrow": "Gallery",
     "title": "Our Work in Action",
     "lead": "Real moments from our outreach — the people we serve, the volunteers who show up, and the help that reaches families.",
-    "heroAlt": "Be Real Humanitarian Works volunteers during a community distribution",
+    "heroAlt": "Volunteers celebrating together at a Be Real Humanitarian Works community distribution",
     "grid": {
       "eyebrow": "Moments from the field",
       "title": "Photos and videos",
