@@ -76,7 +76,7 @@ function toDraft(s: SiteSettings): Draft {
     logo: s.logo,
     favicon: s.favicon,
     shareImage: s.shareImage,
-    heroSlides: [...s.heroSlides],
+    heroSlides: [...(s.heroSlides ?? [])],
   };
 }
 

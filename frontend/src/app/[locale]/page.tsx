@@ -21,7 +21,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
   // Hero carousel: the photos chosen in Site settings, in order; until at
   // least one is chosen, the page falls back to its single default photo.
   const heroImages =
-    settings && settings.heroSlides.length > 0
+    settings?.heroSlides && settings.heroSlides.length > 0
       ? settings.heroSlides.map((media) => ({ src: mediaSrc(media, "large"), alt: pickText(media.alt, locale) }))
       : [pageImage(content, "hero", "/images/hero-outreach.jpg", locale)];
 
