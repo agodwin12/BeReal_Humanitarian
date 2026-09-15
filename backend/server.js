@@ -16,6 +16,7 @@ async function start() {
     await ensureDefaults();
     await ensureContentDefaults();
     await require("./services/donations.service").ensureDonationDefaults();
+    await require("./services/chat.service").ensureChatDefaults();
 
     // HOST=127.0.0.1 on a server behind nginx keeps the API off the public interface.
     const host = process.env.HOST || undefined;

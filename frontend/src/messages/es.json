@@ -229,12 +229,26 @@
     "stories": {
       "eyebrow": "Historias",
       "title": "Compartidas con consentimiento",
-      "intro": "Momentos reales de nuestros programas, publicados solo con el permiso de las personas involucradas."
+      "intro": "Momentos reales de nuestros programas, publicados solo con el permiso de las personas involucradas.",
+      "viewStory": "Ver la historia completa",
+      "partOf": "Parte de {program}",
+      "peopleReachedFallbackUnit": "personas"
     },
     "updates": {
       "eyebrow": "Buena gestión",
       "title": "Cómo se usaron las donaciones",
       "intro": "Actualizaciones con fecha sobre el uso de las donaciones y los recursos."
+    },
+    "storyDetail": {
+      "back": "Todas las historias de impacto",
+      "purpose": "Propósito",
+      "whatWeDid": "Qué hicimos",
+      "assistanceProvided": "Ayuda proporcionada",
+      "gallery": "Fotos y vídeos de esta jornada",
+      "notFoundTitle": "Historia no encontrada",
+      "notFoundBody": "Esta historia de impacto no está disponible.",
+      "eyebrow": "Historia de impacto",
+      "peopleReachedFallbackUnit": "personas"
     }
   },
   "GetInvolvedPage": {
@@ -723,7 +737,21 @@
       "photo": "Foto",
       "video": "Vídeo",
       "open": "Ver en grande",
-      "close": "Cerrar"
+      "close": "Cerrar",
+      "viewStory": "Ver la historia completa"
     }
+  },
+  "Chat": {
+    "open": "Chatea con nosotros",
+    "close": "Cerrar el chat",
+    "aiBadge": "IA",
+    "newChat": "Nueva conversación",
+    "suggestionsLabel": "Prueba a preguntar",
+    "placeholder": "Escribe tu pregunta…",
+    "send": "Enviar",
+    "thinking": "Pensando…",
+    "error": "Lo siento, no pude responder ahora. Inténtalo de nuevo o usa la página de Contacto.",
+    "limit": "Has enviado muchos mensajes en poco tiempo. Espera un minuto e inténtalo de nuevo.",
+    "disclaimer": "Asistente de IA: las respuestas se generan a partir de nuestra información publicada y pueden contener errores. No es un servicio de emergencia; en caso de urgencia, contacta a los servicios de emergencia locales."
   }
 }

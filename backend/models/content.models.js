@@ -55,6 +55,8 @@ module.exports = (sequelize, DataTypes) => {
       logoMediaId: { type: DataTypes.INTEGER, allowNull: true },
       faviconMediaId: { type: DataTypes.INTEGER, allowNull: true },
       shareMediaId: { type: DataTypes.INTEGER, allowNull: true },
+      // Ordered media ids for the homepage hero carousel; empty = the page schema default photo.
+      heroSlideIds: { type: DataTypes.JSONB, allowNull: false, defaultValue: [] },
       updatedById: { type: DataTypes.INTEGER, allowNull: true },
     },
     { tableName: "site_settings", timestamps: true },
@@ -128,6 +130,8 @@ module.exports = (sequelize, DataTypes) => {
       happenedOn: { type: DataTypes.DATEONLY, allowNull: true },
       location: { type: DataTypes.STRING(160), allowNull: true },
       published: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
+      // Which outreach this photo/video documents (optional) — lets the site offer "View Full Impact Story".
+      impactStoryId: { type: DataTypes.INTEGER, allowNull: true },
       createdById: { type: DataTypes.INTEGER, allowNull: true },
     },
     { tableName: "gallery_items", timestamps: true },
@@ -138,8 +142,24 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
       order: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
+      // URL-friendly id for the story's own page: /impact/stories/<slug>.
+      slug: { type: DataTypes.STRING(160), allowNull: true, unique: true },
+      // Optional: which of the four core Programs this outreach belongs to.
+      programId: { type: DataTypes.INTEGER, allowNull: true },
       title: localized(DataTypes),
-      body: localized(DataTypes),
+      // Case-study fields (spec: program title, date/year, location, purpose,
+      // what we did, people/households reached, assistance provided, a short
+      // impact summary, plus photos/videos — the last comes from GalleryItem.impactStoryId).
+      happenedOn: { type: DataTypes.DATEONLY, allowNull: true },
+      location: { type: DataTypes.STRING(160), allowNull: true },
+      purpose: localized(DataTypes),
+      whatWeDid: localized(DataTypes),
+      summary: localized(DataTypes),
+      assistanceProvided: { type: DataTypes.JSONB, allowNull: false, defaultValue: {} },
+      peopleReachedCount: { type: DataTypes.INTEGER, allowNull: true },
+      peopleReachedUnit: localized(DataTypes),
+      // Cover photo for the story card; the full photo/video set is the
+      // Gallery items whose impactStoryId points at this row.
       mediaId: { type: DataTypes.INTEGER, allowNull: true },
       consentConfirmed: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
       consentConfirmedAt: { type: DataTypes.DATE, allowNull: true },

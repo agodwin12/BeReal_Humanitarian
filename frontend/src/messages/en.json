@@ -229,12 +229,26 @@
     "stories": {
       "eyebrow": "Stories",
       "title": "Shared with consent",
-      "intro": "Real moments from our programs, published only with the permission of the people involved."
+      "intro": "Real moments from our programs, published only with the permission of the people involved.",
+      "viewStory": "View Full Impact Story",
+      "partOf": "Part of {program}",
+      "peopleReachedFallbackUnit": "people"
     },
     "updates": {
       "eyebrow": "Stewardship",
       "title": "How gifts were used",
       "intro": "Dated updates on how donations and resources were put to work."
+    },
+    "storyDetail": {
+      "back": "All Impact stories",
+      "purpose": "Purpose",
+      "whatWeDid": "What we did",
+      "assistanceProvided": "Assistance provided",
+      "gallery": "Photos & videos from this outreach",
+      "notFoundTitle": "Story not found",
+      "notFoundBody": "This impact story is not available.",
+      "eyebrow": "Impact story",
+      "peopleReachedFallbackUnit": "people"
     }
   },
   "GetInvolvedPage": {
@@ -723,7 +737,21 @@
       "photo": "Photo",
       "video": "Video",
       "open": "View larger",
-      "close": "Close"
+      "close": "Close",
+      "viewStory": "View Full Impact Story"
     }
+  },
+  "Chat": {
+    "open": "Chat with us",
+    "close": "Close chat",
+    "aiBadge": "AI",
+    "newChat": "New conversation",
+    "suggestionsLabel": "Try asking",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "thinking": "Thinking…",
+    "error": "Sorry, I could not answer just now. Please try again, or use the Contact page.",
+    "limit": "You have sent many messages in a short time. Please wait a minute and try again.",
+    "disclaimer": "AI assistant: answers are generated from our published information and can contain mistakes. This is not an emergency service — for urgent needs, contact local emergency services."
   }
 }

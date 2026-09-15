@@ -32,6 +32,7 @@ async function buildContentExport() {
     translationReviews: plain(await models.TranslationReview.findAll()),
     donationSettings: plain(await models.DonationSetting.findAll()),
     galleryItems: plain(await models.GalleryItem.findAll()),
+    chatSettings: plain(await models.ChatSetting.findAll()),
   };
 }
 

@@ -16,7 +16,7 @@ const PAGES = [
     title: "Home",
     path: "/",
     sections: [
-      { key: "hero", title: "Hero", locked: true, messageKeys: ["Hero."], images: [{ slot: "hero", label: "Hero photo", default: "/images/hero-embrace.png" }] },
+      { key: "hero", title: "Hero", locked: true, messageKeys: ["Hero."], images: [{ slot: "hero", label: "Hero photo", default: "/images/hero-outreach.jpg" }] },
       { key: "welcome", title: "Welcome", messageKeys: ["Welcome."], images: [{ slot: "welcome", label: "Welcome photo", default: "/images/welcome-family.png" }] },
       { key: "programs", title: "Programs cards", description: "The four cards come from the Programs screen; only the heading is edited here.", messageKeys: ["Programs.eyebrow", "Programs.title", "Programs.intro", "Programs.viewAll"] },
       { key: "impact", title: "Why it matters", messageKeys: ["Impact."] },
@@ -117,7 +117,7 @@ const PAGES = [
     title: "Donate",
     path: "/donate",
     sections: [
-      { key: "hero", title: "Hero", locked: true, messageKeys: ["DonatePage.eyebrow", "DonatePage.title", "DonatePage.lead", "DonatePage.heroAlt"], images: [{ slot: "hero", label: "Hero photo", default: "/images/hero-embrace.png" }] },
+      { key: "hero", title: "Hero", locked: true, messageKeys: ["DonatePage.eyebrow", "DonatePage.title", "DonatePage.lead", "DonatePage.heroAlt"], images: [{ slot: "hero", label: "Hero photo", default: "/images/hero-outreach.jpg" }] },
       { key: "form", title: "Donation form", description: "Suggested amounts, minimum, the thank-you message and receipt wording are in Donation settings.", messageKeys: ["DonatePage.form.", "DonatePage.paused.", "DonatePage.cancelled."] },
       { key: "why", title: "Why give", messageKeys: ["DonatePage.why."] },
       { key: "thankYou", title: "Thank-you page", messageKeys: ["DonatePage.thankYou."] },

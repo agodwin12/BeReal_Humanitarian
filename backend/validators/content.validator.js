@@ -71,6 +71,8 @@ module.exports = {
     mediaIdRule("logoMediaId"),
     mediaIdRule("faviconMediaId"),
     mediaIdRule("shareMediaId"),
+    body("heroSlideIds").optional().isArray({ max: 8 }).withMessage("Up to 8 hero photos"),
+    body("heroSlideIds.*").isInt({ min: 1 }).withMessage("heroSlideIds must be media ids"),
   ],
 
   mediaListRules: [
@@ -121,6 +123,7 @@ module.exports = {
     body("published").optional().isBoolean(),
     mediaIdRule("mediaId"),
     body("videoUrl").optional({ values: "null" }).isString().trim().isLength({ max: 500 }),
+    body("impactStoryId").optional({ values: "null" }).isInt({ min: 1 }).withMessage("impactStoryId must be a story id"),
   ],
 
   metricRules: [
@@ -135,13 +138,23 @@ module.exports = {
 
   storyRules: [
     localized("title", { max: 200 }),
-    localized("body", { max: 20000 }),
+    localized("purpose", { max: 2000 }),
+    localized("whatWeDid", { max: 20000 }),
+    localized("summary", { max: 4000 }),
+    body("assistanceProvided").optional().custom(isLocalizedList),
+    body("peopleReachedCount").optional({ values: "null" }).isInt({ min: 0, max: 10000000 }).withMessage("Enter a whole number"),
+    localized("peopleReachedUnit", { max: 60 }),
+    dateOnly("happenedOn"),
+    body("location").optional({ values: "null" }).isString().trim().isLength({ max: 160 }),
+    body("programId").optional({ values: "null" }).isInt({ min: 1 }).withMessage("programId must be a program id"),
+    body("slug").optional({ values: "null" }).isString().trim().isLength({ max: 160 }),
     mediaIdRule("mediaId"),
     body("consentConfirmed").optional().isBoolean(),
     body("consentConfirmedBy").optional({ values: "null" }).isString().trim().isLength({ max: 120 }),
     orderRule,
   ],
   storyCreateRules: [localized("title", { max: 200, requiredEn: true })],
+  storySlugParam: [param("slug").isString().trim().isLength({ min: 1, max: 160 }).withMessage("Invalid story")],
 
   updateRules: [
     body("date").optional().isISO8601({ strict: true }).withMessage("Date must be YYYY-MM-DD"),

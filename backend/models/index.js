@@ -15,6 +15,10 @@ const { Media, SiteSetting, Program, TeamMember, ImpactMetric, ImpactStory, Stew
 // Phase D
 const { TranslationReview, EmailLog } = require("./phaseD.models")(sequelize, DataTypes);
 TranslationReview.belongsTo(User, { as: "reviewer", foreignKey: "reviewedById" });
+// Website AI assistant
+const { ChatSetting, ChatSession, ChatMessage } = require("./chat.models")(sequelize, DataTypes);
+ChatSession.hasMany(ChatMessage, { as: "messages", foreignKey: "sessionId", onDelete: "CASCADE" });
+ChatMessage.belongsTo(ChatSession, { as: "session", foreignKey: "sessionId" });
 // Phase E
 const { DonationSetting, DonationSubscription, Donation, DonationEvent, StripeEvent, ReceiptSequence } = require("./donations.models")(sequelize, DataTypes);
 Donation.hasMany(DonationEvent, { as: "events", foreignKey: "donationId", onDelete: "CASCADE" });
@@ -42,6 +46,12 @@ Program.belongsTo(Media, { as: "detailMedia", foreignKey: "detailMediaId" });
 TeamMember.belongsTo(Media, { as: "photo", foreignKey: "photoMediaId" });
 ImpactStory.belongsTo(Media, { as: "media", foreignKey: "mediaId" });
 GalleryItem.belongsTo(Media, { as: "media", foreignKey: "mediaId" });
+// Impact story ↔ Program (optional: which core program this outreach falls under).
+ImpactStory.belongsTo(Program, { as: "program", foreignKey: "programId" });
+Program.hasMany(ImpactStory, { as: "impactStories", foreignKey: "programId" });
+// Impact story ↔ Gallery: the story's photo/video set is every Gallery item tagged to it.
+ImpactStory.hasMany(GalleryItem, { as: "galleryItems", foreignKey: "impactStoryId" });
+GalleryItem.belongsTo(ImpactStory, { as: "impactStory", foreignKey: "impactStoryId" });
 Page.hasMany(PageVersion, { as: "versions", foreignKey: "pageId", onDelete: "CASCADE" });
 PageVersion.belongsTo(User, { as: "createdBy", foreignKey: "createdById" });
 LegalPage.hasMany(LegalPageVersion, { as: "versions", foreignKey: "legalPageId", onDelete: "CASCADE" });
@@ -75,4 +85,7 @@ module.exports = {
   DonationEvent,
   StripeEvent,
   ReceiptSequence,
+  ChatSetting,
+  ChatSession,
+  ChatMessage,
 };

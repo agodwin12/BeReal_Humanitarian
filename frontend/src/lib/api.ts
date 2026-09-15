@@ -171,3 +171,23 @@ export async function simulateDonation(session: string, outcome: "paid" | "cance
   });
   return readJson(response);
 }
+
+// ---- AI assistant -------------------------------------------------------------
+export type ChatTurn = { role: "user" | "assistant"; content: string };
+export type ChatReply = { reply: string; sessionKey: string };
+
+// One turn of the website chat. The API holds the model key and the prompt;
+// a 429 (per-visitor rate limit) surfaces as the "limit" error.
+export async function sendChatMessage(payload: { sessionKey: string | null; locale: string; page: string; messages: ChatTurn[] }): Promise<ChatReply> {
+  if (!API_URL) throw new Error("unavailable");
+  const response = await fetch(`${API_URL}/api/public/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ sessionKey: payload.sessionKey ?? undefined, locale: payload.locale, page: payload.page, messages: payload.messages }),
+  });
+  if (response.status === 429) throw new Error("limit");
+  if (!response.ok) throw new Error(`Chat failed with status ${response.status}`);
+  const body = (await response.json()) as { data?: ChatReply };
+  if (!body.data) throw new Error("Chat failed");
+  return body.data;
+}

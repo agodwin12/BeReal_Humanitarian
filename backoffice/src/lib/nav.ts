@@ -2,6 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   Activity,
   BellRing,
+  Bot,
   CalendarHeart,
   Camera,
   FileText,
@@ -81,6 +82,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { title: "Site settings", href: "/settings/site", icon: Settings, roles: ["super_admin"] },
       { title: "Notifications", href: "/settings/notifications", icon: BellRing, roles: ["super_admin"] },
+      { title: "AI assistant", href: "/settings/assistant", icon: Bot, roles: ["super_admin"] },
       { title: "Translations", href: "/translations", icon: Languages },
     ],
   },

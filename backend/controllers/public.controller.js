@@ -27,7 +27,7 @@ function cache(res, draft) {
 exports.siteSettings = asyncHandler(async (req, res) => {
   cache(res, false);
   const row = await settings.load();
-  const data = settings.serialize(row);
+  const data = await settings.serialize(row);
   delete data.updatedById;
   return ok(res, data);
 });
@@ -83,11 +83,27 @@ exports.team = asyncHandler(async (req, res) => {
 exports.impact = asyncHandler(async (req, res) => {
   cache(res, false);
   const metrics = await ImpactMetric.findAll({ order: [["order", "ASC"], ["id", "ASC"]] });
-  const stories = await ImpactStory.findAll({ where: { status: "published", consentConfirmed: true }, include: [{ association: "media" }], order: [["order", "ASC"], ["publishedAt", "DESC"]] });
+  const stories = await ImpactStory.findAll({
+    where: { status: "published", consentConfirmed: true },
+    include: [{ association: "media" }, { association: "program", attributes: ["id", "slug", "name"] }],
+    order: [["order", "ASC"], ["happenedOn", "DESC NULLS LAST"], ["publishedAt", "DESC"]],
+  });
   const updates = await StewardshipUpdate.findAll({ where: { status: "published" }, order: [["date", "DESC"], ["id", "DESC"]] });
   return ok(res, {
     metrics: metrics.map((m) => ({ key: m.key, icon: m.icon, label: m.label, value: m.published ? m.value : null, documentedOn: m.published ? m.documentedOn : null })),
-    stories: stories.map((s) => ({ id: s.id, title: s.title, body: s.body, media: mediaSummary(s.media), publishedAt: s.publishedAt })),
+    stories: stories.map((s) => ({
+      id: s.id,
+      slug: s.slug,
+      title: s.title,
+      summary: s.summary,
+      happenedOn: s.happenedOn,
+      location: s.location,
+      peopleReachedCount: s.peopleReachedCount,
+      peopleReachedUnit: s.peopleReachedUnit,
+      program: s.program ? { id: s.program.id, slug: s.program.slug, name: s.program.name } : null,
+      media: mediaSummary(s.media),
+      publishedAt: s.publishedAt,
+    })),
     updates: updates.map((u) => ({ id: u.id, date: u.date, title: u.title, body: u.body })),
   });
 });

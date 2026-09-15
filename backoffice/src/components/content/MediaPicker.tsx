@@ -364,9 +364,9 @@ export function MediaField({
   const thumb = value ? mediaThumb(value) : defaultSrc ?? null;
 
   return (
-    <div className="grid gap-1.5">
+    <div className="grid min-w-0 gap-1.5">
       <Label className="text-[0.8rem] font-bold">{label}</Label>
-      <div className="flex items-center gap-3 rounded-[12px] border border-border bg-white p-2">
+      <div className="flex min-w-0 items-center gap-3 rounded-[12px] border border-border bg-white p-2">
         <div className="relative size-20 shrink-0 overflow-hidden rounded-[8px] bg-muted">
           {thumb ? (
             // eslint-disable-next-line @next/next/no-img-element

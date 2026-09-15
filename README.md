@@ -14,6 +14,7 @@ Public website, staff backoffice and REST API for Be Real Humanitarian Works Inc
 - **Content** — every text and photo on the site in EN / FR / ES with drafts, preview, publish and version history; programs, team (with photo approval), impact metrics / stories / stewardship updates, media library (Cloudflare R2 or local storage), legal pages.
 - **Translations** — status per field, native-speaker review marks, translator worksheet export / import.
 - **Donations** — Stripe Checkout, one-time and monthly gifts (subscriptions with a donor self-service link), optional "cover the processing fee" add-on (off by default), receipt numbering, localized receipt email + PDF per payment, ledger with refunds and payouts, donor lookup.
+- **AI assistant** — the chat bubble on the website (Google Gemini): on/off, name, welcome message, suggested questions, extra knowledge, test panel, log of visitor conversations. Answers come only from the published content.
 - **Administration** — users and roles (Super Admin / Editor / Read-only), two-factor authentication, audit log, system health and email delivery log.
 
 ## Run it locally
@@ -48,6 +49,7 @@ Everything works without them, with clearly labelled fallbacks:
 | `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` | donations use a simulated checkout (development / staging only) |
 | `R2_*` | media is stored in `backend/uploads/` |
 | `TURNSTILE_SECRET_KEY` | forms rely on the honeypot only |
+| `GEMINI_API_KEY` (+ `GEMINI_MODEL`) | the website AI assistant is hidden |
 
 `NODE_ENV=production` refuses the email and payment fallbacks.
 

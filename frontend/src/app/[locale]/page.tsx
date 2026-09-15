@@ -6,7 +6,7 @@ import { ImpactSection } from "@/components/site/ImpactSection";
 import { PageSections } from "@/components/site/PageSections";
 import { ProgramsSection } from "@/components/site/ProgramsSection";
 import { WelcomeSection } from "@/components/site/WelcomeSection";
-import { getPageContent, getSiteSettings, pageImage } from "@/lib/cms";
+import { getPageContent, getSiteSettings, mediaSrc, pageImage, pickText } from "@/lib/cms";
 import { getProgramsView } from "@/lib/programs-view";
 
 const SECTIONS = ["hero", "welcome", "programs", "impact", "cta"] as const;
@@ -18,12 +18,19 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
   const [content, settings, programs] = await Promise.all([getPageContent("home"), getSiteSettings(), getProgramsView(locale)]);
   const donateEnabled = settings?.donateEnabled ?? true;
 
+  // Hero carousel: the photos chosen in Site settings, in order; until at
+  // least one is chosen, the page falls back to its single default photo.
+  const heroImages =
+    settings && settings.heroSlides.length > 0
+      ? settings.heroSlides.map((media) => ({ src: mediaSrc(media, "large"), alt: pickText(media.alt, locale) }))
+      : [pageImage(content, "hero", "/images/hero-outreach.jpg", locale)];
+
   return (
     <PageSections
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <HeroSection image={pageImage(content, "hero", "/images/hero-embrace.png", locale)} donateEnabled={donateEnabled} />,
+        hero: <HeroSection images={heroImages} donateEnabled={donateEnabled} />,
         welcome: <WelcomeSection image={pageImage(content, "welcome", "/images/welcome-family.png", locale)} />,
         programs: <ProgramsSection programs={programs} />,
         impact: <ImpactSection />,

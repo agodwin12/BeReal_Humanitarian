@@ -34,4 +34,9 @@ const donationRoutes = require("./donations.routes");
 router.use("/donations", donationRoutes.donations);
 router.use("/donation-settings", donationRoutes.donationSettings);
 
+// Website AI assistant (public widget endpoints are in public.routes.js)
+const chatRoutes = require("./chat.routes");
+router.use("/chat-settings", chatRoutes.chatSettings);
+router.use("/chat-sessions", chatRoutes.chatSessions);
+
 module.exports = router;

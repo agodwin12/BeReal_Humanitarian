@@ -179,6 +179,8 @@ export type SiteSettings = {
   logo: Media | null;
   favicon: Media | null;
   shareImage: Media | null;
+  heroSlideIds: number[];
+  heroSlides: Media[];
   updatedAt: string;
 };
 
@@ -216,6 +218,8 @@ export type TeamMember = {
   updatedAt: string;
 };
 
+export type ImpactStoryRef = { id: number; slug: string | null; title: Localized; status?: "draft" | "published" };
+
 export type GalleryItem = {
   id: number;
   kind: "image" | "video";
@@ -227,6 +231,8 @@ export type GalleryItem = {
   happenedOn: string | null;
   location: string | null;
   published: boolean;
+  impactStoryId: number | null;
+  impactStory: ImpactStoryRef | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -247,8 +253,18 @@ export type ImpactMetric = {
 export type ImpactStory = {
   id: number;
   order: number;
+  slug: string | null;
+  programId: number | null;
+  program: { id: number; slug: string; name: Localized } | null;
   title: Localized;
-  body: Localized;
+  purpose: Localized;
+  whatWeDid: Localized;
+  summary: Localized;
+  assistanceProvided: LocalizedList;
+  peopleReachedCount: number | null;
+  peopleReachedUnit: Localized;
+  happenedOn: string | null;
+  location: string | null;
   mediaId: number | null;
   media: Media | null;
   consentConfirmed: boolean;
@@ -539,3 +555,31 @@ export type DonationSettings = {
 };
 
 export type StripeEventEntry = { id: number; eventId: string; type: string; livemode: boolean; processed: boolean; donationId: number | null; error: string | null; createdAt: string };
+
+// ---- AI assistant (website chat) ----------------------------------------------
+export type ChatSettings = {
+  id: number;
+  enabled: boolean;
+  assistantName: string;
+  welcome: Localized;
+  suggestedQuestions: LocalizedList;
+  extraKnowledge: Localized;
+  maxMessagesPerSession: number;
+  updatedAt: string;
+  gemini: { configured: boolean; model: string };
+};
+export type ChatSessionSummary = {
+  id: number;
+  sessionKey: string;
+  locale: Locale;
+  page: string | null;
+  userAgent: string | null;
+  messageCount: number;
+  lastMessageAt: string | null;
+  createdAt: string;
+  preview: string;
+  errors: number;
+};
+export type ChatMessageEntry = { id: number; role: "user" | "assistant"; content: string; model: string | null; latencyMs: number | null; error: string | null; createdAt: string };
+export type ChatSessionDetail = Omit<ChatSessionSummary, "preview" | "errors"> & { messages: ChatMessageEntry[] };
+export type ChatStats = { sessions30d: number; messages30d: number; errors30d: number; total: number };

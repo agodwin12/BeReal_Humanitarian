@@ -1,29 +1,38 @@
-# Be Real Humanitarian Works — Backend
+# Be Real Humanitarian Works — API
 
-Express MVC API, plain JavaScript. Companion to `../doc/Be Real Humanitarian Works - Website Specification (EN).docx` and `../doc/project-structure.md`.
+Express 5 + Sequelize + PostgreSQL, plain JavaScript (CommonJS). The full handover guide, conventions and deployment runbook are in the repository root: `../AGENTS.md`.
 
 ## Structure
 
 ```
-config/        env + database connection
-models/        Sequelize models (one file per table, registered in models/index.js)
-controllers/   request handlers, incl. controllers/forms/ for the 5 public forms
-routes/        Express routers, mounted under /api in routes/index.js
-middlewares/   auth (JWT), rate limiting, upload, validation, error handling
-services/      email (Resend), media storage (Cloudflare R2), Turnstile anti-spam
-validators/    express-validator rule sets
-utils/         small shared helpers (api response shape, async handler)
-uploads/       local scratch space before a file is pushed to R2 (gitignored)
+server.js      connect to PostgreSQL, apply pending migrations, seed defaults, listen
+app.js         helmet, CORS (CLIENT_URLS), Stripe webhook (raw body) before express.json, /uploads, /api
+config/        env.js (every variable with its default), content.js (locales, page slugs, nav), pageSchema.js, formFields.js
+migrations/    numbered umzug migrations (001 … 008), applied at startup and by `npm run migrate`
+models/        Sequelize models, registered and associated in models/index.js
+routes/        staff routers (JWT + role) and public.routes.js (no auth, rate-limited writes)
+controllers/   request handlers: asyncHandler + ok()/ApiError, apply()/serialize() pattern, audit on every write
+validators/    express-validator rule sets (the `validate` middleware returns errors[] with field + message)
+services/      email (Resend), media + storage (local or R2), stripe, donations, receipts (PDF), notifications,
+               translations, backup, content.seed, siteMessages, turnstile
+utils/         apiResponse, apiError, asyncHandler, audit, localized, csv, pagination, sanitize, tokens, totp
+scripts/       seed-admin.js (first Super Admin, idempotent), backup.js (daily backup job)
+seed/messages/ launch copy used to seed content tables — keep identical to ../frontend/src/messages
+uploads/       local media storage (gitignored); served at /uploads with long cache headers
 ```
 
-Every file currently holds a one-line comment describing what goes there — no logic yet, by design. Nothing is implemented until we sit down and write it together.
+## Commands
 
-## Before coding
+```bash
+npm run dev              # nodemon
+npm start                # production (HOST=127.0.0.1 behind nginx)
+npm run migrate          # apply pending migrations   (also: migrate:down, migrate:pending)
+npm run seed:admin       # first Super Admin from SEED_ADMIN_* in .env
+npm run backup           # content JSON + pg_dump + uploads archive to BACKUP_DIR
+```
 
-1. Copy `.env.example` to `.env` and fill in local values (PostgreSQL credentials at minimum).
-2. Create the local PostgreSQL database named in `DB_NAME`.
-3. `npm run dev` once there is something in `server.js` to run.
+## Environment
 
-## Dependencies already installed
+Copy `.env.example` to `.env`. Without provider keys the API still runs: emails print to the console, donations use the simulated checkout, media is stored locally. `NODE_ENV=production` refuses the email and payment fallbacks.
 
-express, sequelize, pg, pg-hstore, dotenv, cors, helmet, morgan, express-rate-limit, jsonwebtoken, bcryptjs, multer, @aws-sdk/client-s3, express-validator, nodemailer, cookie-parser, compression — dev: nodemon.
+Every response uses one envelope: `{ success: true, data, meta? }` or `{ success: false, message, errors? }`.

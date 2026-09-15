@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { BadgeCheck, Pencil, Plus, Trash2 } from "lucide-react";
+import { BadgeCheck, CalendarDays, MapPin, Pencil, Plus, Trash2, Users } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,7 @@ import { useSessionUser } from "@/hooks/use-session";
 import { ApiError, api, isDemoMode } from "@/lib/api";
 import { METRIC_ICONS, emptyLocalized, localizedFrom, stripHtml } from "@/lib/content";
 import { formatDateTime, formatRelative } from "@/lib/format";
-import type { ImpactMetric, ImpactOverview, ImpactStory, Locale, Localized, Media, StewardshipUpdate } from "@/lib/types";
+import type { ImpactMetric, ImpactOverview, ImpactStory, Locale, Localized, Media, Program, StewardshipUpdate } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const ICON_ITEMS = Object.fromEntries(METRIC_ICONS.map((i) => [i, i]));
@@ -279,6 +279,8 @@ function MetricSheet({ metric, canEdit, onClose, onSaved }: { metric: ImpactMetr
 
 // ---- Stories ------------------------------------------------------------------
 
+const formatDay = (value: string | null) => (value ? new Date(`${value}T12:00:00Z`).toLocaleDateString("en-US", { dateStyle: "long" }) : null);
+
 function StoriesPanel({ stories, canEdit, onChange }: { stories: ImpactStory[]; canEdit: boolean; onChange: (s: ImpactStory[]) => void }) {
   const [editing, setEditing] = useState<ImpactStory | "new" | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<ImpactStory | null>(null);
@@ -337,6 +339,11 @@ function StoriesPanel({ stories, canEdit, onChange }: { stories: ImpactStory[]; 
                 <span className="font-bold text-foreground">{story.title.en || `Story #${story.id}`}</span>
                 <LocaleDots value={story.title} />
                 <StatusBadge published={story.status === "published"} />
+                {story.program ? (
+                  <Badge variant="outline" className="rounded-[6px] border-brand-coral-100 bg-brand-coral-50 font-bold text-brand-coral-700">
+                    {story.program.name.en}
+                  </Badge>
+                ) : null}
                 {story.consentConfirmed ? (
                   <span className="inline-flex items-center gap-1 text-[0.72rem] font-bold text-emerald-700">
                     <BadgeCheck className="size-3.5" /> Consent by {story.consentConfirmedBy}
@@ -345,7 +352,24 @@ function StoriesPanel({ stories, canEdit, onChange }: { stories: ImpactStory[]; 
                   <span className="text-[0.72rem] font-bold text-amber-800">Consent not confirmed</span>
                 )}
               </div>
-              <div className="truncate text-[0.78rem] text-muted-foreground">{stripHtml(story.body.en ?? "").slice(0, 140) || "No text yet"} · updated {formatRelative(story.updatedAt)}</div>
+              <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[0.76rem] text-muted-foreground">
+                {formatDay(story.happenedOn) ? (
+                  <span className="inline-flex items-center gap-1">
+                    <CalendarDays className="size-3.5" /> {formatDay(story.happenedOn)}
+                  </span>
+                ) : null}
+                {story.location ? (
+                  <span className="inline-flex items-center gap-1">
+                    <MapPin className="size-3.5" /> {story.location}
+                  </span>
+                ) : null}
+                {story.peopleReachedCount ? (
+                  <span className="inline-flex items-center gap-1">
+                    <Users className="size-3.5" /> {story.peopleReachedCount} {story.peopleReachedUnit.en}
+                  </span>
+                ) : null}
+              </div>
+              <div className="truncate text-[0.78rem] text-muted-foreground">{stripHtml(story.summary.en ?? "").slice(0, 140) || "No summary yet"} · updated {formatRelative(story.updatedAt)}</div>
             </div>
             <div className="flex items-center gap-1.5">
               {canEdit ? (
@@ -380,21 +404,54 @@ function StoriesPanel({ stories, canEdit, onChange }: { stories: ImpactStory[]; 
   );
 }
 
+const emptyLocalizedList = (): Record<Locale, string> => ({ en: "", fr: "", es: "" });
+
 function StorySheet({ story, canEdit, onClose, onSaved }: { story: ImpactStory | "new" | null; canEdit: boolean; onClose: () => void; onSaved: (s: ImpactStory) => void }) {
   const [title, setTitle] = useState<Localized>(emptyLocalized());
-  const [body, setBody] = useState<Localized>(emptyLocalized());
+  const [slug, setSlug] = useState("");
+  const [programId, setProgramId] = useState<number | null>(null);
+  const [happenedOn, setHappenedOn] = useState("");
+  const [location, setLocation] = useState("");
+  const [purpose, setPurpose] = useState<Localized>(emptyLocalized());
+  const [whatWeDid, setWhatWeDid] = useState<Localized>(emptyLocalized());
+  const [summary, setSummary] = useState<Localized>(emptyLocalized());
+  const [assistance, setAssistance] = useState<Record<Locale, string>>(emptyLocalizedList());
+  const [peopleReachedCount, setPeopleReachedCount] = useState("");
+  const [peopleReachedUnit, setPeopleReachedUnit] = useState<Localized>(emptyLocalized());
   const [media, setMedia] = useState<Media | null>(null);
   const [consent, setConsent] = useState(false);
   const [consentBy, setConsentBy] = useState("");
   const [locale, setLocale] = useState<Locale>("en");
+  const [programs, setPrograms] = useState<Program[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!story || isDemoMode) return;
+    api
+      .get<Program[]>("/api/programs")
+      .then(({ data }) => setPrograms(data))
+      .catch(() => setPrograms([]));
+  }, [story]);
 
   useEffect(() => {
     if (!story) return;
     const s = story === "new" ? null : story;
     setTitle(localizedFrom(s?.title));
-    setBody(localizedFrom(s?.body));
+    setSlug(s?.slug ?? "");
+    setProgramId(s?.programId ?? null);
+    setHappenedOn(s?.happenedOn ?? "");
+    setLocation(s?.location ?? "");
+    setPurpose(localizedFrom(s?.purpose));
+    setWhatWeDid(localizedFrom(s?.whatWeDid));
+    setSummary(localizedFrom(s?.summary));
+    setAssistance({
+      en: (s?.assistanceProvided?.en ?? []).join("\n"),
+      fr: (s?.assistanceProvided?.fr ?? []).join("\n"),
+      es: (s?.assistanceProvided?.es ?? []).join("\n"),
+    });
+    setPeopleReachedCount(s?.peopleReachedCount != null ? String(s.peopleReachedCount) : "");
+    setPeopleReachedUnit(localizedFrom(s?.peopleReachedUnit));
     setMedia(s?.media ?? null);
     setConsent(s?.consentConfirmed ?? false);
     setConsentBy(s?.consentConfirmedBy ?? "");
@@ -411,7 +468,22 @@ function StorySheet({ story, canEdit, onClose, onSaved }: { story: ImpactStory |
     if (consent && !consentBy.trim() && !(story !== "new" && story.consentConfirmed)) return setError("Say who confirmed the consent.");
     setBusy(true);
     setError(null);
-    const payload = { title, body, mediaId: media?.id ?? null, consentConfirmed: consent, consentConfirmedBy: consentBy.trim() || null };
+    const payload = {
+      title,
+      slug: slug.trim() || undefined,
+      programId,
+      happenedOn: happenedOn || null,
+      location: location.trim() || null,
+      purpose,
+      whatWeDid,
+      summary,
+      assistanceProvided: { en: assistance.en.split("\n").map((s) => s.trim()).filter(Boolean), fr: assistance.fr.split("\n").map((s) => s.trim()).filter(Boolean), es: assistance.es.split("\n").map((s) => s.trim()).filter(Boolean) },
+      peopleReachedCount: peopleReachedCount.trim() ? Number(peopleReachedCount) : null,
+      peopleReachedUnit,
+      mediaId: media?.id ?? null,
+      consentConfirmed: consent,
+      consentConfirmedBy: consentBy.trim() || null,
+    };
     try {
       const { data } = isNew ? await api.post<ImpactStory>("/api/impact/stories", payload) : await api.patch<ImpactStory>(`/api/impact/stories/${story.id}`, payload);
       toast.success("Story saved.");
@@ -428,25 +500,102 @@ function StorySheet({ story, canEdit, onClose, onSaved }: { story: ImpactStory |
     <Sheet open onOpenChange={(open) => !open && onClose()}>
       <SheetContent className="w-full overflow-y-auto sm:max-w-2xl">
         <SheetHeader className="border-b border-border pb-4">
-          <SheetTitle className="text-lg font-bold text-brand-purple-950">{isNew ? "New story" : title.en || "Story"}</SheetTitle>
-          <SheetDescription>Only real moments, only with the permission of the people involved. No names or details that could identify someone without their consent.</SheetDescription>
+          <SheetTitle className="text-lg font-bold text-brand-purple-950">{isNew ? "New impact story" : title.en || "Story"}</SheetTitle>
+          <SheetDescription>A completed outreach documented as a case study: purpose, what was done, who it reached, and photos from the Gallery. Only real moments, only with the permission of the people involved.</SheetDescription>
         </SheetHeader>
         <div className="grid gap-5 px-4 pb-6">
-          <LocaleTabs value={locale} onChange={setLocale} values={[title, body]} />
-          <LocalizedInput label="Title" value={title} onChange={setTitle} locale={locale} required disabled={disabled} />
+          <LocaleTabs value={locale} onChange={setLocale} values={[title, purpose, whatWeDid, summary]} />
+          <LocalizedInput label="Program title" value={title} onChange={setTitle} locale={locale} required disabled={disabled} placeholder="e.g. Food and Essential-Needs Distribution — Calvary" />
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-1.5">
+              <Label htmlFor="story-date" className="text-[0.8rem] font-bold">
+                Date / year
+              </Label>
+              <Input id="story-date" type="date" value={happenedOn} onChange={(e) => setHappenedOn(e.target.value)} disabled={disabled} className="min-h-10 rounded-[10px] bg-white" />
+              <p className="text-[0.72rem] text-muted-foreground">Leave empty if the exact day is not known.</p>
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="story-location" className="text-[0.8rem] font-bold">
+                Location
+              </Label>
+              <Input id="story-location" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="e.g. Calvary, Cameroon" disabled={disabled} className="min-h-10 rounded-[10px] bg-white" />
+            </div>
+          </div>
+
+          <div className="grid gap-1.5">
+            <Label className="text-[0.8rem] font-bold">Related program (optional)</Label>
+            <Select value={programId ? String(programId) : "none"} onValueChange={(v) => setProgramId(v === "none" ? null : Number(v))} disabled={disabled}>
+              <SelectTrigger className="min-h-10 w-full rounded-[10px] bg-white">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">None</SelectItem>
+                {programs.map((p) => (
+                  <SelectItem key={p.id} value={String(p.id)}>
+                    {p.name.en}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <LocalizedInput label="Purpose" value={purpose} onChange={setPurpose} locale={locale} multiline disabled={disabled} hint="Why this outreach happened." />
+
           <div className="grid gap-1.5">
             <div className="flex items-center justify-between">
-              <Label className="text-[0.8rem] font-bold">Text ({locale.toUpperCase()})</Label>
-              <LocaleDots value={body} />
+              <Label className="text-[0.8rem] font-bold">What we did ({locale.toUpperCase()})</Label>
+              <LocaleDots value={whatWeDid} />
             </div>
-            <RichTextEditor value={body[locale] ?? ""} onChange={(html) => setBody({ ...body, [locale]: html })} disabled={disabled} minHeight={200} />
+            <RichTextEditor value={whatWeDid[locale] ?? ""} onChange={(html) => setWhatWeDid({ ...whatWeDid, [locale]: html })} disabled={disabled} minHeight={140} />
           </div>
-          <MediaField label="Photo" value={media} onChange={setMedia} disabled={disabled} hint="Use only photos with consent on file." />
+
+          <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
+            <div className="grid gap-1.5">
+              <Label htmlFor="story-people" className="text-[0.8rem] font-bold">
+                People / households reached
+              </Label>
+              <Input id="story-people" type="number" min={0} value={peopleReachedCount} onChange={(e) => setPeopleReachedCount(e.target.value)} placeholder="e.g. 45" disabled={disabled} className="min-h-10 rounded-[10px] bg-white" />
+            </div>
+            <div className="grid gap-1.5">
+              <Label htmlFor="story-unit" className="text-[0.8rem] font-bold">
+                Unit ({locale.toUpperCase()})
+              </Label>
+              <Input id="story-unit" value={peopleReachedUnit[locale] ?? ""} onChange={(e) => setPeopleReachedUnit({ ...peopleReachedUnit, [locale]: e.target.value })} placeholder="households / people" disabled={disabled} className="min-h-10 w-40 rounded-[10px] bg-white" />
+            </div>
+          </div>
+
+          <div className="grid gap-1.5">
+            <Label htmlFor="story-assistance" className="text-[0.8rem] font-bold">
+              Assistance provided ({locale.toUpperCase()}) — one per line
+            </Label>
+            <Textarea id="story-assistance" value={assistance[locale]} onChange={(e) => setAssistance({ ...assistance, [locale]: e.target.value })} placeholder={"Rice and cooking oil\nTinned food\nDrinks"} disabled={disabled} className="min-h-20 rounded-[10px] bg-white" />
+          </div>
+
+          <div className="grid gap-1.5">
+            <div className="flex items-center justify-between">
+              <Label className="text-[0.8rem] font-bold">Short impact summary ({locale.toUpperCase()})</Label>
+              <LocaleDots value={summary} />
+            </div>
+            <RichTextEditor value={summary[locale] ?? ""} onChange={(html) => setSummary({ ...summary, [locale]: html })} disabled={disabled} minHeight={100} />
+            <p className="text-[0.72rem] text-muted-foreground">Shown on the Impact page card and used as the page description when the story is shared.</p>
+          </div>
+
+          <MediaField label="Cover photo" value={media} onChange={setMedia} disabled={disabled} hint="Use only photos with consent on file. The full set of photos and videos comes from the Gallery — tag them to this story from Content → Gallery." />
+
+          <div className="grid gap-1.5">
+            <Label htmlFor="story-slug" className="text-[0.8rem] font-bold">
+              Story URL
+            </Label>
+            <Input id="story-slug" value={slug} onChange={(e) => setSlug(e.target.value)} placeholder="auto-generated from the title" disabled={disabled} className="min-h-10 rounded-[10px] bg-white" />
+            {slug ? <p className="text-[0.72rem] text-muted-foreground">/impact/stories/{slug}</p> : <p className="text-[0.72rem] text-muted-foreground">Left empty, it is generated from the English title when you save.</p>}
+          </div>
+
           <section className="grid gap-2 rounded-[12px] border border-border bg-brand-purple-50 p-3">
             <label className="flex items-start gap-2 text-[0.85rem] font-bold">
               <Checkbox checked={consent} onCheckedChange={(c) => setConsent(c === true)} disabled={disabled} className="mt-0.5" />
               <span>
-                The person (or guardian) agreed to this story being published
+                The people involved (or their guardians) agreed to this story being published
                 <span className="block text-[0.74rem] font-normal text-muted-foreground">Required before the story can be published (brief §8).</span>
               </span>
             </label>

@@ -53,6 +53,8 @@ export type SiteSettings = {
   logo: CmsMedia | null;
   favicon: CmsMedia | null;
   shareImage: CmsMedia | null;
+  /** Ordered photos for the homepage hero carousel; empty when none are chosen yet. */
+  heroSlides: CmsMedia[];
 };
 
 export type CmsProgram = {
@@ -72,9 +74,33 @@ export type CmsProgram = {
 
 export type CmsTeamMember = { id: number; name: string; role: Localized; bio: Localized; photo: CmsMedia | null };
 
+export type CmsProgramRef = { id: number; slug: string; name: Localized };
+
+// One outreach documented as a case study (Impact = "what we have accomplished").
+export type CmsImpactStorySummary = {
+  id: number;
+  slug: string;
+  title: Localized;
+  summary: Localized;
+  happenedOn: string | null;
+  location: string | null;
+  peopleReachedCount: number | null;
+  peopleReachedUnit: Localized;
+  program: CmsProgramRef | null;
+  media: CmsMedia | null;
+  publishedAt: string | null;
+};
+
+export type CmsImpactStoryDetail = CmsImpactStorySummary & {
+  purpose: Localized;
+  whatWeDid: Localized;
+  assistanceProvided: LocalizedList;
+  galleryItems: CmsGalleryItem[];
+};
+
 export type CmsImpact = {
   metrics: { key: string; icon: string; label: Localized; value: string | null; documentedOn: string | null }[];
-  stories: { id: number; title: Localized; body: Localized; media: CmsMedia | null; publishedAt: string | null }[];
+  stories: CmsImpactStorySummary[];
   updates: { id: number; date: string; title: Localized; body: Localized }[];
 };
 
@@ -113,6 +139,8 @@ export type CmsGalleryItem = {
   happenedOn: string | null;
   location: string | null;
   published: boolean;
+  /** Present only when the linked story is published. */
+  impactStory: { id: number; slug: string; title: Localized } | null;
 };
 
 export function pickText(value: Localized | undefined | null, locale: string, fallback = ""): string {
@@ -160,7 +188,11 @@ export const getSiteSettings = cache(() => cmsFetch<SiteSettings>("/site-setting
 export const getPrograms = cache(() => cmsFetch<CmsProgram[]>("/programs"));
 export const getTeam = cache(() => cmsFetch<CmsTeamMember[]>("/team"));
 export const getImpact = cache(() => cmsFetch<CmsImpact>("/impact"));
+export const getImpactStory = cache((slug: string) => cmsFetch<CmsImpactStoryDetail>(`/impact/stories/${slug}`));
 export const getGallery = cache(() => cmsFetch<CmsGalleryItem[]>("/gallery"));
+// AI assistant widget: settings from the portal; hidden while disabled or without a key on the API.
+export type ChatConfig = { enabled: boolean; name: string; welcome: string; suggestedQuestions: string[] };
+export const getChatConfig = cache((locale: string) => cmsFetch<ChatConfig>(`/chat/config?locale=${locale}`));
 export const getLegalPage = cache((slug: string) => cmsFetch<CmsLegalPage>(`/legal/${slug}`));
 export const getDonationConfig = cache(() => cmsFetch<DonationConfig>("/donations/config"));
 

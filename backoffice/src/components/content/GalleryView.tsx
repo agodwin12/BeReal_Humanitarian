@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { DemoNotice } from "@/components/layout/DemoNotice";
@@ -21,13 +22,13 @@ import { useSessionUser } from "@/hooks/use-session";
 import { ApiError, api, isDemoMode } from "@/lib/api";
 import { emptyLocalized, localizedFrom } from "@/lib/content";
 import { formatDateTime } from "@/lib/format";
-import type { GalleryItem, Locale, Localized, Media } from "@/lib/types";
+import type { GalleryItem, ImpactStoryRef, ImpactOverview, Locale, Localized, Media } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 type VideoSource = "upload" | "link";
-type Draft = { kind: "image" | "video"; videoSource: VideoSource; media: Media | null; videoUrl: string; title: Localized; description: Localized; happenedOn: string; location: string; published: boolean };
+type Draft = { kind: "image" | "video"; videoSource: VideoSource; media: Media | null; videoUrl: string; title: Localized; description: Localized; happenedOn: string; location: string; published: boolean; impactStoryId: number | null };
 
-const emptyDraft = (): Draft => ({ kind: "image", videoSource: "upload", media: null, videoUrl: "", title: emptyLocalized(), description: emptyLocalized(), happenedOn: "", location: "", published: true });
+const emptyDraft = (): Draft => ({ kind: "image", videoSource: "upload", media: null, videoUrl: "", title: emptyLocalized(), description: emptyLocalized(), happenedOn: "", location: "", published: true, impactStoryId: null });
 const toDraft = (g: GalleryItem): Draft => ({
   kind: g.kind,
   videoSource: g.kind === "video" && g.videoUrl ? "link" : "upload",
@@ -38,6 +39,7 @@ const toDraft = (g: GalleryItem): Draft => ({
   happenedOn: g.happenedOn ?? "",
   location: g.location ?? "",
   published: g.published,
+  impactStoryId: g.impactStoryId,
 });
 
 function errorMessage(err: unknown) {
@@ -146,6 +148,11 @@ export function GalleryView() {
                     {formatDay(item.happenedOn)}
                     {item.location ? <span>· {item.location}</span> : null}
                   </div>
+                  {item.impactStory ? (
+                    <Badge variant="outline" className="w-fit rounded-[6px] border-brand-purple-100 bg-brand-purple-50 font-bold text-brand-purple-800">
+                      <Link2 className="size-3" /> {item.impactStory.title.en || `Story #${item.impactStory.id}`}
+                    </Badge>
+                  ) : null}
                   <div className="mt-1 flex items-center gap-1.5">
                     {canEdit ? (
                       <Button variant="ghost" size="sm" onClick={() => togglePublished(item)} title={item.published ? "Hide from the site" : "Show on the site"}>
@@ -200,6 +207,15 @@ function EntrySheet({ item, canEdit, onClose, onSaved }: { item: GalleryItem | "
   const [locale, setLocale] = useState<Locale>("en");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [stories, setStories] = useState<ImpactStoryRef[]>([]);
+
+  useEffect(() => {
+    if (isDemoMode || !item) return;
+    api
+      .get<ImpactOverview>("/api/impact")
+      .then(({ data }) => setStories(data.stories))
+      .catch(() => setStories([]));
+  }, [item]);
 
   if (!item) return <Sheet open={false} />;
   const isNew = item === "new";
@@ -222,6 +238,7 @@ function EntrySheet({ item, canEdit, onClose, onSaved }: { item: GalleryItem | "
       happenedOn: draft.happenedOn || null,
       location: draft.location.trim() || null,
       published: draft.published,
+      impactStoryId: draft.impactStoryId,
     };
     try {
       const { data } = isNew ? await api.post<GalleryItem>("/api/gallery", payload) : await api.patch<GalleryItem>(`/api/gallery/${item.id}`, payload);
@@ -317,6 +334,25 @@ function EntrySheet({ item, canEdit, onClose, onSaved }: { item: GalleryItem | "
               </Label>
               <Input id="gallery-location" value={draft.location} onChange={(e) => patch({ location: e.target.value })} placeholder="e.g. Calvary, Cameroon" disabled={disabled} className="min-h-10 rounded-[10px] bg-white" />
             </div>
+          </div>
+
+          <div className="grid gap-1.5">
+            <Label className="text-[0.8rem] font-bold">Part of this Impact story (optional)</Label>
+            <Select value={draft.impactStoryId ? String(draft.impactStoryId) : "none"} onValueChange={(v) => patch({ impactStoryId: v === "none" ? null : Number(v) })} disabled={disabled}>
+              <SelectTrigger className="min-h-10 w-full rounded-[10px] bg-white">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">None</SelectItem>
+                {stories.map((s) => (
+                  <SelectItem key={s.id} value={String(s.id)}>
+                    {s.title.en || `Story #${s.id}`}
+                    {s.status === "draft" ? " (draft)" : ""}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <p className="text-[0.74rem] text-muted-foreground">Lets visitors open “View Full Impact Story” from this photo or video on the website (once the story is published).</p>
           </div>
 
           {!isNew ? <p className="text-[0.72rem] text-muted-foreground">Added {formatDateTime(item.createdAt)} · last change {formatDateTime(item.updatedAt)}</p> : null}

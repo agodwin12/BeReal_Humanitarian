@@ -31,4 +31,14 @@ const unsubscribeLimiter = rateLimit({
   message,
 });
 
-module.exports = { authLimiter, formLimiter, unsubscribeLimiter };
+// AI assistant: each turn costs a model call. Plenty for a real conversation,
+// a wall for scripts.
+const chatLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  limit: 40,
+  standardHeaders: "draft-7",
+  legacyHeaders: false,
+  message,
+});
+
+module.exports = { authLimiter, formLimiter, unsubscribeLimiter, chatLimiter };

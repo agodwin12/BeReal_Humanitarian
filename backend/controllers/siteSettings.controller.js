@@ -15,13 +15,18 @@ const MEDIA_INCLUDES = [
 const LOCALIZED_FIELDS = ["tagline", "statusLine", "neutralityStatement", "fiscalYear", "addressNote", "donateDisabledMessage", "seoDescription"];
 const PLAIN_FIELDS = ["legalName", "shortName", "ein", "showEin", "contactEmail", "contactPhone", "addressLine", "donateEnabled", "enabledLocales", "brandPrimary", "brandAccent", "logoMediaId", "faviconMediaId", "shareMediaId"];
 
-function serialize(row) {
+async function serialize(row) {
   const plain = row.get({ plain: true });
+  const ids = Array.isArray(plain.heroSlideIds) ? plain.heroSlideIds : [];
+  const heroMedia = ids.length ? await Media.findAll({ where: { id: ids } }) : [];
+  const byId = new Map(heroMedia.map((m) => [m.id, m]));
   return {
     ...plain,
     logo: mediaSummary(row.logo),
     favicon: mediaSummary(row.favicon),
     shareImage: mediaSummary(row.shareImage),
+    // Media in the saved order; a since-deleted id is silently dropped.
+    heroSlides: ids.map((id) => byId.get(id)).filter(Boolean).map(mediaSummary),
     navigation: normalizeNavigation(plain.navigation),
   };
 }
@@ -49,11 +54,11 @@ async function load() {
   return row;
 }
 
-exports.get = asyncHandler(async (req, res) => ok(res, serialize(await load())));
+exports.get = asyncHandler(async (req, res) => ok(res, await serialize(await load())));
 
 exports.update = asyncHandler(async (req, res) => {
   const row = await load();
-  const before = serialize(row);
+  const before = await serialize(row);
 
   for (const field of PLAIN_FIELDS) {
     if (req.body[field] === undefined) continue;
@@ -65,6 +70,14 @@ exports.update = asyncHandler(async (req, res) => {
   }
   if (req.body.navigation !== undefined) row.navigation = normalizeNavigation(req.body.navigation);
   if (req.body.enabledLocales !== undefined) row.enabledLocales = [...new Set(["en", ...req.body.enabledLocales])];
+  if (req.body.heroSlideIds !== undefined) {
+    const ids = [...new Set(req.body.heroSlideIds.map(Number))];
+    if (ids.length) {
+      const found = await Media.count({ where: { id: ids } });
+      if (found !== ids.length) throw ApiError.badRequest("One of the hero photos was not found", [{ field: "heroSlideIds", message: "One of the hero photos was not found" }]);
+    }
+    row.heroSlideIds = ids;
+  }
 
   for (const field of ["logoMediaId", "faviconMediaId", "shareMediaId"]) {
     if (row[field] && !(await Media.findByPk(row[field]))) throw ApiError.badRequest(`${field}: media not found`);
@@ -73,7 +86,7 @@ exports.update = asyncHandler(async (req, res) => {
   row.updatedById = req.user.id;
   await row.save();
   await row.reload({ include: MEDIA_INCLUDES });
-  const after = serialize(row);
+  const after = await serialize(row);
   await audit.record(req, { action: "settings.updated", entity: "site_settings", entityId: 1, before, after });
   return ok(res, after);
 });

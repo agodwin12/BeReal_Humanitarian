@@ -69,6 +69,12 @@ module.exports = {
   // Donations (Phase E). Keys live here, never in the database or the browser.
   // Without a secret key (and outside production) checkout runs in a
   // clearly-labelled simulated mode so the whole flow can be reviewed.
+  // Website AI assistant (Google Gemini). Key only here, never in the database or the browser.
+  gemini: {
+    apiKey: process.env.GEMINI_API_KEY || "",
+    model: process.env.GEMINI_MODEL || "gemini-2.5-flash",
+  },
+
   stripe: {
     secretKey: process.env.STRIPE_SECRET_KEY || "",
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || "",

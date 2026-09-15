@@ -229,12 +229,26 @@
     "stories": {
       "eyebrow": "Récits",
       "title": "Partagés avec consentement",
-      "intro": "Des moments réels de nos programmes, publiés uniquement avec l'accord des personnes concernées."
+      "intro": "Des moments réels de nos programmes, publiés uniquement avec l'accord des personnes concernées.",
+      "viewStory": "Voir le récit complet",
+      "partOf": "Fait partie de {program}",
+      "peopleReachedFallbackUnit": "personnes"
     },
     "updates": {
       "eyebrow": "Bonne gestion",
       "title": "Comment les dons ont été utilisés",
       "intro": "Des mises à jour datées sur l'usage des dons et des ressources."
+    },
+    "storyDetail": {
+      "back": "Tous les récits d’impact",
+      "purpose": "Objectif",
+      "whatWeDid": "Ce que nous avons fait",
+      "assistanceProvided": "Aide apportée",
+      "gallery": "Photos et vidéos de cette action",
+      "notFoundTitle": "Récit introuvable",
+      "notFoundBody": "Ce récit d’impact n’est pas disponible.",
+      "eyebrow": "Récit d’impact",
+      "peopleReachedFallbackUnit": "personnes"
     }
   },
   "GetInvolvedPage": {
@@ -723,7 +737,21 @@
       "photo": "Photo",
       "video": "Vidéo",
       "open": "Agrandir",
-      "close": "Fermer"
+      "close": "Fermer",
+      "viewStory": "Voir le récit complet"
     }
+  },
+  "Chat": {
+    "open": "Discuter avec nous",
+    "close": "Fermer la discussion",
+    "aiBadge": "IA",
+    "newChat": "Nouvelle conversation",
+    "suggestionsLabel": "Essayez de demander",
+    "placeholder": "Écrivez votre question…",
+    "send": "Envoyer",
+    "thinking": "Réflexion…",
+    "error": "Désolé, je n’ai pas pu répondre. Réessayez ou utilisez la page Contact.",
+    "limit": "Vous avez envoyé beaucoup de messages en peu de temps. Patientez une minute puis réessayez.",
+    "disclaimer": "Assistant IA : les réponses sont générées à partir de nos informations publiées et peuvent contenir des erreurs. Ce n’est pas un service d’urgence — en cas d’urgence, contactez les services d’urgence locaux."
   }
 }

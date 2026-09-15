@@ -71,7 +71,7 @@ export default async function DonatePage({ params, searchParams }: PageProps<"/[
       content={content}
       order={SECTIONS}
       blocks={{
-        hero: <DonateHero image={pageImage(content, "hero", "/images/hero-embrace.png", locale)} />,
+        hero: <DonateHero image={pageImage(content, "hero", "/images/hero-outreach.jpg", locale)} />,
         form: <FormSection config={config} cancelled={query.cancelled === "1"} pausedMessage={pickText(config?.disabledMessage, locale)} />,
         why: <WhySection />,
         cta: <CtaBand />,

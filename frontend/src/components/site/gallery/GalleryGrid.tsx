@@ -6,6 +6,7 @@ import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { CalendarDays, MapPin, PlayCircle, X } from "lucide-react";
 
 import { FadeIn } from "@/components/motion/FadeIn";
+import { Link } from "@/i18n/navigation";
 import type { CmsGalleryItem, CmsMedia } from "@/lib/cms";
 
 // Local copies of two tiny helpers: lib/cms.ts pulls in next/headers, which a
@@ -15,7 +16,10 @@ const mediaSrc = (media: CmsMedia, size: "thumb" | "medium" | "large" = "large")
 
 // Photo and video cards, newest event first. A photo opens full size in a
 // lightbox; an uploaded video plays inline; a YouTube / Vimeo link embeds.
-export function GalleryGrid({ items }: { items: CmsGalleryItem[] }) {
+// `showHeader` / `showStoryLinks` are turned off when this grid is embedded
+// inside an Impact story's own page (its own header already introduces the
+// photos, and a link back to the same page would be circular).
+export function GalleryGrid({ items, showHeader = true, showStoryLinks = true }: { items: CmsGalleryItem[]; showHeader?: boolean; showStoryLinks?: boolean }) {
   const t = useTranslations("GalleryPage.grid");
   const locale = useLocale();
   const format = useFormatter();
@@ -35,13 +39,15 @@ export function GalleryGrid({ items }: { items: CmsGalleryItem[] }) {
   const date = (value: string | null) => (value ? format.dateTime(new Date(`${value}T12:00:00Z`), { dateStyle: "long" }) : null);
 
   return (
-    <section id="gallery" className="section scroll-mt-24">
+    <section id={showHeader ? "gallery" : undefined} className={showHeader ? "section scroll-mt-24" : "section pt-0"}>
       <div className="site-container">
-        <FadeIn className="section-intro">
-          <span className="eyebrow">{t("eyebrow")}</span>
-          <h2 className="section-title">{t("title")}</h2>
-          <p className="lead">{t("intro")}</p>
-        </FadeIn>
+        {showHeader ? (
+          <FadeIn className="section-intro">
+            <span className="eyebrow">{t("eyebrow")}</span>
+            <h2 className="section-title">{t("title")}</h2>
+            <p className="lead">{t("intro")}</p>
+          </FadeIn>
+        ) : null}
 
         {items.length === 0 ? (
           <FadeIn className="info-card border-line mx-auto max-w-2xl text-center">
@@ -87,6 +93,11 @@ export function GalleryGrid({ items }: { items: CmsGalleryItem[] }) {
                     </div>
                     <h3>{title}</h3>
                     {description ? <p>{description}</p> : null}
+                    {showStoryLinks && item.impactStory ? (
+                      <Link href={`/impact/stories/${item.impactStory.slug}`} className="gallery-card__story-link">
+                        {t("viewStory")} →
+                      </Link>
+                    ) : null}
                   </div>
                 </FadeIn>
               );

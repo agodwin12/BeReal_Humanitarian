@@ -1,11 +1,13 @@
-const { GalleryItem, Media } = require("../models");
+const { GalleryItem, Media, ImpactStory } = require("../models");
 const ApiError = require("../utils/apiError");
 const asyncHandler = require("../utils/asyncHandler");
 const { ok } = require("../utils/apiResponse");
 const audit = require("../utils/audit");
 const { normalizeLocalized, mediaSummary } = require("../utils/localized");
 
-const INCLUDES = [{ model: Media, as: "media" }];
+// The linked story's own title (not its whole photo/video set) — enough for
+// "View Full Impact Story" on a Gallery card, whichever page it renders on.
+const INCLUDES = [{ model: Media, as: "media" }, { model: ImpactStory, as: "impactStory", attributes: ["id", "slug", "title", "status"] }];
 const ORDER = [["happenedOn", "DESC NULLS LAST"], ["createdAt", "DESC"]];
 
 // Accepts youtube.com/watch?v=…, youtu.be/…, youtube.com/shorts/…, vimeo.com/…
@@ -34,7 +36,13 @@ function embedUrlFor(url) {
   return null;
 }
 
-function serialize(row) {
+// A link to a still-draft story is never shown to the public — only staff see it.
+function impactStorySummary(story, { forPublic } = {}) {
+  if (!story || (forPublic && story.status !== "published")) return null;
+  return { id: story.id, slug: story.slug, title: story.title };
+}
+
+function serialize(row, { forPublic } = {}) {
   const plain = row.get({ plain: true });
   return {
     id: plain.id,
@@ -47,6 +55,8 @@ function serialize(row) {
     happenedOn: plain.happenedOn,
     location: plain.location,
     published: plain.published,
+    impactStoryId: forPublic ? undefined : plain.impactStoryId,
+    impactStory: impactStorySummary(row.impactStory, { forPublic }),
     createdAt: plain.createdAt,
     updatedAt: plain.updatedAt,
   };
@@ -75,6 +85,10 @@ async function apply(row, body) {
   if (row.kind === "video" && !row.mediaId && !row.videoUrl) throw ApiError.badRequest("A video entry needs an uploaded video or a YouTube / Vimeo link", [{ field: "videoUrl", message: "Add a video file or a link" }]);
   if (row.kind === "image" && !row.mediaId) throw ApiError.badRequest("A photo entry needs a photo", [{ field: "mediaId", message: "Choose a photo" }]);
   if (!row.title?.en) throw ApiError.badRequest("Title (English) is required", [{ field: "title", message: "Title (English) is required" }]);
+  if (body.impactStoryId !== undefined) {
+    if (body.impactStoryId && !(await ImpactStory.findByPk(body.impactStoryId))) throw ApiError.badRequest("impactStoryId: story not found");
+    row.impactStoryId = body.impactStoryId || null;
+  }
 }
 
 const all = () => GalleryItem.findAll({ include: INCLUDES, order: ORDER });
@@ -117,7 +131,7 @@ exports.publicList = asyncHandler(async (req, res) => {
   return ok(
     res,
     rows
-      .map(serialize)
+      .map((row) => serialize(row, { forPublic: true }))
       .filter((item) => (item.kind === "video" ? item.media || item.embedUrl : item.media))
       .map(({ createdAt, updatedAt, ...item }) => item),
   );

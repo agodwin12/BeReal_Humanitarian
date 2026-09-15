@@ -46,6 +46,7 @@ type Draft = {
   logo: Media | null;
   favicon: Media | null;
   shareImage: Media | null;
+  heroSlides: Media[];
 };
 
 const SOCIAL_ITEMS = Object.fromEntries(SOCIAL_PLATFORMS.map((p) => [p, SOCIAL_LABEL[p]]));
@@ -75,6 +76,7 @@ function toDraft(s: SiteSettings): Draft {
     logo: s.logo,
     favicon: s.favicon,
     shareImage: s.shareImage,
+    heroSlides: [...s.heroSlides],
   };
 }
 
@@ -156,6 +158,7 @@ export function SiteSettingsView() {
         logoMediaId: draft.logo?.id ?? null,
         faviconMediaId: draft.favicon?.id ?? null,
         shareMediaId: draft.shareImage?.id ?? null,
+        heroSlideIds: draft.heroSlides.map((m) => m.id),
       });
       setSettings(data);
       setDraft(toDraft(data));
@@ -230,6 +233,38 @@ export function SiteSettingsView() {
             <MediaField label="Favicon" value={draft.favicon} onChange={(m) => patch({ favicon: m })} disabled={disabled} kind="image" />
             <MediaField label="Social share image" value={draft.shareImage} onChange={(m) => patch({ shareImage: m })} disabled={disabled} hint="Shown when a page is shared on Facebook, WhatsApp… 1200×630 recommended." />
           </div>
+        </Section>
+
+        <Section title="Hero carousel" description="The photo behind the homepage's opening headline. Add real photos of the work — with more than one, they rotate automatically; the text and layout never change. Empty = the site's single default photo.">
+          {draft.heroSlides.length > 0 ? (
+            <ul className="grid gap-2">
+              {draft.heroSlides.map((media, index) => (
+                <li key={media.id} className="flex min-w-0 items-center gap-3 rounded-[10px] border border-border bg-white p-2">
+                  <SortControls index={index} count={draft.heroSlides.length} disabled={disabled} onMove={(from, to) => patch({ heroSlides: moveItem(draft.heroSlides, from, to) })} />
+                  <div className="relative size-14 shrink-0 overflow-hidden rounded-[8px] bg-muted">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={media.variants?.thumb?.url ?? media.url} alt="" className="size-full object-cover" />
+                  </div>
+                  <div className="min-w-0 flex-1 truncate text-[0.82rem] font-bold text-foreground">{media.filename}</div>
+                  <Button type="button" variant="ghost" size="sm" className="text-brand-coral-700 hover:text-brand-coral-700" disabled={disabled} onClick={() => patch({ heroSlides: draft.heroSlides.filter((m) => m.id !== media.id) })}>
+                    <Trash2 className="size-3.5" />
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-[0.8rem] text-muted-foreground">No hero photos chosen yet — the homepage shows its built-in default photo.</p>
+          )}
+          {draft.heroSlides.length < 8 ? (
+            <MediaField
+              label="Add a hero photo"
+              value={null}
+              onChange={(m) => m && !draft.heroSlides.some((s) => s.id === m.id) && patch({ heroSlides: [...draft.heroSlides, m] })}
+              disabled={disabled}
+              kind="image"
+              hint="Pick from the media library — the Gallery's real photos work well here. Up to 8 photos."
+            />
+          ) : null}
         </Section>
 
         <Section title="Contact" description="Rows appear on the Contact page only when a value exists — nothing is invented.">
