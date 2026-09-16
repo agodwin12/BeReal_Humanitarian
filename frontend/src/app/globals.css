@@ -2492,9 +2492,34 @@
   color: #fff;
 }
 
+/* An input-group box: the $ sign is a fixed, non-overlapping flex item next
+   to the field, not an overlay — the two can never occupy the same space,
+   so the amount can never render underneath the symbol. */
 .amount-custom {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   margin-top: 0.6rem;
+  padding: 0 0.75rem;
+  height: 2rem;
+  border: 1px solid var(--input);
+  border-radius: 0.5rem;
+  background: transparent;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.amount-custom:focus-within {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent);
+}
+
+.amount-custom--invalid {
+  border-color: var(--destructive);
+}
+
+.amount-custom--invalid:focus-within {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--destructive) 20%, transparent);
 }
 
 .amount-custom--hidden {
@@ -2502,16 +2527,9 @@
 }
 
 .amount-custom__symbol {
-  position: absolute;
-  left: 0.9rem;
-  top: 50%;
-  transform: translateY(-50%);
+  flex: none;
   font-weight: 800;
   color: var(--muted-text);
-}
-
-.amount-custom input {
-  padding-left: 1.9rem;
 }
 
 .thankyou-card {

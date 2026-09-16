@@ -194,7 +194,7 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
             {t("form.otherAmount")}
           </button>
         </div>
-        <div className={cn("amount-custom", !custom && "amount-custom--hidden")}>
+        <div className={cn("amount-custom", !custom && "amount-custom--hidden", errors.amount && "amount-custom--invalid")}>
           <span className="amount-custom__symbol" aria-hidden="true">
             $
           </span>
@@ -204,6 +204,7 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
             placeholder={t("form.customPlaceholder")}
             aria-label={t("form.amountLabel")}
             aria-invalid={!!errors.amount}
+            className="h-auto border-0 bg-transparent p-0 shadow-none outline-none focus-visible:ring-0 focus-visible:border-0"
             {...register("amount", { onChange: () => setCustom(true) })}
           />
         </div>
