@@ -17,7 +17,7 @@ const PAGES = [
     path: "/",
     sections: [
       { key: "hero", title: "Hero", locked: true, messageKeys: ["Hero."], images: [{ slot: "hero", label: "Hero photo", default: "/images/hero-outreach.jpg" }] },
-      { key: "welcome", title: "Welcome", messageKeys: ["Welcome."], images: [{ slot: "welcome", label: "Welcome photo", default: "/images/welcome-community-food-sorting.jpg" }] },
+      { key: "welcome", title: "Welcome", messageKeys: ["Welcome."], images: [{ slot: "welcome", label: "Welcome photo", default: "/images/outreach-welcome-elder-family.jpg" }] },
       { key: "programs", title: "Programs cards", description: "The four cards come from the Programs screen; only the heading is edited here.", messageKeys: ["Programs.eyebrow", "Programs.title", "Programs.intro", "Programs.viewAll"] },
       { key: "impact", title: "Why it matters", messageKeys: ["Impact."] },
       CTA_SECTION,
@@ -56,7 +56,7 @@ const PAGES = [
     title: "Impact",
     path: "/impact",
     sections: [
-      { key: "hero", title: "Hero", locked: true, messageKeys: ["ImpactPage.eyebrow", "ImpactPage.title", "ImpactPage.lead", "ImpactPage.heroAlt"], images: [{ slot: "hero", label: "Hero photo", default: "/images/outreach-impact-hero.jpg" }] },
+      { key: "hero", title: "Hero", locked: true, messageKeys: ["ImpactPage.eyebrow", "ImpactPage.title", "ImpactPage.lead", "ImpactPage.heroAlt"], images: [{ slot: "hero", label: "Hero photo", default: "/images/outreach-impact-hero-v2.jpg" }] },
       { key: "metrics", title: "Metrics", description: "Values, dates and publish switches are on the Impact screen.", messageKeys: ["ImpactPage.metrics.eyebrow", "ImpactPage.metrics.title", "ImpactPage.metrics.intro", "ImpactPage.metrics.documentedOn"] },
       { key: "stories", title: "Stories", description: "Shown only when at least one story is published (Impact screen).", messageKeys: ["ImpactPage.stories."] },
       { key: "updates", title: "Stewardship updates", description: "Shown only when at least one update is published (Impact screen).", messageKeys: ["ImpactPage.updates."] },

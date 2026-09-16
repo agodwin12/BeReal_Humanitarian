@@ -31,7 +31,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       order={SECTIONS}
       blocks={{
         hero: <HeroSection images={heroImages} donateEnabled={donateEnabled} />,
-        welcome: <WelcomeSection image={pageImage(content, "welcome", "/images/welcome-community-food-sorting.jpg", locale)} />,
+        welcome: <WelcomeSection image={pageImage(content, "welcome", "/images/outreach-welcome-elder-family.jpg", locale)} />,
         programs: <ProgramsSection programs={programs} />,
         impact: <ImpactSection />,
         cta: <CtaBand />,

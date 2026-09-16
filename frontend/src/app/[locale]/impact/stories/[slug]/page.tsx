@@ -36,7 +36,7 @@ export default async function ImpactStoryPage({ params }: PageProps<"/[locale]/i
         eyebrow={t("eyebrow")}
         title={title}
         lead={lead}
-        image={story.media ? mediaSrc(story.media, "large") : "/images/outreach-impact-hero.jpg"}
+        image={story.media ? mediaSrc(story.media, "large") : "/images/outreach-impact-hero-v2.jpg"}
         imageAlt={story.media ? pickText(story.media.alt, locale, title) : title}
         imagePosition="object-[center_40%]"
       />
