@@ -2532,6 +2532,21 @@
   color: var(--muted-text);
 }
 
+/* The generic .field input styling (min-height, its own white background and
+   border-radius) would otherwise win over the input's own utility classes
+   and break out of this box — reset it explicitly for the field nested here. */
+.field .amount-custom [data-slot="input"] {
+  width: auto;
+  min-height: 0;
+  height: 100%;
+  flex: 1;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding-inline: 0;
+  font-size: inherit;
+}
+
 .thankyou-card {
   padding: 1.6rem;
   border-radius: 16px;
