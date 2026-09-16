@@ -31,9 +31,6 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       order={SECTIONS}
       blocks={{
         hero: <HeroSection images={heroImages} donateEnabled={donateEnabled} />,
-        // Default photo: volunteers sorting food donations, by Joel Muniz on
-        // Unsplash (unsplash.com/photos/3k3l2brxmwQ) — free Unsplash license,
-        // not a photo of this organization's own outreach.
         welcome: <WelcomeSection image={pageImage(content, "welcome", "/images/welcome-community-food-sorting.jpg", locale)} />,
         programs: <ProgramsSection programs={programs} />,
         impact: <ImpactSection />,
