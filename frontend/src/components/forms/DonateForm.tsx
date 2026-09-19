@@ -98,6 +98,7 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
 
   const amountValue = watch("amount");
   const coverFees = watch("coverFees");
+  const anonymous = watch("anonymous");
   const amountCents = /^\d+([.,]\d{1,2})?$/.test(amountValue?.trim() ?? "") ? Math.round(Number(amountValue.replace(",", ".")) * 100) : null;
   const activeChip = chips.find((a) => a * 100 === amountCents) ?? null;
   const feeCoverCents = config.feeCover.enabled && amountCents ? feeCoverFor(amountCents, config.feeCover) : 0;
@@ -222,9 +223,11 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
         </CheckField>
       ) : null}
 
-      <Field id={`${id}-name`} label={t("form.nameLabel")} error={errors.name?.message}>
-        <Input id={`${id}-name`} autoComplete="name" aria-invalid={!!errors.name} {...register("name")} />
-      </Field>
+      {!anonymous ? (
+        <Field id={`${id}-name`} label={t("form.nameLabel")} error={errors.name?.message}>
+          <Input id={`${id}-name`} autoComplete="name" aria-invalid={!!errors.name} {...register("name")} />
+        </Field>
+      ) : null}
       <Field id={`${id}-email`} label={t("form.emailLabel")} error={errors.email?.message}>
         <Input id={`${id}-email`} type="email" autoComplete="email" aria-invalid={!!errors.email} {...register("email")} />
       </Field>
@@ -234,7 +237,24 @@ export function DonateForm({ config, cancelled = false }: { config: DonationConf
       </Field>
 
       <CheckField id={`${id}-anon`} label={t("form.anonymous")}>
-        <Controller control={control} name="anonymous" render={({ field }) => <Checkbox id={`${id}-anon`} checked={field.value} onCheckedChange={(c) => field.onChange(c === true)} />} />
+        <Controller
+          control={control}
+          name="anonymous"
+          render={({ field }) => (
+            <Checkbox
+              id={`${id}-anon`}
+              checked={field.value}
+              onCheckedChange={(c) => {
+                const next = c === true;
+                field.onChange(next);
+                // The name field disappears when giving anonymously, so it can't
+                // hold a typed value — record the gift under "Anonymous" instead,
+                // and clear it back out if the donor unchecks the box again.
+                setValue("name", next ? "Anonymous" : "", { shouldValidate: next });
+              }}
+            />
+          )}
+        />
       </CheckField>
 
       <Honeypot registration={register("website")} />

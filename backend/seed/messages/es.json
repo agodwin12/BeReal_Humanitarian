@@ -599,7 +599,7 @@
       "minimum": "Mínimo {amount}",
       "nameLabel": "Nombre completo",
       "emailLabel": "Correo (para tu recibo)",
-      "anonymous": "Mantener mi nombre en privado en cualquier agradecimiento público",
+      "anonymous": "Donar de forma anónima (no pedir mi nombre)",
       "messageLabel": "Mensaje (opcional)",
       "messagePlaceholder": "Una nota para el equipo",
       "submit": "Donar {amount} de forma segura",

@@ -599,7 +599,7 @@
       "minimum": "Minimum {amount}",
       "nameLabel": "Full name",
       "emailLabel": "Email (for your receipt)",
-      "anonymous": "Keep my name private in any public acknowledgment",
+      "anonymous": "Give anonymously (don't collect my name)",
       "messageLabel": "Message (optional)",
       "messagePlaceholder": "A note for the team",
       "submit": "Donate {amount} securely",
